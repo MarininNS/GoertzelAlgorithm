@@ -1,0 +1,219 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dD:/intelFPGA_lite/20.1/modelsim_ase/win32aloem
+vAngel
+Z0 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z1 !s110 1680466664
+!i10b 1
+!s100 LAGf^R5_6Qhh:1Ygh>E:^1
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IkJ8k6O<6NEdmD[?PUYhFI3
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+S1
+Z4 dD:/Desktop/Study_now/SRW/Fourier_Transform/sim
+w1680434977
+8D:/Desktop/Study_now/SRW/Fourier_Transform/src/Angel.sv
+FD:/Desktop/Study_now/SRW/Fourier_Transform/src/Angel.sv
+!i122 629
+L0 1 49
+Z5 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z6 !s108 1680466664.000000
+!s107 D:/Desktop/Study_now/SRW/Fourier_Transform/src/Angel.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/Desktop/Study_now/SRW/Fourier_Transform/src/Angel.sv|
+!i113 1
+Z7 o-work work -sv
+Z8 tCvgOpt 0
+n@angel
+vCordic
+R0
+!s110 1680552849
+!i10b 1
+!s100 b67<2lXMl7oH78^`6Cecz2
+R2
+ITJASn583ei;Y`njj:D0061
+R3
+S1
+R4
+w1680552756
+8D:/Desktop/Study_now/SRW/Fourier_Transform/src/Cordic.sv
+FD:/Desktop/Study_now/SRW/Fourier_Transform/src/Cordic.sv
+!i122 633
+L0 1 147
+R5
+r1
+!s85 0
+31
+!s108 1680552849.000000
+!s107 D:/Desktop/Study_now/SRW/Fourier_Transform/src/Cordic.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/Desktop/Study_now/SRW/Fourier_Transform/src/Cordic.sv|
+!i113 1
+R7
+R8
+n@cordic
+vCordic_tb
+R0
+R1
+!i10b 1
+!s100 Onc@PUIo8`IjeH^_Z;MU33
+R2
+IL5UUK4hf1U^R;6kODL`H20
+R3
+S1
+R4
+w1679240576
+8D:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/Herzel_tb.sv
+FD:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/Herzel_tb.sv
+!i122 626
+Z9 L0 3 56
+R5
+r1
+!s85 0
+31
+Z10 !s108 1680466663.000000
+!s107 D:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/Herzel_tb.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/Herzel_tb.sv|
+!i113 1
+R7
+R8
+n@cordic_tb
+vDataScale
+R0
+R1
+!i10b 1
+!s100 a6bS1Dm4iHUm<7cR2G@c41
+R2
+I?2O?@gZ@HHP`z5M8z[_i=0
+R3
+S1
+R4
+w1680444429
+8D:/Desktop/Study_now/SRW/Fourier_Transform/src/DataScale.sv
+FD:/Desktop/Study_now/SRW/Fourier_Transform/src/DataScale.sv
+!i122 627
+L0 1 26
+R5
+r1
+!s85 0
+31
+R6
+!s107 D:/Desktop/Study_now/SRW/Fourier_Transform/src/DataScale.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/Desktop/Study_now/SRW/Fourier_Transform/src/DataScale.sv|
+!i113 1
+R7
+R8
+n@data@scale
+vDataScale_tb
+R0
+R1
+!i10b 1
+!s100 ?kCN73PF^X6iN]`Q2Th<11
+R2
+I7ceQdg`ldC2_W:<_42>S42
+R3
+S1
+R4
+w1679240577
+8D:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/DataScale_tb.sv
+FD:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/DataScale_tb.sv
+!i122 628
+R9
+R5
+r1
+!s85 0
+31
+R6
+!s107 D:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/DataScale_tb.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/DataScale_tb.sv|
+!i113 1
+R7
+R8
+n@data@scale_tb
+vFourierTransform
+R0
+!s110 1680466662
+!i10b 1
+!s100 QbQA2LLH5S3i5XnXJTT3>3
+R2
+I5ACZ>E;>oW<;`z0cm`E5o3
+R3
+S1
+R4
+w1680450054
+8D:/Desktop/Study_now/SRW/Fourier_Transform/src/FourierTransform.sv
+FD:/Desktop/Study_now/SRW/Fourier_Transform/src/FourierTransform.sv
+!i122 621
+L0 1 99
+R5
+r1
+!s85 0
+31
+!s108 1680466662.000000
+!s107 D:/Desktop/Study_now/SRW/Fourier_Transform/src/FourierTransform.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/Desktop/Study_now/SRW/Fourier_Transform/src/FourierTransform.sv|
+!i113 1
+R7
+R8
+n@fourier@transform
+vHerzel
+R0
+!s110 1680466663
+!i10b 1
+!s100 <BDR7Z5_`zI4aHTB5KzL83
+R2
+IkeG=`LfHKTgnIO<C>hPoh2
+R3
+S1
+R4
+w1680447132
+8D:/Desktop/Study_now/SRW/Fourier_Transform/src/Herzel.sv
+FD:/Desktop/Study_now/SRW/Fourier_Transform/src/Herzel.sv
+!i122 625
+L0 1 84
+R5
+r1
+!s85 0
+31
+R10
+!s107 D:/Desktop/Study_now/SRW/Fourier_Transform/src/Herzel.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/Desktop/Study_now/SRW/Fourier_Transform/src/Herzel.sv|
+!i113 1
+R7
+R8
+n@herzel
+vtb_FourierTransform
+R0
+!s110 1680551165
+!i10b 1
+!s100 1:8f4E@85]J0CTOP31GH=2
+R2
+ILa1;kcY2K@1oNIRD3ZMH>2
+R3
+S1
+R4
+w1680551156
+8D:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/FourierTransform_tb.sv
+FD:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/FourierTransform_tb.sv
+!i122 632
+L0 1 94
+R5
+r1
+!s85 0
+31
+!s108 1680551165.000000
+!s107 D:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/FourierTransform_tb.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/FourierTransform_tb.sv|
+!i113 1
+R7
+R8
+ntb_@fourier@transform

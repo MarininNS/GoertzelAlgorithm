@@ -1,0 +1,64 @@
+D:/Desktop/Study_now/SRW/Fourier_Transform/src/Cordic.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/Fourier_Transform/src/Cordic.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module Cordic
+
+Top level modules:
+	Cordic
+
+} {} {}} D:/Desktop/Study_now/SRW/Fourier_Transform/src/FourierTransform.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/Fourier_Transform/src/FourierTransform.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module FourierTransform
+
+Top level modules:
+	FourierTransform
+
+} {} {}} D:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/FourierTransform_tb.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/FourierTransform_tb.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module tb_FourierTransform
+
+Top level modules:
+	tb_FourierTransform
+
+} {} {}} D:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/Cordic_tb.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/Cordic_tb.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module Cordic_tb
+
+Top level modules:
+	Cordic_tb
+
+} {} {}} D:/Desktop/Study_now/SRW/Fourier_Transform/src/Herzel.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/Fourier_Transform/src/Herzel.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module Herzel
+
+Top level modules:
+	Herzel
+
+} {} {}} D:/Desktop/Study_now/SRW/Fourier_Transform/src/DataScale.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/Fourier_Transform/src/DataScale.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module DataScale
+
+Top level modules:
+	DataScale
+
+} {} {}} D:/Desktop/Study_now/SRW/Fourier_Transform/src/Angel.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/Fourier_Transform/src/Angel.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module Angel
+
+Top level modules:
+	Angel
+
+} {} {}} D:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/Herzel_tb.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/Herzel_tb.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module Cordic_tb
+
+Top level modules:
+	Cordic_tb
+
+} {} {}} D:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/DataScale_tb.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/DataScale_tb.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module DataScale_tb
+
+Top level modules:
+	DataScale_tb
+
+} {} {}}
