@@ -7,7 +7,7 @@ module Herzel #(
   input                      clk         ,
   // CTRL
   input                      en          ,
-  output logic               valid       ,
+  output logic               ready       ,
   // DATA
   input          signed [31:0] alpha_i   ,
   input          signed [31:0] cW_re_i   ,
@@ -52,7 +52,7 @@ assign data_o       = data_re_32 + data_im_32; // 32.0
 
 always_ff @(posedge clk, negedge rstn) begin
   if (!rstn) begin
-    valid     <= 0;
+    ready     <= 0;
     vm1       <= 0;
     vm2       <= 0;
     vm1_cW_re <= 0;
@@ -62,7 +62,7 @@ always_ff @(posedge clk, negedge rstn) begin
     indx1     <= 0;
     vmcw      <= 0;
   end
-  else if (en && !valid) begin
+  else if (en && !ready) begin
     if (indx1 < (NS - 1)) begin
       vm1   <= data + vm1_alpha_32 - vm2;
       vm2   <= vm1      ;
@@ -76,7 +76,7 @@ always_ff @(posedge clk, negedge rstn) begin
     else if (vmcw) begin
       data_re <= vm1_cW_re_m2 * vm1_cW_re_m2;
       data_im <= vm1_cW_im_32 * vm1_cW_im_32;
-      valid   <= 1;
+      ready   <= 1;
     end
   end
 end

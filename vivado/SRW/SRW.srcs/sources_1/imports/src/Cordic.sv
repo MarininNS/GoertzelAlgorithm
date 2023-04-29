@@ -6,7 +6,7 @@ module Cordic #(
   input                              clk  ,
   // CTRL
   input                              en   ,
-  output logic                       valid,
+  output logic                       ready,
   // DATA
   input        signed [NF-1:0][31:0] ang_i,
   output logic signed [NF-1:0][31:0] cos_o,
@@ -33,7 +33,7 @@ logic                [1 :0] quad ;
 
 always_ff @(posedge clk, negedge rstn) begin
   if (!rstn) begin
-    valid <= 0;
+    ready <= 0;
     cos   <= 32'h01_000000;
     sin   <= 32'h00_000000;
     sin_m <= 0;
@@ -62,7 +62,7 @@ always_ff @(posedge clk, negedge rstn) begin
     end
     norm <= 1;
   end
-  else if (en && !valid) begin
+  else if (en && !ready) begin
     if (indx0 < NF) begin
       if (indx1 < 23) begin
         if (ang[31] == 0) begin
@@ -99,7 +99,7 @@ always_ff @(posedge clk, negedge rstn) begin
       end
     end
     else begin
-      valid <= 1;
+      ready <= 1;
     end
   end
 end

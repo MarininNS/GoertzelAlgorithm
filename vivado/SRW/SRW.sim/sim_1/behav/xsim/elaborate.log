@@ -1,0 +1,13 @@
+Vivado Simulator 2020.1
+Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2020.1/bin/unwrapped/win64.o/xelab.exe -wto 7787d1e693ed4be8b06ec0fae69b6489 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot Cordic_tb_behav xil_defaultlib.Cordic_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+ERROR: [VRFC 10-3180] cannot find port 'data_i' on this module [D:/Desktop/Study_now/SRW/Fourier_Transform/vivado/SRW/SRW.srcs/sources_1/imports/src/sim/Herzel_tb.sv:28]
+ERROR: [VRFC 10-3180] cannot find port 'coefW_im' on this module [D:/Desktop/Study_now/SRW/Fourier_Transform/vivado/SRW/SRW.srcs/sources_1/imports/src/sim/Herzel_tb.sv:27]
+ERROR: [VRFC 10-3180] cannot find port 'coefW_re' on this module [D:/Desktop/Study_now/SRW/Fourier_Transform/vivado/SRW/SRW.srcs/sources_1/imports/src/sim/Herzel_tb.sv:26]
+ERROR: [VRFC 10-3180] cannot find port 'alpha' on this module [D:/Desktop/Study_now/SRW/Fourier_Transform/vivado/SRW/SRW.srcs/sources_1/imports/src/sim/Herzel_tb.sv:25]
+ERROR: [VRFC 10-3180] cannot find port 'en' on this module [D:/Desktop/Study_now/SRW/Fourier_Transform/vivado/SRW/SRW.srcs/sources_1/imports/src/sim/Herzel_tb.sv:23]
+WARNING: [VRFC 10-2861] module 'FourierTransform' does not have a parameter named NUM_SAMPLE [D:/Desktop/Study_now/SRW/Fourier_Transform/vivado/SRW/SRW.srcs/sources_1/imports/src/sim/Herzel_tb.sv:19]
+ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.

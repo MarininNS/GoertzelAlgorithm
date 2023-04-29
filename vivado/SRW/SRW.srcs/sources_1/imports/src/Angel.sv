@@ -4,7 +4,7 @@ module Angel #(
   input                       rstn   ,
   input                       clk    ,
   input                       en     ,
-  output logic                valid  ,
+  output logic                ready  ,
   input        [NF-1:0][31:0] freq_i ,
   output logic [NF-1:0][31:0] angel_o 
 );
@@ -31,17 +31,17 @@ endgenerate
 
 always_ff @(posedge clk, negedge rstn) begin
     if (!rstn) begin
-      valid <= 0;
+      ready <= 0;
       angel <= 0;
       indx  <= 0;
     end
-    else if (en && !valid) begin
+    else if (en && !ready) begin
       if (indx < NF) begin
         angel[indx] <= k_arr[indx] * ANGEL_COEF;
         indx        <= indx + 1;
       end
       else begin
-        valid <= 1;
+        ready <= 1;
       end
     end
 end

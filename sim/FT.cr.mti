@@ -1,64 +1,89 @@
-D:/Desktop/Study_now/SRW/Fourier_Transform/src/Cordic.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/Fourier_Transform/src/Cordic.sv
+D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module spi2axi
+-- Compiling module synchronizer
+
+Top level modules:
+	spi2axi
+
+} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/FourierTransform.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/FourierTransform.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package FourierTransform_sv_unit
+-- Importing package axi_pkg
+-- Compiling module FourierTransform
+
+Top level modules:
+	FourierTransform
+
+} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Cordic.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Cordic.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
 -- Compiling module Cordic
 
 Top level modules:
 	Cordic
 
-} {} {}} D:/Desktop/Study_now/SRW/Fourier_Transform/src/FourierTransform.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/Fourier_Transform/src/FourierTransform.sv
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module FourierTransform
-
-Top level modules:
-	FourierTransform
-
-} {} {}} D:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/FourierTransform_tb.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/FourierTransform_tb.sv
+} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/FourierTransform_tb.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/FourierTransform_tb.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
 -- Compiling module tb_FourierTransform
 
 Top level modules:
 	tb_FourierTransform
 
-} {} {}} D:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/Cordic_tb.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/Cordic_tb.sv
+} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi_wrap.sv {2 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi_wrap.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module Cordic_tb
+** Warning: D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi_wrap.sv(15): (vlog-13314) Defaulting port 'axii_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+-- Compiling package spi2axi_wrap_sv_unit
+-- Importing package axi_pkg
+-- Compiling module spi2axi_wrap
+** Warning: D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi_wrap.sv(15): (vlog-13314) Defaulting port 'axii_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
 
 Top level modules:
-	Cordic_tb
+	spi2axi_wrap
 
-} {} {}} D:/Desktop/Study_now/SRW/Fourier_Transform/src/Herzel.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/Fourier_Transform/src/Herzel.sv
+} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/spi_if.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/spi_if.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling interface spi_if
+
+Top level modules:
+	--none--
+
+} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Herzel.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Herzel.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
 -- Compiling module Herzel
 
 Top level modules:
 	Herzel
 
-} {} {}} D:/Desktop/Study_now/SRW/Fourier_Transform/src/DataScale.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/Fourier_Transform/src/DataScale.sv
+} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/DataScale.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/DataScale.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
 -- Compiling module DataScale
 
 Top level modules:
 	DataScale
 
-} {} {}} D:/Desktop/Study_now/SRW/Fourier_Transform/src/Angel.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/Fourier_Transform/src/Angel.sv
+} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv {2 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+** Warning: D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv(8): (vlog-13314) Defaulting port 'axio_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+-- Compiling package HerzelRegs_sv_unit
+-- Importing package axi_pkg
+-- Compiling module HerzelRegs
+** Warning: D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv(8): (vlog-13314) Defaulting port 'axio_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+
+Top level modules:
+	HerzelRegs
+
+} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Angel.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Angel.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
 -- Compiling module Angel
 
 Top level modules:
 	Angel
 
-} {} {}} D:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/Herzel_tb.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/Herzel_tb.sv
+} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/axi_pkg.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/axi_pkg.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module Cordic_tb
+-- Compiling package axi_pkg
 
 Top level modules:
-	Cordic_tb
-
-} {} {}} D:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/DataScale_tb.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/Fourier_Transform/src/sim/DataScale_tb.sv
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module DataScale_tb
-
-Top level modules:
-	DataScale_tb
+	--none--
 
 } {} {}}
