@@ -85,4 +85,31 @@ task read_data(input [31:0] addr, output [31:0] data, output [31:0] status);
   disable fork;
 endtask 
 
+task write_data(input [31:0] addr, input [31:0] data, output [31:0] status);
+  fork
+    begin
+      clk_en(1);
+    end
+    begin
+      // slave select
+      mst.ss_n = 0;
+      // instruction byte
+      write(8, write_instr);
+      // 4 address bytes
+      @(posedge sck);
+      write(32, addr);
+      // 4 data bytes
+      write(32, data);
+      // dummy byte
+      write(8, dummy_word);
+      // status byte
+      read(8, status);
+      // slave select
+      mst.ss_n = 1;
+    end
+  join_any
+  @(negedge sck);
+  disable fork;
+endtask 
+
 endinterface

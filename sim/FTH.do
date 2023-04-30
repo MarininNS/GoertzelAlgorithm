@@ -250,7 +250,7 @@ add wave -noupdate -group H0 -radix hexadecimal {/tb_FourierTransform/DUT/herzel
 add wave -noupdate -group H0 -radix hexadecimal {/tb_FourierTransform/DUT/herzel[0]/u_Herzel/data_im_32}
 add wave -noupdate -group H0 -radix hexadecimal {/tb_FourierTransform/DUT/herzel[0]/u_Herzel/indx1}
 add wave -noupdate -group H0 {/tb_FourierTransform/DUT/herzel[0]/u_Herzel/vmcw}
-add wave -noupdate -radix hexadecimal /tb_FourierTransform/DUT/axio
+add wave -noupdate -radix hexadecimal -childformat {{/tb_FourierTransform/DUT/axio.awaddr -radix hexadecimal} {/tb_FourierTransform/DUT/axio.awprot -radix hexadecimal} {/tb_FourierTransform/DUT/axio.awvalid -radix hexadecimal} {/tb_FourierTransform/DUT/axio.wdata -radix hexadecimal} {/tb_FourierTransform/DUT/axio.wstrb -radix hexadecimal} {/tb_FourierTransform/DUT/axio.wvalid -radix hexadecimal} {/tb_FourierTransform/DUT/axio.bready -radix hexadecimal} {/tb_FourierTransform/DUT/axio.araddr -radix hexadecimal} {/tb_FourierTransform/DUT/axio.arprot -radix hexadecimal} {/tb_FourierTransform/DUT/axio.arvalid -radix hexadecimal} {/tb_FourierTransform/DUT/axio.rready -radix hexadecimal}} -expand -subitemconfig {/tb_FourierTransform/DUT/axio.awaddr {-height 15 -radix hexadecimal} /tb_FourierTransform/DUT/axio.awprot {-height 15 -radix hexadecimal} /tb_FourierTransform/DUT/axio.awvalid {-height 15 -radix hexadecimal} /tb_FourierTransform/DUT/axio.wdata {-height 15 -radix hexadecimal} /tb_FourierTransform/DUT/axio.wstrb {-height 15 -radix hexadecimal} /tb_FourierTransform/DUT/axio.wvalid {-height 15 -radix hexadecimal} /tb_FourierTransform/DUT/axio.bready {-height 15 -radix hexadecimal} /tb_FourierTransform/DUT/axio.araddr {-height 15 -radix hexadecimal} /tb_FourierTransform/DUT/axio.arprot {-height 15 -radix hexadecimal} /tb_FourierTransform/DUT/axio.arvalid {-height 15 -radix hexadecimal} /tb_FourierTransform/DUT/axio.rready {-height 15 -radix hexadecimal}} /tb_FourierTransform/DUT/axio
 add wave -noupdate -radix hexadecimal /tb_FourierTransform/DUT/axii
 add wave -noupdate -radix hexadecimal /tb_FourierTransform/spi_data
 add wave -noupdate -radix hexadecimal /tb_FourierTransform/spi_stat
@@ -316,8 +316,8 @@ add wave -noupdate -group SPI2AXIL -radix hexadecimal /tb_FourierTransform/DUT/u
 add wave -noupdate -group SPI2AXIL -radix hexadecimal /tb_FourierTransform/DUT/u_spi2axi_wrap/u_spi2axi/axi_areset
 add wave -noupdate -group SPI2AXIL -radix hexadecimal /tb_FourierTransform/DUT/axio
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {212025781 ps} 0} {{Cursor 2} {22720244 ps} 0}
-quietly wave cursor active 2
+WaveRestoreCursors {{Cursor 2} {106762093 ps} 0}
+quietly wave cursor active 1
 configure wave -namecolwidth 205
 configure wave -valuecolwidth 100
 configure wave -justifyvalue left
@@ -332,4 +332,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {0 ps} {227877300 ps}
+WaveRestoreZoom {114276 ns} {639276 ns}

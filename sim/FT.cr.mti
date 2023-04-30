@@ -6,6 +6,13 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 Top level modules:
 	spi2axi
 
+} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Cordic.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Cordic.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module Cordic
+
+Top level modules:
+	Cordic
+
 } {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/FourierTransform.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/FourierTransform.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
 -- Compiling package FourierTransform_sv_unit
@@ -14,20 +21,6 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 
 Top level modules:
 	FourierTransform
-
-} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Cordic.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Cordic.sv
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module Cordic
-
-Top level modules:
-	Cordic
-
-} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/FourierTransform_tb.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/FourierTransform_tb.sv
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module tb_FourierTransform
-
-Top level modules:
-	tb_FourierTransform
 
 } {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi_wrap.sv {2 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi_wrap.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
@@ -47,19 +40,19 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 Top level modules:
 	--none--
 
-} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Herzel.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Herzel.sv
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module Herzel
-
-Top level modules:
-	Herzel
-
 } {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/DataScale.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/DataScale.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
 -- Compiling module DataScale
 
 Top level modules:
 	DataScale
+
+} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Herzel.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Herzel.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module Herzel
+
+Top level modules:
+	Herzel
 
 } {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv {2 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
@@ -68,16 +61,11 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 -- Importing package axi_pkg
 -- Compiling module HerzelRegs
 ** Warning: D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv(8): (vlog-13314) Defaulting port 'axio_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+** Warning: D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv(62): (vlog-2182) 'version' might be read before written in always_comb or always @* block.
+** Warning: D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv(63): (vlog-2182) 'test_reg' might be read before written in always_comb or always @* block.
 
 Top level modules:
 	HerzelRegs
-
-} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Angel.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Angel.sv
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module Angel
-
-Top level modules:
-	Angel
 
 } {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/axi_pkg.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/axi_pkg.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
@@ -85,5 +73,12 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 
 Top level modules:
 	--none--
+
+} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Angel.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Angel.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module Angel
+
+Top level modules:
+	Angel
 
 } {} {}}

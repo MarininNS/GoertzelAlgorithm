@@ -88,6 +88,14 @@ initial begin
   # 10_000;
   spi_if.read_data(32'h0000_0008, spi_data, spi_stat);
   # 10_000;
+  spi_if.write_data(32'h0000_0004, 32'h32024003, spi_stat);
+  # 10_000;
+  spi_if.write_data(32'h0000_0008, 32'h0F0F_0F0F, spi_stat);
+  # 10_000;
+  spi_if.read_data(32'h0000_0004, spi_data, spi_stat);
+  # 10_000;
+  spi_if.read_data(32'h0000_0008, spi_data, spi_stat);
+  # 10_000;
 
   wait(DUT.valid_cordic);
   $fscanf(fd_r_s, "%d\n", sample);
