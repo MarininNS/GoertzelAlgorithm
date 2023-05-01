@@ -1,8 +1,8 @@
 import axi_pkg::*;
 
 module FourierTransform #(
-  parameter NF = 11, // NUM_FREQ
-  parameter NS = 10  // NUM_SAMPLE
+  parameter NF = 11  , // NUM_FREQ
+  parameter NS = 1000  // NUM_SAMPLE
 ) (
   // CLK&RST
   input                              rstn    ,
@@ -13,11 +13,11 @@ module FourierTransform #(
   input                              spi_mosi, 
   output                             spi_miso, 
   // CTRL               
-  input                              cEn     ,
-  input                              hEn     ,
-  output logic        [NF-1:0]       valid   ,
+  input                              enable  ,
   // DATA
   input                       [7 :0] sample  ,
+  // tmp
+  output logic        [NF-1:0]       valid   ,
   output logic signed [NF-1:0][31:0] data_o
 );
 
@@ -28,14 +28,15 @@ logic signed [NF-1:0][31:0] coefW_im ;
 logic signed [NF-1:0][31:0] alpha    ;
 logic signed         [31:0] data     ;
 
+logic en_cordic   ;
+logic en_herzel   ;
 logic valid_angel ;
 logic valid_cordic;
-logic en_herzel   ;
 
 axi_lite_mosi axio;
 axi_lite_miso axii;
 
-assign en_herzel = valid_cordic && hEn; 
+assign en_herzel = valid_cordic && enable; 
 
 spi2axi_wrap #(
   .AXI_ADDR_WIDTH(32)
@@ -51,10 +52,14 @@ spi2axi_wrap #(
 );
 
 HerzelRegs u_HerzelRegs (
-  .rstn  (rstn  ),
-  .clk   (clk   ),
-  .axio_i(axio  ),
-  .axii_o(axii  ) 
+  .rstn          (rstn        ),
+  .clk           (clk         ),
+  .freq_arr_o    (freq_arr    ),
+  .en_cordic_o   (en_cordic   ),
+  .valid_angel_i (valid_angel ),
+  .valid_cordic_i(valid_cordic),
+  .axio_i        (axio        ),
+  .axii_o        (axii        ) 
 );
 
 Angel #(
@@ -62,7 +67,7 @@ Angel #(
 ) u_Angel (
   .rstn   (rstn       ),
   .clk    (clk        ),
-  .en     (cEn        ),
+  .en     (en_cordic  ),
   .valid  (valid_angel),
   .freq_i (freq_arr   ),
   .angel_o(angel_arr  ) 
@@ -110,19 +115,5 @@ generate
     ); 
   end
 endgenerate
-
-initial begin
-  freq_arr[0 ] = 32'd6     ;
-  freq_arr[1 ] = 32'd60    ;
-  freq_arr[2 ] = 32'd80    ;
-  freq_arr[3 ] = 32'd100   ;
-  freq_arr[4 ] = 32'd200   ;
-  freq_arr[5 ] = 32'd300   ;
-  freq_arr[6 ] = 32'd400   ; 
-  freq_arr[7 ] = 32'd500   ; 
-  freq_arr[8 ] = 32'd600   ; 
-  freq_arr[9 ] = 32'd800   ; 
-  freq_arr[10] = 32'd1000  ; 
-end
 
 endmodule

@@ -1,6 +1,6 @@
 module Herzel #(
-  parameter NF = 11,
-  parameter NS = 10
+  parameter NF = 11  ,
+  parameter NS = 1000
 )(
   // CLK&RST
   input                      rstn        ,

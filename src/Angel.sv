@@ -9,7 +9,8 @@ module Angel #(
   output logic [NF-1:0][31:0] angel_o 
 );
     
-logic signed [31:0] ANGEL_COEF = 32'h019BC65b; // 2*pi/1000 (0.32)
+// logic signed [31:0] ANGEL_COEF = 32'h019B_C65b; // 2*pi/1000 (0.32)
+logic signed [31:0] ANGEL_COEF = 32'h0004_1E24; // 2*pi/1000 (0.32)
 
 logic signed [NF-1:0][31:0] k_arr; // (32.0)
 logic signed [NF-1:0][63:0] angel; // (32.32)

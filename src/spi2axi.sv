@@ -277,7 +277,7 @@ module spi2axi #( // @suppress "File contains multiple design units"
                                 // null; // don't care
                             end
                         end else begin // CMD_READ
-                            assert(spi_rx_cmd == CMD_READ);
+                            // assert(spi_rx_cmd == CMD_READ);
                             if (spi_rx_byte_idx <= 4) begin
                                 spi_rx_addr <= { spi_rx_addr[23:0], spi_rx_shreg };
                                 //

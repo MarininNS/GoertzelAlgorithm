@@ -2,7 +2,7 @@
 
 // !!! CPOL and CPHA - 0 and 0 ONLY !!!
 
-interface spi_if #(SPI_CLK_PER) ();
+interface spi_if #(SPI_CLK_PER, DISPLAY = 0) ();
 
 logic [31:0] write_instr = 32'h0000_0000;
 logic [31:0] read_instr  = 32'h0000_0001;
@@ -83,6 +83,7 @@ task read_data(input [31:0] addr, output [31:0] data, output [31:0] status);
   join_any
   @(negedge sck);
   disable fork;
+  if (DISPLAY) $display("[%0t] spi read: addr = 0x%0h, data = 0x%0h, status = 0x%0h", $time, addr, data, status);
 endtask 
 
 task write_data(input [31:0] addr, input [31:0] data, output [31:0] status);
@@ -110,6 +111,7 @@ task write_data(input [31:0] addr, input [31:0] data, output [31:0] status);
   join_any
   @(negedge sck);
   disable fork;
+  if (DISPLAY) $display("[%0t] spi write: addr = 0x%0h, data = 0x%0h, status = 0x%0h", $time, addr, data, status);
 endtask 
 
 endinterface
