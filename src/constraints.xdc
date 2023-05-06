@@ -1,0 +1,28 @@
+# clk
+create_clock -name clk -period 5.0 [get_ports clk]
+# set reset
+set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN ???} [get_ports rstn       ]
+# set spi
+set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN ???} [get_ports spi_sck    ]
+set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN ???} [get_ports spi_ss_n   ]
+set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN ???} [get_ports spi_mosi   ]
+set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN ???} [get_ports spi_miso   ]
+# set other
+set_property -dict {IOSTANDARD LVDS     PACKAGE_PIN ???} [get_ports enable_p   ]
+set_property -dict {IOSTANDARD LVDS     PACKAGE_PIN ???} [get_ports enable_n   ]
+set_property -dict {IOSTANDARD LVDS     PACKAGE_PIN ???} [get_ports sample_p[0]]
+set_property -dict {IOSTANDARD LVDS     PACKAGE_PIN ???} [get_ports sample_p[1]]
+set_property -dict {IOSTANDARD LVDS     PACKAGE_PIN ???} [get_ports sample_p[2]]
+set_property -dict {IOSTANDARD LVDS     PACKAGE_PIN ???} [get_ports sample_p[3]]
+set_property -dict {IOSTANDARD LVDS     PACKAGE_PIN ???} [get_ports sample_p[4]]
+set_property -dict {IOSTANDARD LVDS     PACKAGE_PIN ???} [get_ports sample_p[5]]
+set_property -dict {IOSTANDARD LVDS     PACKAGE_PIN ???} [get_ports sample_p[6]]
+set_property -dict {IOSTANDARD LVDS     PACKAGE_PIN ???} [get_ports sample_p[7]]
+set_property -dict {IOSTANDARD LVDS     PACKAGE_PIN ???} [get_ports sample_n[0]]
+set_property -dict {IOSTANDARD LVDS     PACKAGE_PIN ???} [get_ports sample_n[1]]
+set_property -dict {IOSTANDARD LVDS     PACKAGE_PIN ???} [get_ports sample_n[2]]
+set_property -dict {IOSTANDARD LVDS     PACKAGE_PIN ???} [get_ports sample_n[3]]
+set_property -dict {IOSTANDARD LVDS     PACKAGE_PIN ???} [get_ports sample_n[4]]
+set_property -dict {IOSTANDARD LVDS     PACKAGE_PIN ???} [get_ports sample_n[5]]
+set_property -dict {IOSTANDARD LVDS     PACKAGE_PIN ???} [get_ports sample_n[6]]
+set_property -dict {IOSTANDARD LVDS     PACKAGE_PIN ???} [get_ports sample_n[7]]

@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Thu May  4 22:45:51 2023
+# Process ID: 18924
+# Current directory: d:/Desktop/Study_now/SRW/GoertzelAlgorithm/vivado/tmp/gtwizard_ultrascale_ex
+# Command line: vivado.exe -notrace -source d:/Desktop/Study_now/SRW/GoertzelAlgorithm/vivado/project/SRW.srcs/sources_1/ip/gtwizard_ultrascale/gtwizard_ultrascale_ex.tcl
+# Log file: d:/Desktop/Study_now/SRW/GoertzelAlgorithm/vivado/tmp/gtwizard_ultrascale_ex/vivado.log
+# Journal file: d:/Desktop/Study_now/SRW/GoertzelAlgorithm/vivado/tmp/gtwizard_ultrascale_ex\vivado.jou
+#-----------------------------------------------------------
+start_gui
+source d:/Desktop/Study_now/SRW/GoertzelAlgorithm/vivado/project/SRW.srcs/sources_1/ip/gtwizard_ultrascale/gtwizard_ultrascale_ex.tcl -notrace
+update_compile_order -fileset sources_1

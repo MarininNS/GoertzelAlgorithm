@@ -20,17 +20,31 @@ spi_if #(.SPI_CLK_PER(SPI_CLK_PER), .DISPLAY(1)) spi_if();
 logic [31:0] spi_data;
 logic [31:0] spi_stat;
 
-logic                       rstn    ;
-logic                       clk     ;
-logic                       spi_sck ; 
-logic                       spi_ss_n; 
-logic                       spi_mosi; 
-logic                       spi_miso; 
-logic                [7 :0] sample  ;
-logic                       enable  ;
-// tmp
-logic        [NF-1:0]       valid   ;
-logic signed [NF-1:0][31:0] data_o  ;
+logic        rstn    ;
+logic        clk     ;
+logic        spi_sck ;
+logic        spi_ss_n;
+logic        spi_mosi;
+logic        spi_miso;
+logic        enable_p;
+logic        enable_n;
+logic [7 :0] sample_p;
+logic [7 :0] sample_n;
+
+assign spi_sck         = spi_if.mst.sck ;
+assign spi_ss_n        = spi_if.mst.ss_n;
+assign spi_mosi        = spi_if.mst.mosi;
+assign spi_if.mst.miso = spi_miso       ;
+
+assign enable_n    = ~enable_p   ;
+assign sample_n[0] = ~sample_p[0];
+assign sample_n[1] = ~sample_p[1];
+assign sample_n[2] = ~sample_p[2];
+assign sample_n[3] = ~sample_p[3];
+assign sample_n[4] = ~sample_p[4];
+assign sample_n[5] = ~sample_p[5];
+assign sample_n[6] = ~sample_p[6];
+assign sample_n[7] = ~sample_p[7];
 
 FourierTransform #(
   .NF(NF),
@@ -42,17 +56,11 @@ FourierTransform #(
   .spi_ss_n(spi_ss_n),
   .spi_mosi(spi_mosi),
   .spi_miso(spi_miso),
-  .enable  (enable  ),
-  .sample  (sample  ),
-  // tmp
-  .valid   (valid   ),
-  .data_o  (data_o  )
+  .enable_p(enable_p),
+  .enable_n(enable_n),
+  .sample_p(sample_p),
+  .sample_n(sample_n) 
 );
-
-assign spi_sck         = spi_if.mst.sck ;
-assign spi_ss_n        = spi_if.mst.ss_n;
-assign spi_mosi        = spi_if.mst.mosi;
-assign spi_if.mst.miso = spi_miso       ;
 
 initial forever #(CLK_PER/2) clk=~clk;
 
@@ -117,31 +125,37 @@ task test_spi_rw_regs();
   end
 endtask
 
+task herzel_wait_all_valid();
+  while (spi_data&STATUS_HERZEL_ALL_MSK != STATUS_HERZEL_ALL_MSK) begin
+    spi_if.read_data(STATUS, spi_data, spi_stat);
+  end
+endtask
+
 task herzel();
   spi_if.read_data (EN_CORDIC, spi_data, spi_stat);
   spi_if.write_data(EN_CORDIC, 1       , spi_stat);
   spi_if.read_data (STATUS   , spi_data, spi_stat);
-  while (!(spi_data&32'h0000_0002)) begin
+  while (!(spi_data&STATUS_CORDIC_MSK)) begin
     spi_if.read_data(STATUS, spi_data, spi_stat);
   end
-  $fscanf(fd_r_s, "%d\n", sample);
+  $fscanf(fd_r_s, "%d\n", sample_p);
   @(posedge clk);
-  enable = 1;
+  enable_p = 1;
   while (!$feof(fd_r_s)) begin
     @(posedge clk);
-    $fscanf(fd_r_s, "%d\n", sample);
+    $fscanf(fd_r_s, "%d\n", sample_p);
     $fwrite(fd_w_v, "%h\n", DUT.herzel[10].u_Herzel.vm1);
   end
-  @(&valid);
+  herzel_wait_all_valid();
   $fwrite(fd_w_v, "%h\n", DUT.herzel[10].u_Herzel.vm1);
 endtask
 
 initial begin
-  ok     = 1;
-  clk    = 0;
-  rstn   = 0;
-  enable = 0;
-  sample = 0;
+  ok       = 1;
+  clk      = 0;
+  rstn     = 0;
+  enable_p = 0;
+  sample_p = 0;
   spi_if.init();
   repeat(5) @(posedge clk);
   rstn = 1;
@@ -160,7 +174,19 @@ initial begin
 
   // test_spi_rw_regs();
   herzel();
-  
+
+  spi_if.read_data(DATA_1 , spi_data, spi_stat);
+  spi_if.read_data(DATA_2 , spi_data, spi_stat);
+  spi_if.read_data(DATA_3 , spi_data, spi_stat);
+  spi_if.read_data(DATA_4 , spi_data, spi_stat);
+  spi_if.read_data(DATA_5 , spi_data, spi_stat);
+  spi_if.read_data(DATA_6 , spi_data, spi_stat);
+  spi_if.read_data(DATA_7 , spi_data, spi_stat);
+  spi_if.read_data(DATA_8 , spi_data, spi_stat);
+  spi_if.read_data(DATA_9 , spi_data, spi_stat);
+  spi_if.read_data(DATA_10, spi_data, spi_stat);
+  spi_if.read_data(DATA_11, spi_data, spi_stat);
+
   # 5000;
   end_of_test();
   $stop;

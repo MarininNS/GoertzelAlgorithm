@@ -6,9 +6,7 @@ add wave -noupdate -expand -group DUT /FourierTransform_tb/DUT/spi_sck
 add wave -noupdate -expand -group DUT /FourierTransform_tb/DUT/spi_ss_n
 add wave -noupdate -expand -group DUT /FourierTransform_tb/DUT/spi_mosi
 add wave -noupdate -expand -group DUT /FourierTransform_tb/DUT/spi_miso
-add wave -noupdate -expand -group DUT /FourierTransform_tb/DUT/valid
 add wave -noupdate -expand -group DUT -radix hexadecimal /FourierTransform_tb/DUT/sample
-add wave -noupdate -expand -group DUT -radix hexadecimal /FourierTransform_tb/DUT/data_o
 add wave -noupdate -group DataScale /FourierTransform_tb/DUT/u_DataScale/SCALE_COEF
 add wave -noupdate -group DataScale /FourierTransform_tb/DUT/u_DataScale/rstn
 add wave -noupdate -group DataScale /FourierTransform_tb/DUT/u_DataScale/clk
@@ -48,13 +46,11 @@ add wave -noupdate -group TOP /FourierTransform_tb/DUT/NS
 add wave -noupdate -group TOP /FourierTransform_tb/DUT/rstn
 add wave -noupdate -group TOP /FourierTransform_tb/DUT/clk
 add wave -noupdate -group TOP -radix hexadecimal /FourierTransform_tb/DUT/sample
-add wave -noupdate -group TOP -radix hexadecimal /FourierTransform_tb/DUT/data_o
 add wave -noupdate -group TOP -radix hexadecimal /FourierTransform_tb/DUT/freq_arr
 add wave -noupdate -group TOP -radix hexadecimal /FourierTransform_tb/DUT/angel_arr
 add wave -noupdate -group TOP -radix hexadecimal /FourierTransform_tb/DUT/coefW_re
 add wave -noupdate -group TOP -radix hexadecimal /FourierTransform_tb/DUT/coefW_im
 add wave -noupdate -group TOP -radix hexadecimal /FourierTransform_tb/DUT/alpha
-add wave -noupdate -group TOP -radix hexadecimal /FourierTransform_tb/DUT/data
 add wave -noupdate -group H10 {/FourierTransform_tb/DUT/herzel[10]/u_Herzel/NF}
 add wave -noupdate -group H10 {/FourierTransform_tb/DUT/herzel[10]/u_Herzel/NS}
 add wave -noupdate -group H10 {/FourierTransform_tb/DUT/herzel[10]/u_Herzel/rstn}
@@ -252,11 +248,23 @@ add wave -noupdate -radix hexadecimal -childformat {{/FourierTransform_tb/DUT/ax
 add wave -noupdate -radix hexadecimal /FourierTransform_tb/DUT/axii
 add wave -noupdate -radix hexadecimal /FourierTransform_tb/spi_data
 add wave -noupdate -radix hexadecimal /FourierTransform_tb/spi_stat
+add wave -noupdate /FourierTransform_tb/DUT/u_HerzelRegs/status
+add wave -noupdate -radix hexadecimal /FourierTransform_tb/DUT/u_HerzelRegs/data_1
+add wave -noupdate -radix hexadecimal /FourierTransform_tb/DUT/u_HerzelRegs/data_2
+add wave -noupdate -radix hexadecimal /FourierTransform_tb/DUT/u_HerzelRegs/data_3
+add wave -noupdate -radix hexadecimal /FourierTransform_tb/DUT/u_HerzelRegs/data_4
+add wave -noupdate -radix hexadecimal /FourierTransform_tb/DUT/u_HerzelRegs/data_5
+add wave -noupdate -radix hexadecimal /FourierTransform_tb/DUT/u_HerzelRegs/data_6
+add wave -noupdate -radix hexadecimal /FourierTransform_tb/DUT/u_HerzelRegs/data_7
+add wave -noupdate -radix hexadecimal /FourierTransform_tb/DUT/u_HerzelRegs/data_8
+add wave -noupdate -radix hexadecimal /FourierTransform_tb/DUT/u_HerzelRegs/data_9
+add wave -noupdate -radix hexadecimal /FourierTransform_tb/DUT/u_HerzelRegs/data_10
+add wave -noupdate -radix hexadecimal /FourierTransform_tb/DUT/u_HerzelRegs/data_11
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {152195630 ps} 0}
+WaveRestoreCursors {{Cursor 1} {1310702721 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 150
-configure wave -valuecolwidth 100
+configure wave -valuecolwidth 122
 configure wave -justifyvalue left
 configure wave -signalnamewidth 1
 configure wave -snapdistance 10
@@ -269,4 +277,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {0 ps} {1546681500 ps}
+WaveRestoreZoom {0 ps} {2761523100 ps}

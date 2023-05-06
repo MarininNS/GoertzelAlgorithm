@@ -12,6 +12,8 @@ module HerzelRegs #(
   output logic                        en_cordic_o   ,
   input                               valid_angel_i ,
   input                               valid_cordic_i,
+  input                [NF-1:0]       valid_herzel_i,
+  input                [NF-1:0][31:0] data_arr_i    ,
   // AXI
   input  axi_lite_mosi                axio_i        ,
   output axi_lite_miso                axii_o         
@@ -33,22 +35,55 @@ logic [31:0] freq_10   = 32'h0000_0000; // RW 0x2C
 logic [31:0] freq_11   = 32'h0000_0000; // RW 0x30
 logic [31:0] en_cordic = 32'h0000_0000; // RW 0x34
 logic [31:0] status    = 32'h0000_0000; // R  0x38
+logic [31:0] data_1    = 32'h0000_0000; // RW 0x3C
+logic [31:0] data_2    = 32'h0000_0000; // RW 0x40
+logic [31:0] data_3    = 32'h0000_0000; // RW 0x44
+logic [31:0] data_4    = 32'h0000_0000; // RW 0x48
+logic [31:0] data_5    = 32'h0000_0000; // RW 0x4C
+logic [31:0] data_6    = 32'h0000_0000; // RW 0x50
+logic [31:0] data_7    = 32'h0000_0000; // RW 0x54
+logic [31:0] data_8    = 32'h0000_0000; // RW 0x58
+logic [31:0] data_9    = 32'h0000_0000; // RW 0x5C
+logic [31:0] data_10   = 32'h0000_0000; // RW 0x60
+logic [31:0] data_11   = 32'h0000_0000; // RW 0x64
 
 always_comb begin
-  freq_arr_o[0 ] = freq_1        ;
-  freq_arr_o[1 ] = freq_2        ;
-  freq_arr_o[2 ] = freq_3        ;
-  freq_arr_o[3 ] = freq_4        ;
-  freq_arr_o[4 ] = freq_5        ;
-  freq_arr_o[5 ] = freq_6        ;
-  freq_arr_o[6 ] = freq_7        ;
-  freq_arr_o[7 ] = freq_8        ;
-  freq_arr_o[8 ] = freq_9        ;
-  freq_arr_o[9 ] = freq_10       ;
-  freq_arr_o[10] = freq_11       ;
-  en_cordic_o    = en_cordic[0]  ;
-  status[0]      = valid_angel_i ;
-  status[1]      = valid_cordic_i;
+  freq_arr_o[0 ] = freq_1            ;
+  freq_arr_o[1 ] = freq_2            ;
+  freq_arr_o[2 ] = freq_3            ;
+  freq_arr_o[3 ] = freq_4            ;
+  freq_arr_o[4 ] = freq_5            ;
+  freq_arr_o[5 ] = freq_6            ;
+  freq_arr_o[6 ] = freq_7            ;
+  freq_arr_o[7 ] = freq_8            ;
+  freq_arr_o[8 ] = freq_9            ;
+  freq_arr_o[9 ] = freq_10           ;
+  freq_arr_o[10] = freq_11           ;
+  en_cordic_o    = en_cordic[0]      ;
+  status[0]      = valid_angel_i     ;
+  status[1]      = valid_cordic_i    ;
+  status[8 ]     = valid_herzel_i[0 ];
+  status[9 ]     = valid_herzel_i[1 ];
+  status[10]     = valid_herzel_i[2 ];
+  status[11]     = valid_herzel_i[3 ];
+  status[12]     = valid_herzel_i[4 ];
+  status[13]     = valid_herzel_i[5 ];
+  status[14]     = valid_herzel_i[6 ];
+  status[15]     = valid_herzel_i[7 ];
+  status[16]     = valid_herzel_i[8 ];
+  status[17]     = valid_herzel_i[9 ];
+  status[18]     = valid_herzel_i[10];
+  data_1         = data_arr_i[0 ]    ;
+  data_2         = data_arr_i[1 ]    ;
+  data_3         = data_arr_i[2 ]    ;
+  data_4         = data_arr_i[3 ]    ;
+  data_5         = data_arr_i[4 ]    ;
+  data_6         = data_arr_i[5 ]    ;
+  data_7         = data_arr_i[6 ]    ;
+  data_8         = data_arr_i[7 ]    ;
+  data_9         = data_arr_i[8 ]    ;
+  data_10        = data_arr_i[9 ]    ;
+  data_11        = data_arr_i[10]    ;
 end
 
 typedef enum {  
@@ -113,6 +148,17 @@ always_comb begin
         32'h30: axii_o.rdata  = freq_11  ;
         32'h34: axii_o.rdata  = en_cordic;
         32'h38: axii_o.rdata  = status   ;
+        32'h3C: axii_o.rdata  = data_1   ;
+        32'h40: axii_o.rdata  = data_2   ;
+        32'h44: axii_o.rdata  = data_3   ;
+        32'h48: axii_o.rdata  = data_4   ;
+        32'h4C: axii_o.rdata  = data_5   ;
+        32'h50: axii_o.rdata  = data_6   ;
+        32'h54: axii_o.rdata  = data_7   ;
+        32'h58: axii_o.rdata  = data_8   ;
+        32'h5C: axii_o.rdata  = data_9   ;
+        32'h60: axii_o.rdata  = data_10  ;
+        32'h64: axii_o.rdata  = data_11  ;
         default: axii_o.rresp = 2'h3;
       endcase
       if (axio_i.rready) 
