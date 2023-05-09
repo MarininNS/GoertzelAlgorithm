@@ -11,9 +11,11 @@ localparam NS          = 100000  ; // dont touch
 logic ok;
 
 integer fd_r_s; 
-integer fd_w_v; 
-integer fd_w_c; 
-integer fd_w_s; 
+integer fd_r_f; 
+integer fd_r_d; 
+// integer fd_w_v; 
+// integer fd_w_c; 
+// integer fd_w_s; 
 
 spi_if #(.SPI_CLK_PER(SPI_CLK_PER), .DISPLAY(1)) spi_if();
 
@@ -67,27 +69,33 @@ initial forever #(CLK_PER/2) clk=~clk;
 initial begin
   fd_r_s = $fopen("D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/data/sample.csv", "r");
   if (fd_r_s == 0) $finish;
-  fd_w_v = $fopen("D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/data/vector.csv", "w");
-  if (fd_w_v == 0) $finish;
-  fd_w_c = $fopen("D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/data/cos.csv", "w");
-  if (fd_w_c == 0) $finish;
-  fd_w_s = $fopen("D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/data/sin.csv", "w");
-  if (fd_w_s == 0) $finish;
+  fd_r_f = $fopen("D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/data/freq.csv", "r");
+  if (fd_r_f == 0) $finish;
+  fd_r_d = $fopen("D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/data/data.csv", "r");
+  if (fd_r_d == 0) $finish;
+  // fd_w_v = $fopen("D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/data/vector.csv", "w");
+  // if (fd_w_v == 0) $finish;
+  // fd_w_c = $fopen("D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/data/cos.csv", "w");
+  // if (fd_w_c == 0) $finish;
+  // fd_w_s = $fopen("D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/data/sin.csv", "w");
+  // if (fd_w_s == 0) $finish;
 end
 final begin
-  $fclose(fd_w_v);
-  $fclose(fd_w_c);
-  $fclose(fd_w_s);
   $fclose(fd_r_s);
+  $fclose(fd_r_f);
+  $fclose(fd_r_d);
+  // $fclose(fd_w_v);
+  // $fclose(fd_w_c);
+  // $fclose(fd_w_s);
 end
 
-initial begin
-  wait(DUT.valid_cordic);
-  for (int i = 0; i < NF; i = i + 1) begin
-    $fwrite(fd_w_c, "%h\n", DUT.u_Cordic.cos_o[i]);
-    $fwrite(fd_w_s, "%h\n", DUT.u_Cordic.sin_o[i]);
-  end
-end
+// initial begin
+//   wait(DUT.valid_cordic);
+//   for (int i = 0; i < NF; i = i + 1) begin
+//     $fwrite(fd_w_c, "%h\n", DUT.u_Cordic.cos_o[i]);
+//     $fwrite(fd_w_s, "%h\n", DUT.u_Cordic.sin_o[i]);
+//   end
+// end
 
 task end_of_test();
   if (ok)
@@ -96,34 +104,34 @@ task end_of_test();
     $display("[%0t] TEST FAILED", $time);
 endtask
 
-task test_spi_rw_regs();
-  logic      [31:0] spi_rdata1;
-  logic      [31:0] spi_rdata2;
-  logic      [31:0] spi_wdata1;
-  logic      [31:0] spi_wdata2;
-  logic [5:0][31:0] spi_stat  ;
-  spi_wdata1 = 32'h3202_4003;
-  spi_wdata2 = 32'h0F0F_0F0F;
-  spi_if.read_data (VERSION, spi_rdata1, spi_stat);
-  spi_if.read_data (DEBUG  , spi_rdata2, spi_stat);
-  spi_if.write_data(VERSION, spi_wdata1, spi_stat);
-  spi_if.write_data(DEBUG  , spi_wdata2, spi_stat);
-  spi_if.read_data (VERSION, spi_rdata1, spi_stat);
-  spi_if.read_data (DEBUG  , spi_rdata2, spi_stat);
-  for (int i=0; i<6; i=i+1)
-    if (|(spi_stat[i])) begin
-      $display("[%0t] SPI status failed! index - %0d", $time, i);
-      ok = 0;
-    end 
-  if (spi_rdata1 != spi_wdata1) begin
-    $display("[%0t] SPI rw failed! write - 0x%0h, read - 0x%0h", $time, spi_wdata1, spi_rdata1);
-    ok = 0;
-  end
-  if (spi_rdata2 != spi_wdata2) begin
-    $display("[%0t] SPI rw failed! write - 0x%0h, read - 0x%0h", $time, spi_wdata2, spi_rdata2);
-    ok = 0;
-  end
-endtask
+// task test_spi_rw_regs();
+//   logic      [31:0] spi_rdata1;
+//   logic      [31:0] spi_rdata2;
+//   logic      [31:0] spi_wdata1;
+//   logic      [31:0] spi_wdata2;
+//   logic [5:0][31:0] spi_stat  ;
+//   spi_wdata1 = 32'h3202_4003;
+//   spi_wdata2 = 32'h0F0F_0F0F;
+//   spi_if.read_data (VERSION, spi_rdata1, spi_stat);
+//   spi_if.read_data (DEBUG  , spi_rdata2, spi_stat);
+//   spi_if.write_data(VERSION, spi_wdata1, spi_stat);
+//   spi_if.write_data(DEBUG  , spi_wdata2, spi_stat);
+//   spi_if.read_data (VERSION, spi_rdata1, spi_stat);
+//   spi_if.read_data (DEBUG  , spi_rdata2, spi_stat);
+//   for (int i=0; i<6; i=i+1)
+//     if (|(spi_stat[i])) begin
+//       $display("[%0t] SPI status failed! index - %0d", $time, i);
+//       ok = 0;
+//     end 
+//   if (spi_rdata1 != spi_wdata1) begin
+//     $display("[%0t] SPI rw failed! write - 0x%0h, read - 0x%0h", $time, spi_wdata1, spi_rdata1);
+//     ok = 0;
+//   end
+//   if (spi_rdata2 != spi_wdata2) begin
+//     $display("[%0t] SPI rw failed! write - 0x%0h, read - 0x%0h", $time, spi_wdata2, spi_rdata2);
+//     ok = 0;
+//   end
+// endtask
 
 task herzel_wait_all_valid();
   while (spi_data&STATUS_HERZEL_ALL_MSK != STATUS_HERZEL_ALL_MSK) begin
@@ -144,10 +152,10 @@ task herzel();
   while (!$feof(fd_r_s)) begin
     @(posedge clk);
     $fscanf(fd_r_s, "%d\n", sample_p);
-    $fwrite(fd_w_v, "%h\n", DUT.herzel[10].u_Herzel.vm1);
+    // $fwrite(fd_w_v, "%h\n", DUT.herzel[10].u_Herzel.vm1);
   end
   herzel_wait_all_valid();
-  $fwrite(fd_w_v, "%h\n", DUT.herzel[10].u_Herzel.vm1);
+  // $fwrite(fd_w_v, "%h\n", DUT.herzel[10].u_Herzel.vm1);
 endtask
 
 initial begin

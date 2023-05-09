@@ -16,19 +16,19 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 Top level modules:
 	spi2axi_wrap
 
-} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_nrst.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_nrst.sv
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module resync_nrst
-
-Top level modules:
-	resync_nrst
-
 } {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/DataScale.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/DataScale.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
 -- Compiling module DataScale
 
 Top level modules:
 	DataScale
+
+} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_nrst.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_nrst.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module resync_nrst
+
+Top level modules:
+	resync_nrst
 
 } {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Herzel.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Herzel.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
@@ -75,6 +75,14 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 
 Top level modules:
 	Cordic
+
+} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/FourierTransform_tb.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/FourierTransform_tb.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package FourierTransform_tb_sv_unit
+-- Compiling module FourierTransform_tb
+
+Top level modules:
+	FourierTransform_tb
 
 } {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/FourierTransformAM.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/FourierTransformAM.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020

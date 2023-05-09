@@ -35,8 +35,10 @@ logic signed         [31:0] data_scl ;
 logic signed [NF-1:0][31:0] data_hrz ;
 
 logic          en_cordic   ;
+logic          en_scl      ;
 logic          valid_angel ;
 logic          valid_cordic;
+logic          valid_scl   ;
 logic [NF-1:0] valid_herzel;
 
 axi_lite_mosi axio;
@@ -126,15 +128,16 @@ Cordic #(
   .alpha(alpha       )
 );
 
-DataScale u_DataScale (
-  .rstn  (rstn_syn),
-  .clk   (clk     ),
-  .data_i(sample  ),
-  .data_o(data_scl) 
-);
+assign en_scl = valid_cordic && enable;
 
-logic enn = 0;
-always_ff @(posedge clk) if (valid_cordic && enable) enn <= 1;
+DataScale u_DataScale (
+  .rstn  (rstn_syn ),
+  .clk   (clk      ),
+  .enable(en_scl   ),
+  .valid (valid_scl),
+  .data_i(sample   ),
+  .data_o(data_scl ) 
+);
 
 genvar gvar;
 generate 
@@ -145,7 +148,7 @@ generate
     ) u_Herzel (
       .rstn   (rstn_syn          ),
       .clk    (clk               ),
-      .en     (enn               ),
+      .en     (valid_scl         ),
       .valid  (valid_herzel[gvar]),
       .alpha_i(alpha[gvar]       ),
       .cW_re_i(coefW_re[gvar]    ),

@@ -1,5 +1,7 @@
 # clk
 create_clock -name clk -period 5.0 [get_ports clk]
+# clk
+set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN ???} [get_ports clk        ]
 # set reset
 set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN ???} [get_ports rstn       ]
 # set spi
