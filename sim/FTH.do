@@ -260,6 +260,9 @@ add wave -noupdate -radix hexadecimal /FourierTransform_tb/DUT/u_HerzelRegs/data
 add wave -noupdate -radix hexadecimal /FourierTransform_tb/DUT/u_HerzelRegs/data_9
 add wave -noupdate -radix hexadecimal /FourierTransform_tb/DUT/u_HerzelRegs/data_10
 add wave -noupdate -radix hexadecimal /FourierTransform_tb/DUT/u_HerzelRegs/data_11
+add wave -noupdate -radix hexadecimal /FourierTransform_tb/mcad_freq
+add wave -noupdate -radix hexadecimal /FourierTransform_tb/mcad_data
+add wave -noupdate -radix hexadecimal /FourierTransform_tb/vlog_data
 TreeUpdate [SetDefaultTree]
 WaveRestoreCursors {{Cursor 1} {1310702721 ps} 0}
 quietly wave cursor active 1
@@ -277,4 +280,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {0 ps} {2761523100 ps}
+WaveRestoreZoom {0 ps} {2668073100 ps}

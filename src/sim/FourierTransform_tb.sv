@@ -6,21 +6,23 @@ module FourierTransform_tb;
 localparam CLK_PER     = 5     ;
 localparam SPI_CLK_PER = 1000  ;
 localparam NF          = 11    ; // dont touch
-localparam NS          = 100000  ; // dont touch
+localparam NS          = 100000; // dont touch
 
-logic ok;
+logic ok   ;
+logic error;
 
 integer fd_r_s; 
 integer fd_r_f; 
 integer fd_r_d; 
-// integer fd_w_v; 
-// integer fd_w_c; 
-// integer fd_w_s; 
 
 spi_if #(.SPI_CLK_PER(SPI_CLK_PER), .DISPLAY(1)) spi_if();
 
 logic [31:0] spi_data;
 logic [31:0] spi_stat;
+
+logic [NF-1:0][31:0] mcad_freq;
+logic [NF-1:0][31:0] mcad_data;
+logic [NF-1:0][31:0] vlog_data;
 
 logic        rstn    ;
 logic        clk     ;
@@ -73,35 +75,28 @@ initial begin
   if (fd_r_f == 0) $finish;
   fd_r_d = $fopen("D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/data/data.csv", "r");
   if (fd_r_d == 0) $finish;
-  // fd_w_v = $fopen("D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/data/vector.csv", "w");
-  // if (fd_w_v == 0) $finish;
-  // fd_w_c = $fopen("D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/data/cos.csv", "w");
-  // if (fd_w_c == 0) $finish;
-  // fd_w_s = $fopen("D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/data/sin.csv", "w");
-  // if (fd_w_s == 0) $finish;
 end
 final begin
   $fclose(fd_r_s);
   $fclose(fd_r_f);
   $fclose(fd_r_d);
-  // $fclose(fd_w_v);
-  // $fclose(fd_w_c);
-  // $fclose(fd_w_s);
 end
 
-// initial begin
-//   wait(DUT.valid_cordic);
-//   for (int i = 0; i < NF; i = i + 1) begin
-//     $fwrite(fd_w_c, "%h\n", DUT.u_Cordic.cos_o[i]);
-//     $fwrite(fd_w_s, "%h\n", DUT.u_Cordic.sin_o[i]);
-//   end
-// end
+initial begin
+  for (int i = 0; i < NF; i = i + 1) begin
+    $fscanf(fd_r_f, "%d\n", mcad_freq[i]);
+  end
+  for (int i = 0; i < NF; i = i + 1) begin
+    $fscanf(fd_r_d, "%d\n", mcad_data[i]);
+  end
+end
 
 task end_of_test();
   if (ok)
     $display("[%0t] TEST SUCCESS", $time);
   else
     $display("[%0t] TEST FAILED", $time);
+    $display("[%0t] NUM OF ERROR: %0d", $time, error);
 endtask
 
 // task test_spi_rw_regs();
@@ -140,7 +135,6 @@ task herzel_wait_all_valid();
 endtask
 
 task herzel();
-  spi_if.read_data (EN_CORDIC, spi_data, spi_stat);
   spi_if.write_data(EN_CORDIC, 1       , spi_stat);
   spi_if.read_data (STATUS   , spi_data, spi_stat);
   while (!(spi_data&STATUS_CORDIC_MSK)) begin
@@ -152,14 +146,13 @@ task herzel();
   while (!$feof(fd_r_s)) begin
     @(posedge clk);
     $fscanf(fd_r_s, "%d\n", sample_p);
-    // $fwrite(fd_w_v, "%h\n", DUT.herzel[10].u_Herzel.vm1);
   end
   herzel_wait_all_valid();
-  // $fwrite(fd_w_v, "%h\n", DUT.herzel[10].u_Herzel.vm1);
 endtask
 
 initial begin
   ok       = 1;
+  error    = 0;
   clk      = 0;
   rstn     = 0;
   enable_p = 0;
@@ -168,32 +161,27 @@ initial begin
   repeat(5) @(posedge clk);
   rstn = 1;
 
-  spi_if.write_data(FREQ_1 , 1000 , spi_stat);
-  spi_if.write_data(FREQ_2 , 1500 , spi_stat);
-  spi_if.write_data(FREQ_3 , 2000 , spi_stat);
-  spi_if.write_data(FREQ_4 , 3000 , spi_stat);
-  spi_if.write_data(FREQ_5 , 4000 , spi_stat);
-  spi_if.write_data(FREQ_6 , 5000 , spi_stat);
-  spi_if.write_data(FREQ_7 , 6000 , spi_stat);
-  spi_if.write_data(FREQ_8 , 7000 , spi_stat);
-  spi_if.write_data(FREQ_9 , 8000 , spi_stat);
-  spi_if.write_data(FREQ_10, 9000 , spi_stat);
-  spi_if.write_data(FREQ_11, 10000, spi_stat);
-
-  // test_spi_rw_regs();
+  $display("[%0t] Write freq", $time);
+  for (int i = 0; i < NF; i = i + 1) begin
+    spi_if.write_data(FREQ_1 + 32'h4*i, mcad_freq[i], spi_stat);
+  end
+  
+  $display("[%0t] Start Herzel", $time);
   herzel();
 
-  spi_if.read_data(DATA_1 , spi_data, spi_stat);
-  spi_if.read_data(DATA_2 , spi_data, spi_stat);
-  spi_if.read_data(DATA_3 , spi_data, spi_stat);
-  spi_if.read_data(DATA_4 , spi_data, spi_stat);
-  spi_if.read_data(DATA_5 , spi_data, spi_stat);
-  spi_if.read_data(DATA_6 , spi_data, spi_stat);
-  spi_if.read_data(DATA_7 , spi_data, spi_stat);
-  spi_if.read_data(DATA_8 , spi_data, spi_stat);
-  spi_if.read_data(DATA_9 , spi_data, spi_stat);
-  spi_if.read_data(DATA_10, spi_data, spi_stat);
-  spi_if.read_data(DATA_11, spi_data, spi_stat);
+  $display("[%0t] Read data", $time);
+  for (int i = 0; i < NF; i = i + 1) begin
+    spi_if.read_data(DATA_1 + 32'h4*i, vlog_data[i], spi_stat);
+  end
+
+  $display("[%0t] Start check", $time);
+  for (int i = 0; i < NF; i = i + 1) begin
+    if ((vlog_data[i] < mcad_data[i]*0.90) | (vlog_data[i] > mcad_data[i]*1.10)) begin
+      $display("[%0t] Error at freq %0d: %0d. MCAD - %0d, VLOG - %0d", $time, i, mcad_freq[i], mcad_data[i], vlog_data[i]);
+      error = error + 1;
+      ok    = 0;
+    end
+  end
 
   # 5000;
   end_of_test();
