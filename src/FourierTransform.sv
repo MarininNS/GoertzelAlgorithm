@@ -22,15 +22,17 @@ module FourierTransform #(
   input  [7:0] sample_n 
 );
 
-logic       rstn_syn;
-logic       enable  ;
-logic [7:0] sample  ;
+logic       enable    ;
+logic [7:0] sample    ;
+logic       enable_syn;
+logic [7:0] sample_syn;
+logic       rstn_syn  ;
 
 logic        [NF-1:0][31:0] freq_arr ; // (32.0)
-logic signed [NF-1:0][31:0] angel_arr;
-logic signed [NF-1:0][31:0] coefW_re ;
-logic signed [NF-1:0][31:0] coefW_im ;
-logic signed [NF-1:0][31:0] alpha    ;
+logic signed [NF-1:0][63:0] angel_arr;
+logic signed [NF-1:0][63:0] coefW_re ;
+logic signed [NF-1:0][63:0] coefW_im ;
+logic signed [NF-1:0][63:0] alpha    ;
 logic signed         [31:0] data_scl ;
 logic signed [NF-1:0][31:0] data_hrz ;
 
@@ -53,7 +55,7 @@ axi_lite_miso axii;
   );
   genvar gvar_buf;
   generate
-    for (gvar_buf = 0; gvar_buf < 8; gvar_buf = gvar_buf + 1) begin : buf
+    for (gvar_buf = 0; gvar_buf < 8; gvar_buf = gvar_buf + 1) begin : IBUFDS_sample
       IBUFDS IBUFDS_inst 
       (
         .I (sample_p[gvar_buf]),
@@ -66,7 +68,7 @@ axi_lite_miso axii;
   assign enable = enable_p;
   genvar gvar_buf;
   generate
-    for (gvar_buf = 0; gvar_buf < 8; gvar_buf = gvar_buf + 1) begin
+    for (gvar_buf = 0; gvar_buf < 8; gvar_buf = gvar_buf + 1) begin : assign_sample
       assign sample[gvar_buf] = sample_p[gvar_buf];
     end
   endgenerate
@@ -74,8 +76,26 @@ axi_lite_miso axii;
 
 resync_nrst u_resync_nrst(
   .clk   (clk     ),
-  .nrst_i(rstn    ),
-  .nrst_o(rstn_syn) 
+  .rstn_i(rstn    ),
+  .rstn_o(rstn_syn) 
+);
+
+resync_data #(
+  .DW(1)
+) u_resync_enable (
+  .rstn  (rstn_syn  ),
+  .clk   (clk       ),
+  .data_i(enable    ),
+  .data_o(enable_syn) 
+);
+
+resync_data #(
+  .DW(8)
+) u_resync_sample (
+  .rstn  (rstn_syn  ),
+  .clk   (clk       ),
+  .data_i(sample    ),
+  .data_o(sample_syn) 
 );
 
 spi2axi_wrap #(
@@ -128,15 +148,15 @@ Cordic #(
   .alpha(alpha       )
 );
 
-assign en_scl = valid_cordic && enable;
+assign en_scl = valid_cordic && enable_syn;
 
 DataScale u_DataScale (
-  .rstn  (rstn_syn ),
-  .clk   (clk      ),
-  .enable(en_scl   ),
-  .valid (valid_scl),
-  .data_i(sample   ),
-  .data_o(data_scl ) 
+  .rstn  (rstn_syn  ),
+  .clk   (clk       ),
+  .enable(en_scl    ),
+  .valid (valid_scl ),
+  .data_i(sample_syn),
+  .data_o(data_scl  ) 
 );
 
 genvar gvar;
