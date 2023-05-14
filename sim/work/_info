@@ -11,24 +11,24 @@ cModel Technology
 dD:/intelFPGA_lite/20.1/modelsim_ase/win32aloem
 vAngel
 Z0 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
-Z1 !s110 1684083911
+Z1 !s110 1684089418
 !i10b 1
-!s100 0zOgZaZ7n[:F2G68z1LEC0
+!s100 hI30_UjS81_`c20BN7Y8Z1
 Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
-IS?3l82?G`dK9zC^Qg5oWn3
+I0Pk;X0ofak<HoY@R:dMlG3
 Z3 VDg1SIo80bB@j0V0VzS_@n1
 S1
 Z4 dD:/Desktop/Study_now/SRW/GoertzelAlgorithm/sim
-w1684079895
+w1684084690
 8D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Angel.sv
 FD:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Angel.sv
-!i122 2352
-L0 1 61
+!i122 2548
+L0 1 60
 Z5 OV;L;2020.1;71
 r1
 !s85 0
 31
-!s108 1684083910.000000
+!s108 1684089417.000000
 !s107 D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Angel.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Angel.sv|
 !i113 1
@@ -48,13 +48,13 @@ R4
 w1682773167
 8D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/axi_pkg.sv
 FD:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/axi_pkg.sv
-!i122 2353
+!i122 2549
 Z8 L0 1 0
 R5
 r1
 !s85 0
 31
-Z9 !s108 1684083911.000000
+Z9 !s108 1684089418.000000
 !s107 D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/axi_pkg.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/axi_pkg.sv|
 !i113 1
@@ -62,7 +62,7 @@ R6
 R7
 vCordic
 R0
-Z10 !s110 1684083912
+Z10 !s110 1684089419
 !i10b 1
 !s100 >42BF[<X<nOWOK9AM2lV21
 R2
@@ -70,10 +70,10 @@ I7G8ZSk]Kz7kU=?0Xa4Ef60
 R3
 S1
 R4
-w1684079892
+w1684085420
 8D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Cordic.sv
 FD:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Cordic.sv
-!i122 2354
+!i122 2550
 L0 1 252
 R5
 r1
@@ -125,13 +125,13 @@ R4
 w1683625527
 8D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/DataScale.sv
 FD:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/DataScale.sv
-!i122 2355
+!i122 2551
 L0 1 31
 R5
 r1
 !s85 0
 31
-Z14 !s108 1684083912.000000
+Z14 !s108 1684089419.000000
 !s107 D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/DataScale.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/DataScale.sv|
 !i113 1
@@ -168,7 +168,7 @@ vFourierTransform
 R0
 Z15 DXx4 work 7 axi_pkg 0 22 j`gI:BeMO5<i>37m3SNfK0
 DXx4 work 24 FourierTransform_sv_unit 0 22 >Xg7<<Oa@l]QHVO^?_LRB2
-Z16 !s110 1684083913
+Z16 !s110 1684089420
 R3
 r1
 !s85 0
@@ -178,10 +178,10 @@ IgNdCAfVZR>z6MGC2aAmPJ0
 !s105 FourierTransform_sv_unit
 S1
 R4
-Z17 w1684057523
+Z17 w1684084717
 Z18 8D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/FourierTransform.sv
 Z19 FD:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/FourierTransform.sv
-!i122 2356
+!i122 2552
 L0 5 178
 R5
 31
@@ -208,7 +208,7 @@ R4
 R17
 R18
 R19
-!i122 2356
+!i122 2552
 R8
 R5
 31
@@ -221,25 +221,25 @@ R7
 n@fourier@transform_sv_unit
 vFourierTransform_tb
 R0
-DXx4 work 27 FourierTransform_tb_sv_unit 0 22 b8ah;:lIddBTM^OkGnKW?3
-Z22 !s110 1684083914
+DXx4 work 27 FourierTransform_tb_sv_unit 0 22 ;X=KJ1TWVWW=aB4iJfScM1
+Z22 !s110 1684089422
 R3
 r1
 !s85 0
 !i10b 1
-!s100 FmeL2d?@PUT63?Rj[O4dP2
-INa8Ln?gOmW?Pgn:RZjmQJ3
+!s100 6@N<[TmRhk[OcEnVeJ=;Y3
+I4VkQEcW]>Y`]909@k``4f2
 !s105 FourierTransform_tb_sv_unit
 S1
 R4
-Z23 w1684082210
+Z23 w1684089375
 Z24 8D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/FourierTransform_tb.sv
 Z25 FD:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/FourierTransform_tb.sv
-!i122 2359
-L0 4 201
+!i122 2555
+L0 4 213
 R5
 31
-Z26 !s108 1684083914.000000
+Z26 !s108 1684089421.000000
 Z27 !s107 D:\Desktop\Study_now\SRW\GoertzelAlgorithm\src\sim\.\FourierTransformAM.sv|D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/FourierTransform_tb.sv|
 Z28 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/FourierTransform_tb.sv|
 !i113 1
@@ -249,12 +249,12 @@ n@fourier@transform_tb
 XFourierTransform_tb_sv_unit
 R0
 R22
-Vb8ah;:lIddBTM^OkGnKW?3
+V;X=KJ1TWVWW=aB4iJfScM1
 r1
 !s85 0
 !i10b 1
-!s100 d1cN7IZci_dJ8e843Y@Rd0
-Ib8ah;:lIddBTM^OkGnKW?3
+!s100 L5317iQA@La1Z@@<f^3fN1
+I;X=KJ1TWVWW=aB4iJfScM1
 !i103 1
 S1
 R4
@@ -262,7 +262,7 @@ R23
 R24
 R25
 FD:\Desktop\Study_now\SRW\GoertzelAlgorithm\src\sim\.\FourierTransformAM.sv
-!i122 2359
+!i122 2555
 Z29 L0 2 0
 R5
 31
@@ -275,7 +275,7 @@ R7
 n@fourier@transform_tb_sv_unit
 XFourierTransformAM_sv_unit
 R0
-Z30 !s110 1684083917
+Z30 !s110 1684089424
 V]1V3UJhzDiZ4=[G3?Y2i70
 r1
 !s85 0
@@ -288,11 +288,11 @@ R4
 w1683627591
 8D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/FourierTransformAM.sv
 FD:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/FourierTransformAM.sv
-!i122 2363
+!i122 2559
 R29
 R5
 31
-Z31 !s108 1684083916.000000
+Z31 !s108 1684089423.000000
 !s107 D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/FourierTransformAM.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/FourierTransformAM.sv|
 !i113 1
@@ -301,24 +301,24 @@ R7
 n@fourier@transform@a@m_sv_unit
 vHerzel
 R0
-R16
+Z32 !s110 1684089421
 !i10b 1
-!s100 NVHf9h2[UgOnTH=?@Y48P3
+!s100 <HIa_>okmbId_mmCZPYnK3
 R2
-Il?m0Z[7S`hl6;7AWaWgm`2
+IJgzNmz<9NFa]GaFYdA7dd0
 R3
 S1
 R4
-w1684083907
+w1684086696
 8D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Herzel.sv
 FD:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Herzel.sv
-!i122 2357
-L0 1 172
+!i122 2553
+L0 1 179
 R5
 r1
 !s85 0
 31
-Z32 !s108 1684083913.000000
+!s108 1684089420.000000
 !s107 D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Herzel.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Herzel.sv|
 !i113 1
@@ -329,7 +329,7 @@ vHerzelRegs
 R0
 R15
 DXx4 work 18 HerzelRegs_sv_unit 0 22 10P0D35S?9[deM]kK>?mb3
-Z33 !s110 1684083915
+Z33 !s110 1684089423
 R3
 r1
 !s85 0
@@ -342,11 +342,11 @@ R4
 Z34 w1683627682
 Z35 8D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv
 Z36 FD:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv
-!i122 2361
+!i122 2557
 L0 3 208
 R5
 31
-Z37 !s108 1684083915.000000
+Z37 !s108 1684089422.000000
 Z38 !s107 D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv|
 Z39 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv|
 !i113 1
@@ -369,7 +369,7 @@ R4
 R34
 R35
 R36
-!i122 2361
+!i122 2557
 R8
 R5
 31
@@ -382,7 +382,7 @@ R7
 n@herzel@regs_sv_unit
 vmult_sign
 R0
-Z40 !s110 1684083918
+!s110 1684089426
 !i10b 1
 !s100 LT`Tc?PH42Y58E6@LGXC81
 R2
@@ -393,13 +393,13 @@ R4
 w1684080763
 8D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/mult_sign.sv
 FD:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/mult_sign.sv
-!i122 2366
-Z41 L0 1 26
+!i122 2562
+Z40 L0 1 26
 R5
 r1
 !s85 0
 31
-!s108 1684083918.000000
+!s108 1684089425.000000
 !s107 D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/mult_sign.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/mult_sign.sv|
 !i113 1
@@ -407,7 +407,7 @@ R6
 R7
 vresync_data
 R0
-R40
+!s110 1684089425
 !i10b 1
 !s100 @Ib2[z?9bb]S<8C:NzcgL0
 R2
@@ -418,13 +418,13 @@ R4
 w1683995219
 8D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_data.sv
 FD:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_data.sv
-!i122 2365
-R41
+!i122 2561
+R40
 R5
 r1
 !s85 0
 31
-Z42 !s108 1684083917.000000
+Z41 !s108 1684089424.000000
 !s107 D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_data.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_data.sv|
 !i113 1
@@ -443,13 +443,13 @@ R4
 w1683980578
 8D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_nrst.sv
 FD:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_nrst.sv
-!i122 2364
+!i122 2560
 L0 1 22
 R5
 r1
 !s85 0
 31
-R42
+R41
 !s107 D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_nrst.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_nrst.sv|
 !i113 1
@@ -457,7 +457,7 @@ R6
 R7
 vspi2axi
 R0
-R22
+R32
 !i10b 1
 !s100 mQP4SGCe=;_T<c]hTcmYU1
 R2
@@ -465,18 +465,18 @@ IHkQ0[62ThCL7]Il1IIAIC2
 R3
 S1
 R4
-Z43 w1682885405
-Z44 8D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv
-Z45 FD:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv
-!i122 2358
+Z42 w1682885405
+Z43 8D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv
+Z44 FD:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv
+!i122 2554
 L0 33 444
 R5
 r1
 !s85 0
 31
-R32
-Z46 !s107 D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv|
-Z47 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv|
+R26
+Z45 !s107 D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv|
+Z46 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv|
 !i113 1
 R6
 R7
@@ -484,7 +484,7 @@ vspi2axi_wrap
 R0
 R15
 DXx4 work 20 spi2axi_wrap_sv_unit 0 22 D2V7>?VkzDD7h=FQOn87j1
-Z48 !s110 1684083916
+R33
 R3
 r1
 !s85 0
@@ -494,23 +494,23 @@ I44o<B><c_=4G2nCmLjMEO3
 !s105 spi2axi_wrap_sv_unit
 S1
 R4
-Z49 w1682777849
-Z50 8D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi_wrap.sv
-Z51 FD:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi_wrap.sv
-!i122 2362
+Z47 w1682777849
+Z48 8D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi_wrap.sv
+Z49 FD:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi_wrap.sv
+!i122 2558
 L0 3 48
 R5
 31
 R31
-Z52 !s107 D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi_wrap.sv|
-Z53 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi_wrap.sv|
+Z50 !s107 D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi_wrap.sv|
+Z51 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi_wrap.sv|
 !i113 1
 R6
 R7
 Xspi2axi_wrap_sv_unit
 R0
 R15
-R48
+R33
 VD2V7>?VkzDD7h=FQOn87j1
 r1
 !s85 0
@@ -520,39 +520,39 @@ ID2V7>?VkzDD7h=FQOn87j1
 !i103 1
 S1
 R4
+R47
+R48
 R49
-R50
-R51
-!i122 2362
+!i122 2558
 R8
 R5
 31
 R31
-R52
-R53
+R50
+R51
 !i113 1
 R6
 R7
 Yspi_if
 R0
-R33
+R22
 !i10b 1
-!s100 1CC_0fci`ebeP3Bj?CR0b0
+!s100 o3[DRmbYc@j`IFS68MGFa0
 R2
-I?Tji=be<ci<gAEM53G[L`1
+ICPJikcFog0DB[n>XmTef_2
 R3
 S1
 R4
-w1682933189
+w1684089174
 8D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/spi_if.sv
 FD:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/spi_if.sv
-!i122 2360
+!i122 2556
 L0 5 0
 R5
 r1
 !s85 0
 31
-R26
+R37
 !s107 D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/spi_if.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/spi_if.sv|
 !i113 1
@@ -560,7 +560,7 @@ R6
 R7
 vsynchronizer
 R0
-R22
+R32
 !i10b 1
 !s100 1HjnTSGldzF5hP3=<8WQT3
 R2
@@ -568,18 +568,18 @@ II8Kf4>POF<X_9[m:f]^1U0
 R3
 S1
 R4
+R42
 R43
 R44
-R45
-!i122 2358
+!i122 2554
 L0 510 40
 R5
 r1
 !s85 0
 31
-R32
+R26
+R45
 R46
-R47
 !i113 1
 R6
 R7

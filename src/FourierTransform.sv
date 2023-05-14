@@ -28,7 +28,7 @@ logic       enable_syn;
 logic [7:0] sample_syn;
 logic       rstn_syn  ;
 
-logic        [NF-1:0][31:0] freq_arr ; // (32.0)
+logic        [NF-1:0][31:0] freq_arr ;
 logic signed [NF-1:0][63:0] angel_arr;
 logic signed [NF-1:0][63:0] coefW_re ;
 logic signed [NF-1:0][63:0] coefW_im ;

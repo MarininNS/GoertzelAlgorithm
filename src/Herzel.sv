@@ -3,18 +3,18 @@ module Herzel #(
   parameter NS = 1000
 )(
   // CLK&RST
-  input                      rstn        ,
-  input                      clk         ,
+  input                        rstn   ,
+  input                        clk    ,
   // CTRL
-  input                      en          ,
-  output logic               valid       ,
+  input                        en     ,
+  output logic                 valid  ,
   // DATA
-  input          signed [63:0] alpha_i   ,
-  input          signed [63:0] cW_re_i   ,
-  input          signed [63:0] cW_im_i   ,
-  input          signed [31:0] data_i    ,
-  output logic unsigned [31:0] data_o      
-); 
+  input          signed [63:0] alpha_i, // (20.40)
+  input          signed [63:0] cW_re_i, // (20.40)
+  input          signed [63:0] cW_im_i, // (20.40)
+  input          signed [31:0] data_i , // ( 8.24)
+  output logic unsigned [31:0] data_o   // (16.16)
+);
 
 typedef enum {  
   CALC ,
@@ -23,37 +23,36 @@ typedef enum {
   MULI ,
   GRADR,
   GRADI,
+  NORM ,
   VALID 
 } state;
 
 state curr_state;
 state next_state;
 
-logic signed   [63:0] data        ; 
-logic signed   [63:0] vm1         ; 
-logic signed   [63:0] vm2         ;
-logic signed   [63:0] tmp         ;
-logic signed   [63:0] vm1_cW_re   ;
-logic signed   [63:0] vm1_cW_im   ;
-logic signed   [31:0] data_re     ;
-logic signed   [31:0] data_im     ;
-logic          [31:0] indx        ;
+logic signed [63:0] NORM_COEF = 64'h00000000_0000029B; // (32.32)
 
-logic signed [63:0] alpha;
-logic signed [63:0] cW_re;
-logic signed [63:0] cW_im;
+logic signed [63:0] alpha    ; // (32.32)
+logic signed [63:0] cW_re    ; // (32.32)
+logic signed [63:0] cW_im    ; // (32.32)
+logic signed [63:0] data     ; // (32.32)
+logic signed [63:0] vm1      ; // (32.32)
+logic signed [63:0] vm2      ; // (32.32)
+logic signed [63:0] tmp      ; // (32.32)
+logic signed [63:0] vm1_cW_re; // (32.32)
+logic signed [63:0] vm1_cW_im; // (32.32)
+logic signed [63:0] data_re  ; // (32.32)
+logic signed [63:0] data_im  ; // (32.32)
+logic        [31:0] indx     ; // (32.32)
 
 assign alpha = {{13{alpha_i[63]}}, alpha_i[62:12]};
 assign cW_re = {{13{cW_re_i[63]}}, cW_re_i[62:12]};
 assign cW_im = {{13{cW_im_i[63]}}, cW_im_i[62:12]};
+assign data  = {{25{data_i[31]}}, data_i[30:0], {8{1'b0}}};
 
-assign data   = {{25{data_i[31]}}, data_i[30:0], {8{1'b0}}}; // 20.44
-assign data_o = data_re + data_im;
-
-logic signed [63 :0] mul_a; // (20.44)
-logic signed [63 :0] mul_b; // (20.44)
-logic signed [63 :0] mul_c; // (20.44)
-logic signed [127:0] c_ful; // (40.88)
+logic signed [63 :0] mul_a; // (32.32)
+logic signed [63 :0] mul_b; // (32.32)
+logic signed [63 :0] mul_c; // (32.32)
 
 mult_sign #(
   .DW    (64),
@@ -64,7 +63,7 @@ mult_sign #(
   .a_in (mul_a),
   .b_in (mul_b),
   .c_out(mul_c),
-  .c_ful(c_ful) 
+  .c_ful(     ) 
 );
 
 always_ff @(posedge clk, negedge rstn) begin
@@ -116,11 +115,15 @@ always_ff @(posedge clk) begin
       next_state <= GRADR;
     end
     GRADR : begin
-      data_re <= c_ful[95:64];
+      data_re <= mul_c;
       next_state <= GRADI;
     end
     GRADI : begin
-      data_im <= c_ful[95:64];
+      data_im <= mul_c;
+      next_state <= NORM;
+    end
+    NORM : begin
+      data_o <= mul_c[47:16];
       next_state <= VALID;
     end
     VALID : begin
@@ -164,6 +167,10 @@ always_comb begin
     GRADI : begin
       mul_a = vm1_cW_im;
       mul_b = vm1_cW_im;
+    end
+    NORM : begin
+      mul_a = data_re + data_im;
+      mul_b = NORM_COEF;
     end
     default:;
   endcase

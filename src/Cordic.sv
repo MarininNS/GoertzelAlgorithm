@@ -8,10 +8,10 @@ module Cordic #(
   input                              en   ,
   output logic                       valid,
   // DATA
-  input        signed [NF-1:0][63:0] ang_i,
-  output logic signed [NF-1:0][63:0] cos_o,
-  output logic signed [NF-1:0][63:0] sin_o,
-  output logic signed [NF-1:0][63:0] alpha 
+  input        signed [NF-1:0][63:0] ang_i, // (20.44)
+  output logic signed [NF-1:0][63:0] cos_o, // (20.44)
+  output logic signed [NF-1:0][63:0] sin_o, // (20.44)
+  output logic signed [NF-1:0][63:0] alpha  // (20.44)
 );
 
 typedef enum {  

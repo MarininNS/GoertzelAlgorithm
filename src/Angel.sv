@@ -5,14 +5,13 @@ module Angel #(
   input                       clk    ,
   input                       en     ,
   output logic                valid  ,
-  input        [NF-1:0][31:0] freq_i ,
-  output logic [NF-1:0][63:0] angel_o 
+  input        [NF-1:0][31:0] freq_i , // (32.0 )
+  output logic [NF-1:0][63:0] angel_o  // (20.44)
 );
     
-// logic signed [31:0] ANGEL_COEF = 32'h019B_C65b; // 2*pi/1000 (20.44)
 logic signed [31:0] ANGEL_COEF = 32'h00000_00041E24C11; // 2*pi/100000 (20.44)
 
-logic signed [NF-1:0][63:0] k_arr; // (20.40)
+logic signed [NF-1:0][63:0] k_arr; // (20.44)
 logic                [7 :0] indx ;
 
 genvar gvar;
@@ -22,9 +21,9 @@ generate
   end
 endgenerate
 
-logic signed [63:0] mul_a;
-logic signed [63:0] mul_b;
-logic signed [63:0] mul_c;
+logic signed [63:0] mul_a; // (20.44)
+logic signed [63:0] mul_b; // (20.44)
+logic signed [63:0] mul_c; // (20.44)
 
 assign mul_a = ANGEL_COEF ;
 assign mul_b = k_arr[indx];

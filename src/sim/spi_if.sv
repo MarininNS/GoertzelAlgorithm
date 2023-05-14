@@ -83,7 +83,7 @@ task read_data(input [31:0] addr, output [31:0] data, output [31:0] status);
   join_any
   @(negedge sck);
   disable fork;
-  if (DISPLAY) $display("[%0t] spi read: addr = 0x%0h, data = 0x%0h, status = 0x%0h", $time, addr, data, status);
+  if (DISPLAY) $display("[%010t] spi read : addr = 0x%02h, data = 0x%08h, status = 0x%02h", $time, addr, data, status);
 endtask 
 
 task write_data(input [31:0] addr, input [31:0] data, output [31:0] status);
@@ -111,7 +111,7 @@ task write_data(input [31:0] addr, input [31:0] data, output [31:0] status);
   join_any
   @(negedge sck);
   disable fork;
-  if (DISPLAY) $display("[%0t] spi write: addr = 0x%0h, data = 0x%0h, status = 0x%0h", $time, addr, data, status);
+  if (DISPLAY) $display("[%010t] spi write: addr = 0x%02h, data = 0x%08h, status = 0x%02h", $time, addr, data, status);
 endtask 
 
 endinterface
