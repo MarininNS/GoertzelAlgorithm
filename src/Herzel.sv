@@ -9,9 +9,9 @@ module Herzel #(
   input                        en     ,
   output logic                 valid  ,
   // DATA
-  input          signed [63:0] alpha_i, // (20.40)
-  input          signed [63:0] cW_re_i, // (20.40)
-  input          signed [63:0] cW_im_i, // (20.40)
+  input          signed [63:0] alpha_i, // (20.44)
+  input          signed [63:0] cW_re_i, // (20.44)
+  input          signed [63:0] cW_im_i, // (20.44)
   input          signed [31:0] data_i , // ( 8.24)
   output logic unsigned [31:0] data_o   // (16.16)
 );
@@ -21,16 +21,17 @@ typedef enum {
   CONF ,
   MULR ,
   MULI ,
+  NORMR,
+  NORMI,
   GRADR,
   GRADI,
-  NORM ,
   VALID 
 } state;
 
 state curr_state;
 state next_state;
 
-logic signed [63:0] NORM_COEF = 64'h00000000_0000029B; // (32.32)
+logic signed [63:0] NORM_COEF = 64'h00000000_0019D08E; // (32.32)
 
 logic signed [63:0] alpha    ; // (32.32)
 logic signed [63:0] cW_re    ; // (32.32)
@@ -66,9 +67,10 @@ mult_sign #(
   .c_ful(     ) 
 );
 
-always_ff @(posedge clk, negedge rstn) begin
+always_ff @(negedge clk, negedge rstn) begin
   if (!rstn) begin
     valid      <= 0;
+    data_o     <= 0;
     vm1        <= 0;
     vm2        <= 0;
     tmp        <= 0;
@@ -112,18 +114,22 @@ always_ff @(posedge clk) begin
     end
     MULI : begin
       vm1_cW_im <= mul_c;
+      next_state <= NORMR;
+    end
+    NORMR : begin
+      data_re <= mul_c;
+      next_state <= NORMI;
+    end
+    NORMI : begin
+      data_im <= mul_c;
       next_state <= GRADR;
     end
     GRADR : begin
-      data_re <= mul_c;
+      data_o <= mul_c[47:16];
       next_state <= GRADI;
     end
     GRADI : begin
-      data_im <= mul_c;
-      next_state <= NORM;
-    end
-    NORM : begin
-      data_o <= mul_c[47:16];
+      data_o <= data_o + mul_c[47:16];
       next_state <= VALID;
     end
     VALID : begin
@@ -160,19 +166,26 @@ always_comb begin
       mul_a = vm1  ;
       mul_b = cW_im;
     end
-    GRADR : begin
+    NORMR : begin
       mul_a = vm1_cW_re;
-      mul_b = vm1_cW_re;
-    end
-    GRADI : begin
-      mul_a = vm1_cW_im;
-      mul_b = vm1_cW_im;
-    end
-    NORM : begin
-      mul_a = data_re + data_im;
       mul_b = NORM_COEF;
     end
-    default:;
+    NORMI : begin
+      mul_a = vm1_cW_im;
+      mul_b = NORM_COEF;
+    end
+    GRADR : begin
+      mul_a = data_re;
+      mul_b = data_re;
+    end
+    GRADI : begin
+      mul_a = data_im;
+      mul_b = data_im;
+    end
+    default: begin
+      mul_a = 0;
+      mul_b = 0;
+    end
   endcase
 end
 

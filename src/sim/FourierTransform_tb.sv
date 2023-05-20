@@ -14,7 +14,8 @@ integer fd_r_s;
 integer fd_r_f; 
 integer fd_r_d; 
 integer fd_r_l; 
-// integer fd_w_v;
+integer fd_w_v;
+integer fd_w_r;
 
 spi_if #(.SPI_CLK_PER(SPI_CLK_PER), .DISPLAY(1)) spi_if();
 
@@ -79,25 +80,28 @@ initial begin
   if (fd_r_d == 0) $finish;
   fd_r_l = $fopen("D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/data/logic.csv", "r");
   if (fd_r_l == 0) $finish;
-  // fd_w_v = $fopen("D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/data/vector.csv", "w");
-  // if (fd_w_v == 0) $finish;
+  fd_w_v = $fopen("D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/data/vector.csv", "w");
+  if (fd_w_v == 0) $finish;
+  fd_w_r = $fopen("D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/data/result.csv", "w");
+  if (fd_w_r == 0) $finish;
 end
 final begin
   $fclose(fd_r_s);
   $fclose(fd_r_f);
   $fclose(fd_r_d);
   $fclose(fd_r_l);
-  // $fclose(fd_w_v);
+  $fclose(fd_w_v);
+  $fclose(fd_w_r);
 end
 
-// initial begin
-//   @(posedge enable_p);
-//   while (!(DUT.herzel[9].u_Herzel.valid)) begin
-//     @(posedge clk);
-//     $fwrite(fd_w_v, "%h\n", DUT.herzel[10].u_Herzel.vm1);
-//   end
-//   $fwrite(fd_w_v, "%h\n", DUT.herzel[10].u_Herzel.vm1);
-// end
+initial begin
+  @(posedge enable_p);
+  while (!(DUT.herzel[9].u_Herzel.valid)) begin
+    @(posedge clk);
+    $fwrite(fd_w_v, "%h\n", DUT.herzel[8].u_Herzel.vm1);
+  end
+  $fwrite(fd_w_v, "%h\n", DUT.herzel[8].u_Herzel.vm1);
+end
 
 initial begin
   for (int i = 0; i < NF; i = i + 1) begin
@@ -178,11 +182,13 @@ task herzel();
 endtask
 
 initial begin
-  ok       = 1;
-  clk      = 0;
-  rstn     = 0;
-  enable_p = 0;
-  sample_p = 0;
+  ok        = 1;
+  clk       = 0;
+  rstn      = 0;
+  enable_p  = 0;
+  sample_p  = 0;
+  spi_data  = 0;
+  vlog_data = 0;
   spi_if.init();
   repeat(5) @(posedge clk);
   rstn = 1;
@@ -198,6 +204,7 @@ initial begin
   $display("[%010t] Read result", $time);
   for (int i = 0; i < NF; i = i + 1) begin
     spi_if.read_data(DATA_1 + 32'h4*i, vlog_data[i], spi_stat);
+    $fwrite(fd_w_r, "%d\n", vlog_data[i][31:16]);
   end
 
   $display("[%010t] Start check", $time);

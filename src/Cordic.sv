@@ -74,6 +74,7 @@ always_ff @(posedge clk, negedge rstn) begin
     indx0 <= 0;
     indx1 <= 0;
     quad  <= 0;
+    mul_b <= 0;
     curr_state <= IDLE;
   end
   else begin
@@ -185,7 +186,7 @@ always_ff @(posedge clk) begin
         indx0 <= indx0 + 1            ;
         indx1 <= 0                    ;
       end
-      if (indx0 < NF) 
+      if (indx0 < NF - 1) 
         next_state <= INIT;
       else
         next_state <= VALID;
