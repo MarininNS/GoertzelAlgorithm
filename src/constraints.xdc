@@ -3,12 +3,12 @@ create_clock -name clk -period 5.0 [get_ports clk]
 # clk
 set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN ???} [get_ports clk        ]
 # set reset
-set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN ???} [get_ports rstn       ]
+set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN A13} [get_ports rstn       ]
 # set spi
-set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN ???} [get_ports spi_sck    ]
-set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN ???} [get_ports spi_ss_n   ]
-set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN ???} [get_ports spi_mosi   ]
-set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN ???} [get_ports spi_miso   ]
+set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN AY14} [get_ports spi_sck    ]
+set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN AY15} [get_ports spi_ss_n   ]
+set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN AW15} [get_ports spi_mosi   ]
+set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN AV15} [get_ports spi_miso   ]
 # set other
 set_property -dict {IOSTANDARD LVDS     PACKAGE_PIN ???} [get_ports enable_p   ]
 set_property -dict {IOSTANDARD LVDS     PACKAGE_PIN ???} [get_ports enable_n   ]

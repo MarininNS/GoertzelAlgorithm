@@ -98,11 +98,9 @@ resync_data #(
   .data_o(sample_syn) 
 );
 
-spi2axi_wrap #(
-  .AXI_ADDR_WIDTH(32)
-) u_spi2axi_wrap (
-  .axi_arstn_i(rstn_syn),
-  .axi_aclk_i (clk     ),
+spi2axi_wrap u_spi2axi_wrap (
+  .axi_rstn_i (rstn_syn),
+  .axi_clk_i  (clk     ),
   .spi_sck_i  (spi_sck ),  
   .spi_ss_n_i (spi_ss_n), 
   .spi_mosi_i (spi_mosi), 

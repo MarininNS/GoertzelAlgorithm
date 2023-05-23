@@ -18,7 +18,6 @@ module Herzel #(
 
 typedef enum {  
   CALC ,
-  CONF ,
   MULR ,
   MULI ,
   NORMR,
@@ -69,16 +68,6 @@ mult_sign #(
 
 always_ff @(negedge clk, negedge rstn) begin
   if (!rstn) begin
-    valid      <= 0;
-    data_o     <= 0;
-    vm1        <= 0;
-    vm2        <= 0;
-    tmp        <= 0;
-    vm1_cW_re  <= 0;
-    vm1_cW_im  <= 0;
-    data_re    <= 0; 
-    data_im    <= 0;
-    indx       <= 0;
     curr_state <= CALC;
   end
   else begin
@@ -86,70 +75,88 @@ always_ff @(negedge clk, negedge rstn) begin
   end
 end
 
-always_ff @(posedge clk) begin
-  case (curr_state)
-    CALC : begin
-      if (en) begin
-        if (indx < NS) begin
-          if (indx == 0) begin
-            vm1 <= data;
+always_ff @(posedge clk, negedge rstn) begin
+  if (!rstn) begin
+    valid      <= 0;
+    data_o     <= 0;
+    vm1        <= 0;
+    vm1_cW_re  <= 0;
+    vm1_cW_im  <= 0;
+    data_re    <= 0; 
+    data_im    <= 0;
+    indx       <= 0;
+  end
+  else begin
+    case (curr_state)
+      CALC : begin
+        if (en) begin
+          if (indx < NS) begin
+            if (indx == 0) begin
+              vm1 <= data;
+            end
+            else if (indx == 1) begin
+              vm1 <= data + mul_c;
+            end
+            else begin
+              vm1 <= data + mul_c - vm2;
+            end
+            indx <= indx + 1;
           end
-          else if (indx == 1) begin
-            vm1 <= data + mul_c;
-          end
-          else begin
-            vm1 <= data + mul_c - vm2;
-          end
-          indx <= indx + 1;
         end
+        if (indx < NS - 1)
+          next_state <= CALC;
+        else
+          next_state <= MULR;
       end
-      if (indx < NS - 1)
-        next_state <= CALC;
-      else
-        next_state <= MULR;
-    end
-    MULR : begin
-      vm1_cW_re <= mul_c - vm2;
-      next_state <= MULI;
-    end
-    MULI : begin
-      vm1_cW_im <= mul_c;
-      next_state <= NORMR;
-    end
-    NORMR : begin
-      data_re <= mul_c;
-      next_state <= NORMI;
-    end
-    NORMI : begin
-      data_im <= mul_c;
-      next_state <= GRADR;
-    end
-    GRADR : begin
-      data_o <= mul_c[47:16];
-      next_state <= GRADI;
-    end
-    GRADI : begin
-      data_o <= data_o + mul_c[47:16];
-      next_state <= VALID;
-    end
-    VALID : begin
-      valid  <= 1;
-      next_state <= VALID;
-    end
-    default: next_state <= curr_state;
-  endcase
+      MULR : begin
+        vm1_cW_re <= mul_c - vm2;
+        next_state <= MULI;
+      end
+      MULI : begin
+        vm1_cW_im <= mul_c;
+        next_state <= NORMR;
+      end
+      NORMR : begin
+        data_re <= mul_c;
+        next_state <= NORMI;
+      end
+      NORMI : begin
+        data_im <= mul_c;
+        next_state <= GRADR;
+      end
+      GRADR : begin
+        data_o <= mul_c[47:16];
+        next_state <= GRADI;
+      end
+      GRADI : begin
+        data_o <= data_o + mul_c[47:16];
+        next_state <= VALID;
+      end
+      VALID : begin
+        valid  <= 1;
+        next_state <= VALID;
+      end
+      default: next_state <= curr_state;
+    endcase
+  end
 end
 
-always_ff @(negedge clk) begin
-  case (curr_state)
-    CALC : begin
-      if (en) begin
-        tmp <= vm1;
-        vm2 <= tmp;
+always_ff @(negedge clk, negedge rstn) begin
+    if (!rstn) begin
+    vm2        <= 0;
+    tmp        <= 0;
+  end
+  else begin
+    case (curr_state)
+      CALC : begin
+        if (en) begin
+          tmp <= vm1;
+          vm2 <= tmp;
+        end
       end
-    end
-    default:;
-  endcase
+      default:;
+    endcase
+  end
 end
 
 always_comb begin

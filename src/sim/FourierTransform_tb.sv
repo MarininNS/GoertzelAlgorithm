@@ -3,8 +3,8 @@
 
 module FourierTransform_tb;
 
-localparam CLK_PER     = 5     ;
-localparam SPI_CLK_PER = 1000  ;
+localparam CLK_PER     = 5000  ;
+localparam SPI_CLK_PER = 100000;
 localparam NF          = 11    ; // dont touch
 localparam NS          = 100000; // dont touch
 
@@ -192,6 +192,7 @@ initial begin
   spi_if.init();
   repeat(5) @(posedge clk);
   rstn = 1;
+  repeat(20) @(posedge clk);
 
   $display("[%010t] Write freq", $time);
   for (int i = 0; i < NF; i = i + 1) begin

@@ -62,6 +62,15 @@ mult_sign #(
   .c_ful(     ) 
 );
 
+always_ff @(negedge clk, negedge rstn) begin
+  if (!rstn) begin
+    curr_state <= IDLE;
+  end
+  else begin
+    curr_state <= next_state;
+  end
+end
+
 always_ff @(posedge clk, negedge rstn) begin
   if (!rstn) begin
     cos_o <= 0;
@@ -75,128 +84,123 @@ always_ff @(posedge clk, negedge rstn) begin
     indx1 <= 0;
     quad  <= 0;
     mul_b <= 0;
-    curr_state <= IDLE;
   end
   else begin
-    curr_state = next_state;
-  end
-end
-
-always_ff @(posedge clk) begin
-  case (curr_state)
-    IDLE : begin
-      if (en)
-        next_state <= INIT;
-      else
-        next_state <= IDLE;
-    end
-    INIT : begin
-      ang <= ang_i[indx0];
-      next_state <= QUAD;
-    end
-    QUAD : begin
-      if (ang > PI) begin
-        ang  <= ang - PI;
-        quad <= 2'b10   ;
+    case (curr_state)
+      IDLE : begin
+        if (en)
+          next_state <= INIT;
+        else
+          next_state <= IDLE;
       end
-      else if (ang > PI2) begin
-        ang  <= ang - PI2;
-        quad <= 2'b01    ;
+      INIT : begin
+        ang <= ang_i[indx0];
+        next_state <= QUAD;
       end
-      else begin
-        quad <= 2'b00;
-      end
-      next_state <= CALC;
-    end
-    CALC : begin
-      if (indx1 < 45) begin
-        if (ang[63] == 0) begin
-          cos <= cos - (sin >>> indx1);
-          sin <= sin + (cos >>> indx1);
-          ang <= ang - atan           ; 
+      QUAD : begin
+        if (ang > PI) begin
+          ang  <= ang - PI;
+          quad <= 2'b10   ;
+        end
+        else if (ang > PI2) begin
+          ang  <= ang - PI2;
+          quad <= 2'b01    ;
         end
         else begin
-          cos <= cos + (sin >>> indx1);
-          sin <= sin - (cos >>> indx1);
-          ang <= ang + atan           ; 
+          quad <= 2'b00;
         end
-        indx1 <= indx1 + 1;
-      end
-      if (indx1 < 45)
         next_state <= CALC;
-      else
-        next_state <= MULC;
-    end
-    MULC : begin
-      if (quad == 2'b10) begin
-        mul_b <= cos;
       end
-      else if (quad == 2'b01) begin
-        mul_b <= sin;
+      CALC : begin
+        if (indx1 < 45) begin
+          if (ang[63] == 0) begin
+            cos <= cos - (sin >>> indx1);
+            sin <= sin + (cos >>> indx1);
+            ang <= ang - atan           ; 
+          end
+          else begin
+            cos <= cos + (sin >>> indx1);
+            sin <= sin - (cos >>> indx1);
+            ang <= ang + atan           ; 
+          end
+          indx1 <= indx1 + 1;
+        end
+        if (indx1 < 45)
+          next_state <= CALC;
+        else
+          next_state <= MULC;
       end
-      else begin
-        mul_b <= cos;
+      MULC : begin
+        if (quad == 2'b10) begin
+          mul_b <= cos;
+        end
+        else if (quad == 2'b01) begin
+          mul_b <= sin;
+        end
+        else begin
+          mul_b <= cos;
+        end
+        next_state <= PRIVC;
       end
-      next_state <= PRIVC;
-    end
-    PRIVC : begin
-      if (quad == 2'b10) begin
-        cos_o[indx0] <= ZERO - mul_c;
+      PRIVC : begin
+        if (quad == 2'b10) begin
+          cos_o[indx0] <= ZERO - mul_c;
+        end
+        else if (quad == 2'b01) begin
+          cos_o[indx0] <= ZERO - mul_c;
+        end
+        else begin
+          cos_o[indx0] <= mul_c;
+        end
+        next_state <= ALPHA;
       end
-      else if (quad == 2'b01) begin
-        cos_o[indx0] <= ZERO - mul_c;
+      ALPHA : begin
+        alpha[indx0] = cos_o[indx0] <<< 1;
+        next_state <= MULS;
       end
-      else begin
-        cos_o[indx0] <= mul_c;
+      MULS : begin
+        if (quad == 2'b10) begin
+          mul_b <= sin;
+        end
+        else if (quad == 2'b01) begin
+          mul_b <= cos;
+        end
+        else begin
+          mul_b <= sin;
+        end
+        next_state <= PRIVS;
       end
-      next_state <= ALPHA;
-    end
-    ALPHA : begin
-      alpha[indx0] = cos_o[indx0] <<< 1;
-      next_state <= MULS;
-    end
-    MULS : begin
-      if (quad == 2'b10) begin
-        mul_b <= sin;
+      PRIVS : begin
+        if (quad == 2'b10) begin
+          sin_o[indx0] <= ZERO - mul_c;
+        end
+        else if (quad == 2'b01) begin
+          sin_o[indx0] <= mul_c;
+        end
+        else begin
+          sin_o[indx0] <= mul_c;
+        end
+        next_state <= NEXT;
       end
-      else if (quad == 2'b01) begin
-        mul_b <= cos;
+      NEXT : begin
+        if (indx0 < NF) begin
+          cos   <= 64'h00001_00000000000;
+          sin   <= 64'h00000_00000000000;
+          indx0 <= indx0 + 1            ;
+          indx1 <= 0                    ;
+        end
+        if (indx0 < NF - 1) 
+          next_state <= INIT;
+        else
+          next_state <= VALID;
       end
-      else begin
-        mul_b <= sin;
-      end
-      next_state <= PRIVS;
-    end
-    PRIVS : begin
-      if (quad == 2'b10) begin
-        sin_o[indx0] <= ZERO - mul_c;
-      end
-      else if (quad == 2'b01) begin
-        sin_o[indx0] <= mul_c;
-      end
-      else begin
-        sin_o[indx0] <= mul_c;
-      end
-      next_state <= NEXT;
-    end
-    NEXT : begin
-      if (indx0 < NF) begin
-        cos   <= 64'h00001_00000000000;
-        sin   <= 64'h00000_00000000000;
-        indx0 <= indx0 + 1            ;
-        indx1 <= 0                    ;
-      end
-      if (indx0 < NF - 1) 
-        next_state <= INIT;
-      else
+      VALID : begin
+        valid <= 1;
         next_state <= VALID;
-    end
-    VALID : begin
-      valid <= 1;
-      next_state <= VALID;
-    end
-    default: next_state <= curr_state;
-  endcase
+      end
+      default: next_state <= curr_state;
+    endcase
+  end
 end
 
 always_comb begin

@@ -7,11 +7,11 @@ Top level modules:
 
 } {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi_wrap.sv {2 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi_wrap.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-** Warning: D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi_wrap.sv(15): (vlog-13314) Defaulting port 'axii_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+** Warning: D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi_wrap.sv(11): (vlog-13314) Defaulting port 'axii_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
 -- Compiling package spi2axi_wrap_sv_unit
 -- Importing package axi_pkg
 -- Compiling module spi2axi_wrap
-** Warning: D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi_wrap.sv(15): (vlog-13314) Defaulting port 'axii_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+** Warning: D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi_wrap.sv(11): (vlog-13314) Defaulting port 'axii_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
 
 Top level modules:
 	spi2axi_wrap
@@ -83,6 +83,14 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 Top level modules:
 	Cordic
 
+} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/FourierTransform_tb.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/FourierTransform_tb.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package FourierTransform_tb_sv_unit
+-- Compiling module FourierTransform_tb
+
+Top level modules:
+	FourierTransform_tb
+
 } {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_data.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_data.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
 -- Compiling module resync_data
@@ -100,7 +108,6 @@ Top level modules:
 } {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
 -- Compiling module spi2axi
--- Compiling module synchronizer
 
 Top level modules:
 	spi2axi
