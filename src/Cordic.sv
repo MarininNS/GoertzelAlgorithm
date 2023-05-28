@@ -84,6 +84,7 @@ always_ff @(posedge clk, negedge rstn) begin
     indx1 <= 0;
     quad  <= 0;
     mul_b <= 0;
+    next_state <= IDLE;
   end
   else begin
     case (curr_state)

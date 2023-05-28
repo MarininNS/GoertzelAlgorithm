@@ -76,6 +76,7 @@ task read_data(input [31:0] addr, output [31:0] data, output [31:0] status);
       // 4 data bytes
       read(32, data);
       // status byte
+      @(posedge sck);
       read(8, status);
       // slave select
       mst.ss_n = 1;
@@ -83,7 +84,7 @@ task read_data(input [31:0] addr, output [31:0] data, output [31:0] status);
   join_any
   @(negedge sck);
   disable fork;
-  if (DISPLAY) $display("[%010t] spi read : addr = 0x%02h, data = 0x%08h, status = 0x%02h", $time, addr, data, status);
+  if (DISPLAY) $display("[%010t] spi read : addr = 0x%08h, data = 0x%08h, status = 0x%02h", $time, addr, data, status);
 endtask 
 
 task write_data(input [31:0] addr, input [31:0] data, output [31:0] status);
@@ -104,6 +105,7 @@ task write_data(input [31:0] addr, input [31:0] data, output [31:0] status);
       // dummy byte
       write(8, dummy_word);
       // status byte
+      @(posedge sck);
       read(8, status);
       // slave select
       mst.ss_n = 1;
@@ -111,7 +113,7 @@ task write_data(input [31:0] addr, input [31:0] data, output [31:0] status);
   join_any
   @(negedge sck);
   disable fork;
-  if (DISPLAY) $display("[%010t] spi write: addr = 0x%02h, data = 0x%08h, status = 0x%02h", $time, addr, data, status);
+  if (DISPLAY) $display("[%010t] spi write: addr = 0x%08h, data = 0x%08h, status = 0x%02h", $time, addr, data, status);
 endtask 
 
 endinterface

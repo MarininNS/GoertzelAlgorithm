@@ -3,8 +3,7 @@ import axi_pkg::*;
 `define TEST 1
 
 module FourierTransform #(
-  parameter NF = 11  , // NUM_FREQ
-  parameter NS = 1000  // NUM_SAMPLE
+  parameter NF = 11 // NUM_FREQ
 ) (
   // CLK&RST
   input        rstn    ,
@@ -28,7 +27,18 @@ logic       enable_syn;
 logic [7:0] sample_syn;
 logic       rstn_syn  ;
 
+logic mode       ;
+logic reset_all_r;
+logic reset_h_r  ;
+logic rstn_all   ;
+logic rstn_h     ;
+
+logic                [31:0] num_samp ;
+logic                [31:0] samp_freq;
 logic        [NF-1:0][31:0] freq_arr ;
+logic        [NF-1:0][63:0] k_arr    ;
+logic                [63:0] ang_coef ;
+logic                [63:0] ns_coef  ;
 logic signed [NF-1:0][63:0] angel_arr;
 logic signed [NF-1:0][63:0] coefW_re ;
 logic signed [NF-1:0][63:0] coefW_im ;
@@ -38,6 +48,7 @@ logic signed [NF-1:0][31:0] data_hrz ;
 
 logic          en_cordic   ;
 logic          en_scl      ;
+logic          valid_div   ;
 logic          valid_angel ;
 logic          valid_cordic;
 logic          valid_scl   ;
@@ -45,6 +56,9 @@ logic [NF-1:0] valid_herzel;
 
 axi_lite_mosi axio;
 axi_lite_miso axii;
+
+assign rstn_all = rstn_syn && (~reset_all_r);
+assign rstn_h   = rstn_syn && (~reset_all_r) && (~reset_h_r);
 
 `ifndef TEST
   IBUFDS IBUFDS_inst 
@@ -109,7 +123,9 @@ spi2axi_wrap u_spi2axi_wrap (
   .axii_i     (axii    )
 );
 
-HerzelRegs u_HerzelRegs (
+HerzelRegs #(
+  .NF(NF)
+) u_HerzelRegs (
   .rstn          (rstn_syn    ),
   .clk           (clk         ),
   .freq_arr_o    (freq_arr    ),
@@ -118,25 +134,46 @@ HerzelRegs u_HerzelRegs (
   .valid_cordic_i(valid_cordic),
   .valid_herzel_i(valid_herzel),
   .data_arr_i    (data_hrz    ),
+  .num_samp_o    (num_samp    ),
+  .samp_freq_o   (samp_freq   ),
+  .mode_o        (mode        ),
+  .reset_all_o   (reset_all_r ),
+  .reset_h_o     (reset_h_r   ),
   .axio_i        (axio        ),
   .axii_o        (axii        ) 
+);
+
+div_all #(
+  .NF(NF)
+) u_div_all(
+  .rstn       (rstn_all ),
+  .clk        (clk      ),
+  .en         (en_cordic),
+  .valid      (valid_div),
+  .num_samp_i (num_samp ),
+  .samp_freq_i(samp_freq),
+  .freq_i     (freq_arr ),
+  .k_arr_o    (k_arr    ),
+  .ang_coef_o (ang_coef ),
+  .ns_coef_o  (ns_coef  ) 
 );
 
 Angel #(
   .NF(NF)
 ) u_Angel (
-  .rstn   (rstn_syn   ),
-  .clk    (clk        ),
-  .en     (en_cordic  ),
-  .valid  (valid_angel),
-  .freq_i (freq_arr   ),
-  .angel_o(angel_arr  ) 
+  .rstn      (rstn_all   ),
+  .clk       (clk        ),
+  .en        (valid_div  ),
+  .valid     (valid_angel),
+  .k_arr_i   (k_arr      ),
+  .ang_coef_i(ang_coef   ),
+  .angel_o   (angel_arr  ) 
 );
 
 Cordic #(
   .NF(NF)
 ) u_Cordic (
-  .rstn (rstn_syn    ),
+  .rstn (rstn_all    ),
   .clk  (clk         ),
   .en   (valid_angel ),
   .valid(valid_cordic),
@@ -149,10 +186,11 @@ Cordic #(
 assign en_scl = valid_cordic && enable_syn;
 
 DataScale u_DataScale (
-  .rstn  (rstn_syn  ),
+  .rstn  (rstn_all  ),
   .clk   (clk       ),
   .enable(en_scl    ),
   .valid (valid_scl ),
+  .mode  (mode      ),
   .data_i(sample_syn),
   .data_o(data_scl  ) 
 );
@@ -161,18 +199,19 @@ genvar gvar;
 generate 
   for (gvar = 0; gvar < NF; gvar = gvar + 1) begin : herzel
     Herzel #(
-      .NF(NF),
-      .NS(NS) 
+      .NF(NF)
     ) u_Herzel (
-      .rstn   (rstn_syn          ),
-      .clk    (clk               ),
-      .en     (valid_scl         ),
-      .valid  (valid_herzel[gvar]),
-      .alpha_i(alpha[gvar]       ),
-      .cW_re_i(coefW_re[gvar]    ),
-      .cW_im_i(coefW_im[gvar]    ),
-      .data_i (data_scl          ),
-      .data_o (data_hrz[gvar]    ) 
+      .rstn     (rstn_h            ),
+      .clk      (clk               ),
+      .en       (valid_scl         ),
+      .valid    (valid_herzel[gvar]),
+      .ns_i     (num_samp          ),
+      .ns_coef_i(ns_coef           ),
+      .alpha_i  (alpha[gvar]       ),
+      .cW_re_i  (coefW_re[gvar]    ),
+      .cW_im_i  (coefW_im[gvar]    ),
+      .data_i   (data_scl          ),
+      .data_o   (data_hrz[gvar]    ) 
     ); 
   end
 endgenerate

@@ -10,7 +10,6 @@
     ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 
 source FourierTransform.tcl -notrace
-create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1034.207 ; gain = 0.000
 Command: synth_design -top FourierTransform -part xcvu9p-flga2104-2L-e
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xcvu9p'
@@ -18,16 +17,14 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xcvu9p'
 INFO: [Device 21-403] Loading part xcvu9p-flga2104-2L-e
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 1908
+INFO: [Synth 8-7075] Helper process launched with PID 14756
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1729.457 ; gain = 241.613
+Starting RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1730.793 ; gain = 241.930
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'FourierTransform' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/FourierTransform.sv:5]
 	Parameter NF bound to: 11 - type: integer 
-	Parameter NS bound to: 1000 - type: integer 
 INFO: [Synth 8-6157] synthesizing module 'Herzel' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Herzel.sv:1]
 	Parameter NF bound to: 11 - type: integer 
-	Parameter NS bound to: 1000 - type: integer 
 INFO: [Synth 8-6157] synthesizing module 'mult_sign' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/mult_sign.sv:1]
 	Parameter DW bound to: 64 - type: integer 
 	Parameter INT1_I bound to: 32 - type: integer 
@@ -54,45 +51,31 @@ INFO: [Synth 8-6157] synthesizing module 'resync_data__parameterized0' [D:/Deskt
 	Parameter STG_DW bound to: 24 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'resync_data__parameterized0' (4#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_data.sv:1]
 INFO: [Synth 8-6157] synthesizing module 'spi2axi_wrap' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi_wrap.sv:3]
-	Parameter SPI_CPOL bound to: 0 - type: integer 
-	Parameter SPI_CPHA bound to: 0 - type: integer 
-	Parameter AXI_ADDR_WIDTH bound to: 32 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'spi2axi' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv:33]
-	Parameter SPI_CPOL bound to: 0 - type: integer 
-	Parameter SPI_CPHA bound to: 0 - type: integer 
-	Parameter AXI_ADDR_WIDTH bound to: 32 - type: integer 
-	Parameter CMD_WRITE bound to: 8'b00000000 
-	Parameter CMD_READ bound to: 8'b00000001 
-	Parameter SPI_FRAME_LENGTH_BYTES bound to: 32'sb00000000000000000000000000001011 
-INFO: [Synth 8-6157] synthesizing module 'synchronizer' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv:510]
-	Parameter G_INIT_VALUE bound to: 0 - type: integer 
-	Parameter G_NUM_GUARD_FFS bound to: 1 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'synchronizer' (5#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv:510]
-INFO: [Synth 8-155] case statement is not full and has no default [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv:195]
-INFO: [Synth 8-155] case statement is not full and has no default [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv:373]
-INFO: [Synth 8-6155] done synthesizing module 'spi2axi' (6#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv:33]
-INFO: [Synth 8-6155] done synthesizing module 'spi2axi_wrap' (7#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi_wrap.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'spi2axi' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'resync_data__parameterized1' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_data.sv:1]
+	Parameter NUM_STAGE bound to: 3 - type: integer 
+	Parameter DW bound to: 1 - type: integer 
+	Parameter STG_DW bound to: 3 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'resync_data__parameterized1' (4#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_data.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'spi2axi' (5#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'spi2axi_wrap' (6#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi_wrap.sv:3]
 INFO: [Synth 8-6157] synthesizing module 'HerzelRegs' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:3]
 	Parameter NF bound to: 11 - type: integer 
-	Parameter NS bound to: 1000 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'HerzelRegs' (8#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:3]
+	Parameter FREQ_BA bound to: 268435456 - type: integer 
+	Parameter DATA_BA bound to: 536870912 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'HerzelRegs' (7#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'div_all' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/div_all.sv:1]
+	Parameter NF bound to: 11 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'divu' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/divu.sv:5]
+	Parameter WIDTH bound to: 64 - type: integer 
+	Parameter FBITS bound to: 44 - type: integer 
+	Parameter FBITSW bound to: 44 - type: integer 
+	Parameter ITER bound to: 108 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'divu' (8#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/divu.sv:5]
+INFO: [Synth 8-6155] done synthesizing module 'div_all' (9#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/div_all.sv:1]
 INFO: [Synth 8-6157] synthesizing module 'Angel' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Angel.sv:1]
 	Parameter NF bound to: 11 - type: integer 
 INFO: [Synth 8-6157] synthesizing module 'mult_sign__parameterized0' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/mult_sign.sv:1]
-	Parameter DW bound to: 64 - type: integer 
-	Parameter INT1_I bound to: 0 - type: integer 
-	Parameter INT2_I bound to: 20 - type: integer 
-	Parameter INT3_O bound to: 20 - type: integer 
-	Parameter FRQ1_I bound to: 64 - type: integer 
-	Parameter FRQ2_I bound to: 44 - type: integer 
-	Parameter FRQ3_O bound to: 44 - type: integer 
-	Parameter INT3 bound to: 20 - type: integer 
-	Parameter FRQ3 bound to: 44 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'mult_sign__parameterized0' (8#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/mult_sign.sv:1]
-INFO: [Synth 8-6155] done synthesizing module 'Angel' (9#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Angel.sv:1]
-INFO: [Synth 8-6157] synthesizing module 'Cordic' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Cordic.sv:1]
-	Parameter NF bound to: 11 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'mult_sign__parameterized1' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/mult_sign.sv:1]
 	Parameter DW bound to: 64 - type: integer 
 	Parameter INT1_I bound to: 20 - type: integer 
 	Parameter INT2_I bound to: 20 - type: integer 
@@ -102,42 +85,50 @@ INFO: [Synth 8-6157] synthesizing module 'mult_sign__parameterized1' [D:/Desktop
 	Parameter FRQ3_O bound to: 44 - type: integer 
 	Parameter INT3 bound to: 40 - type: integer 
 	Parameter FRQ3 bound to: 44 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'mult_sign__parameterized1' (9#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/mult_sign.sv:1]
-INFO: [Synth 8-6155] done synthesizing module 'Cordic' (10#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Cordic.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'mult_sign__parameterized0' (9#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/mult_sign.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'Angel' (10#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Angel.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'Cordic' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Cordic.sv:1]
+	Parameter NF bound to: 11 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'Cordic' (11#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Cordic.sv:1]
 INFO: [Synth 8-6157] synthesizing module 'DataScale' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/DataScale.sv:1]
-INFO: [Synth 8-6155] done synthesizing module 'DataScale' (11#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/DataScale.sv:1]
-INFO: [Synth 8-6155] done synthesizing module 'FourierTransform' (12#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/FourierTransform.sv:5]
+INFO: [Synth 8-6157] synthesizing module 'resync_data__parameterized2' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_data.sv:1]
+	Parameter NUM_STAGE bound to: 2 - type: integer 
+	Parameter DW bound to: 1 - type: integer 
+	Parameter STG_DW bound to: 2 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'resync_data__parameterized2' (11#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_data.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'DataScale' (12#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/DataScale.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'FourierTransform' (13#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/FourierTransform.sv:5]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 1800.203 ; gain = 312.359
+Finished RTL Elaboration : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1806.992 ; gain = 318.129
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1818.125 ; gain = 330.281
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1824.918 ; gain = 336.055
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1818.125 ; gain = 330.281
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1824.918 ; gain = 336.055
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.522 . Memory (MB): peak = 1818.125 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.563 . Memory (MB): peak = 1824.918 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
 Parsing XDC File [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/constraints.xdc]
-create_clock: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1970.195 ; gain = 24.688
+create_clock: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1985.328 ; gain = 6.988
 Finished Parsing XDC File [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/constraints.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/constraints.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/FourierTransform_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/FourierTransform_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1970.195 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 1985.328 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.133 . Memory (MB): peak = 1970.195 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.154 . Memory (MB): peak = 1985.328 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:38 ; elapsed = 00:00:40 . Memory (MB): peak = 1970.195 ; gain = 482.352
+Finished Constraint Validation : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 1985.328 ; gain = 496.465
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -145,35 +136,31 @@ Start Loading Part and Timing Information
 Loading part: xcvu9p-flga2104-2L-e
 INFO: [Synth 8-6742] Reading net delay rules and data
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:38 ; elapsed = 00:00:40 . Memory (MB): peak = 1970.195 ; gain = 482.352
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 1985.328 ; gain = 496.465
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 1970.195 ; gain = 482.352
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 1985.328 ; gain = 496.465
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-802] inferred FSM for state register 'spi_state_reg' in module 'spi2axi'
-INFO: [Synth 8-802] inferred FSM for state register 'axi_state_reg' in module 'spi2axi'
+INFO: [Synth 8-802] inferred FSM for state register 'axi_cstate_reg' in module 'spi2axi'
 INFO: [Synth 8-802] inferred FSM for state register 'curr_state_reg' in module 'HerzelRegs'
+INFO: [Synth 8-802] inferred FSM for state register 'curr_state_reg' in module 'div_all'
+INFO: [Synth 8-802] inferred FSM for state register 'curr_state_reg' in module 'Cordic'
+INFO: [Synth 8-802] inferred FSM for state register 'curr_state_reg' in module 'Herzel'
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
-                AXI_IDLE |                            00001 | 00000000000000000000000000000000
-           AXI_WRITE_ACK |                            00010 | 00000000000000000000000000000001
-         AXI_WRITE_BRESP |                            00100 | 00000000000000000000000000000010
-       AXI_READ_ADDR_ACK |                            01000 | 00000000000000000000000000000011
-           AXI_READ_DATA |                            10000 | 00000000000000000000000000000100
+                AXI_IDLE |                              000 | 00000000000000000000000000000000
+                 AXI_CMD |                              001 | 00000000000000000000000000000001
+               AXI_RADDR |                              010 | 00000000000000000000000000000010
+               AXI_RDATA |                              011 | 00000000000000000000000000000011
+               AXI_WADDR |                              100 | 00000000000000000000000000000100
+               AXI_WDATA |                              101 | 00000000000000000000000000000101
+               AXI_WRESP |                              110 | 00000000000000000000000000000110
 ---------------------------------------------------------------------------------------------------
-INFO: [Synth 8-3354] encoded FSM with state register 'axi_state_reg' using encoding 'one-hot' in module 'spi2axi'
----------------------------------------------------------------------------------------------------
-                   State |                     New Encoding |                Previous Encoding 
----------------------------------------------------------------------------------------------------
-             SPI_RECEIVE |                               00 | 00000000000000000000000000000000
-     SPI_PROCESS_RX_BYTE |                               01 | 00000000000000000000000000000001
-        SPI_LOAD_TX_BYTE |                               10 | 00000000000000000000000000000010
----------------------------------------------------------------------------------------------------
-INFO: [Synth 8-3354] encoded FSM with state register 'spi_state_reg' using encoding 'sequential' in module 'spi2axi'
+INFO: [Synth 8-3354] encoded FSM with state register 'axi_cstate_reg' using encoding 'sequential' in module 'spi2axi'
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -185,23 +172,68 @@ INFO: [Synth 8-3354] encoded FSM with state register 'spi_state_reg' using encod
                    WRESP |                              101 | 00000000000000000000000000000101
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'curr_state_reg' using encoding 'sequential' in module 'HerzelRegs'
-WARNING: [Synth 8-327] inferring latch for variable 'freq_11_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:148]
-WARNING: [Synth 8-327] inferring latch for variable 'freq_10_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:147]
-WARNING: [Synth 8-327] inferring latch for variable 'freq_9_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:146]
-WARNING: [Synth 8-327] inferring latch for variable 'freq_8_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:145]
-WARNING: [Synth 8-327] inferring latch for variable 'freq_7_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:144]
-WARNING: [Synth 8-327] inferring latch for variable 'freq_6_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:143]
-WARNING: [Synth 8-327] inferring latch for variable 'freq_5_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:142]
-WARNING: [Synth 8-327] inferring latch for variable 'freq_4_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:141]
-WARNING: [Synth 8-327] inferring latch for variable 'freq_3_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:140]
-WARNING: [Synth 8-327] inferring latch for variable 'freq_2_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:139]
-WARNING: [Synth 8-327] inferring latch for variable 'freq_1_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:138]
-WARNING: [Synth 8-327] inferring latch for variable 'en_cordic_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:149]
-WARNING: [Synth 8-327] inferring latch for variable 'version_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:136]
-WARNING: [Synth 8-327] inferring latch for variable 'debug_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:137]
-WARNING: [Synth 8-327] inferring latch for variable 'axii_o_reg[bresp]' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:111]
+WARNING: [Synth 8-327] inferring latch for variable 'freq_reg[10]' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:124]
+WARNING: [Synth 8-327] inferring latch for variable 'freq_reg[9]' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:124]
+WARNING: [Synth 8-327] inferring latch for variable 'freq_reg[8]' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:124]
+WARNING: [Synth 8-327] inferring latch for variable 'freq_reg[7]' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:124]
+WARNING: [Synth 8-327] inferring latch for variable 'freq_reg[6]' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:124]
+WARNING: [Synth 8-327] inferring latch for variable 'freq_reg[5]' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:124]
+WARNING: [Synth 8-327] inferring latch for variable 'freq_reg[4]' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:124]
+WARNING: [Synth 8-327] inferring latch for variable 'freq_reg[3]' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:124]
+WARNING: [Synth 8-327] inferring latch for variable 'freq_reg[2]' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:124]
+WARNING: [Synth 8-327] inferring latch for variable 'freq_reg[1]' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:124]
+WARNING: [Synth 8-327] inferring latch for variable 'freq_reg[0]' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:124]
+WARNING: [Synth 8-327] inferring latch for variable 'en_cordic_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:115]
+WARNING: [Synth 8-327] inferring latch for variable 'num_samp_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:113]
+WARNING: [Synth 8-327] inferring latch for variable 'samp_freq_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:114]
+WARNING: [Synth 8-327] inferring latch for variable 'mode_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:112]
+WARNING: [Synth 8-327] inferring latch for variable 'reset_all_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:117]
+WARNING: [Synth 8-327] inferring latch for variable 'reset_h_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:118]
+WARNING: [Synth 8-327] inferring latch for variable 'version_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:110]
+WARNING: [Synth 8-327] inferring latch for variable 'debug_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:111]
+WARNING: [Synth 8-327] inferring latch for variable 'axii_o_reg[bresp]' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:84]
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                           000001 | 00000000000000000000000000000000
+                      DF |                           000010 | 00000000000000000000000000000001
+                    KARR |                           000100 | 00000000000000000000000000000010
+                    ANGC |                           001000 | 00000000000000000000000000000011
+                      NS |                           010000 | 00000000000000000000000000000100
+                   VALID |                           100000 | 00000000000000000000000000000101
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'curr_state_reg' using encoding 'one-hot' in module 'div_all'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                      00000000001 | 00000000000000000000000000000000
+                    INIT |                      00000000010 | 00000000000000000000000000000001
+                    QUAD |                      00000000100 | 00000000000000000000000000000010
+                    CALC |                      00000001000 | 00000000000000000000000000000011
+                    MULC |                      00000010000 | 00000000000000000000000000000100
+                   PRIVC |                      00000100000 | 00000000000000000000000000000101
+                   ALPHA |                      00001000000 | 00000000000000000000000000000110
+                    MULS |                      00010000000 | 00000000000000000000000000000111
+                   PRIVS |                      00100000000 | 00000000000000000000000000001000
+                    NEXT |                      01000000000 | 00000000000000000000000000001001
+                   VALID |                      10000000000 | 00000000000000000000000000001010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'curr_state_reg' using encoding 'one-hot' in module 'Cordic'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    CALC |                              000 | 00000000000000000000000000000000
+                    MULR |                              001 | 00000000000000000000000000000001
+                    MULI |                              010 | 00000000000000000000000000000010
+                   NORMR |                              011 | 00000000000000000000000000000011
+                   NORMI |                              100 | 00000000000000000000000000000100
+                   GRADR |                              101 | 00000000000000000000000000000101
+                   GRADI |                              110 | 00000000000000000000000000000110
+                   VALID |                              111 | 00000000000000000000000000000111
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'curr_state_reg' using encoding 'sequential' in module 'Herzel'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 1970.195 ; gain = 482.352
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:44 ; elapsed = 00:00:45 . Memory (MB): peak = 1985.328 ; gain = 496.465
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -210,59 +242,70 @@ Detailed RTL Component Info :
 +---Adders : 
 	   4 Input  128 Bit       Adders := 13    
 	   4 Input   64 Bit       Adders := 11    
-	   3 Input   64 Bit       Adders := 14    
+	   3 Input   64 Bit       Adders := 15    
 	   2 Input   64 Bit       Adders := 2     
-	   2 Input   32 Bit       Adders := 11    
-	   2 Input   10 Bit       Adders := 11    
+	   2 Input   32 Bit       Adders := 22    
+	   2 Input    8 Bit       Adders := 1     
+	   2 Input    7 Bit       Adders := 1     
 	   2 Input    6 Bit       Adders := 1     
-	   2 Input    5 Bit       Adders := 1     
 	   2 Input    4 Bit       Adders := 3     
-	   2 Input    3 Bit       Adders := 2     
 +---Registers : 
-	               64 Bit    Registers := 126   
-	               32 Bit    Registers := 40    
+	               65 Bit    Registers := 1     
+	               64 Bit    Registers := 145   
+	               32 Bit    Registers := 18    
 	               24 Bit    Registers := 1     
 	                9 Bit    Registers := 2     
-	                8 Bit    Registers := 4     
-	                5 Bit    Registers := 1     
-	                4 Bit    Registers := 2     
-	                3 Bit    Registers := 6     
-	                2 Bit    Registers := 3     
-	                1 Bit    Registers := 28    
+	                8 Bit    Registers := 5     
+	                7 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 5     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 35    
 +---Multipliers : 
 	              20x32  Multipliers := 1     
 +---Muxes : 
-	   2 Input   64 Bit        Muxes := 74    
+	   2 Input   65 Bit        Muxes := 2     
+	   2 Input   64 Bit        Muxes := 53    
+	   8 Input   64 Bit        Muxes := 22    
+	   6 Input   64 Bit        Muxes := 2     
 	   3 Input   64 Bit        Muxes := 3     
-	  12 Input   64 Bit        Muxes := 3     
+	  11 Input   64 Bit        Muxes := 4     
+	   2 Input   52 Bit        Muxes := 1     
 	   2 Input   47 Bit        Muxes := 1     
 	   2 Input   45 Bit        Muxes := 1     
-	   2 Input   32 Bit        Muxes := 24    
-	   8 Input   32 Bit        Muxes := 22    
-	   6 Input   32 Bit        Muxes := 1     
-	   2 Input    9 Bit        Muxes := 1     
-	  12 Input    9 Bit        Muxes := 1     
-	   2 Input    8 Bit        Muxes := 4     
-	   5 Input    8 Bit        Muxes := 1     
-	   3 Input    8 Bit        Muxes := 1     
-	   5 Input    5 Bit        Muxes := 1     
+	   8 Input   32 Bit        Muxes := 13    
+	   7 Input   32 Bit        Muxes := 1     
+	   2 Input   32 Bit        Muxes := 7     
+	  10 Input   32 Bit        Muxes := 1     
+	   4 Input   32 Bit        Muxes := 1     
+	   6 Input   32 Bit        Muxes := 2     
+	  11 Input   32 Bit        Muxes := 1     
+	  11 Input   11 Bit        Muxes := 1     
+	   2 Input   11 Bit        Muxes := 3     
+	  11 Input    9 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 2     
+	   8 Input    8 Bit        Muxes := 2     
+	   7 Input    8 Bit        Muxes := 1     
+	   6 Input    6 Bit        Muxes := 1     
+	   2 Input    6 Bit        Muxes := 5     
 	   2 Input    5 Bit        Muxes := 2     
-	   3 Input    5 Bit        Muxes := 1     
-	   2 Input    4 Bit        Muxes := 2     
-	   5 Input    4 Bit        Muxes := 1     
-	   2 Input    3 Bit        Muxes := 9     
+	   2 Input    4 Bit        Muxes := 4     
+	   8 Input    3 Bit        Muxes := 11    
+	   2 Input    3 Bit        Muxes := 24    
+	   7 Input    3 Bit        Muxes := 1     
 	   6 Input    3 Bit        Muxes := 1     
-	   2 Input    2 Bit        Muxes := 14    
-	   3 Input    2 Bit        Muxes := 1     
-	  27 Input    2 Bit        Muxes := 1     
+	   4 Input    2 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 5     
+	  10 Input    2 Bit        Muxes := 1     
 	   6 Input    2 Bit        Muxes := 2     
-	   2 Input    1 Bit        Muxes := 198   
-	   8 Input    1 Bit        Muxes := 88    
-	   5 Input    1 Bit        Muxes := 19    
-	   3 Input    1 Bit        Muxes := 12    
-	  15 Input    1 Bit        Muxes := 15    
-	   6 Input    1 Bit        Muxes := 21    
-	  12 Input    1 Bit        Muxes := 40    
+	   2 Input    1 Bit        Muxes := 97    
+	   8 Input    1 Bit        Muxes := 93    
+	   7 Input    1 Bit        Muxes := 12    
+	  10 Input    1 Bit        Muxes := 8     
+	   4 Input    1 Bit        Muxes := 10    
+	  11 Input    1 Bit        Muxes := 40    
+	  12 Input    1 Bit        Muxes := 1     
+	   6 Input    1 Bit        Muxes := 45    
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -326,48 +369,54 @@ DSP Report: operator c is absorbed into DSP c.
 DSP Report: Generating DSP c, operation Mode is: (PCIN>>17)+A*B.
 DSP Report: operator c is absorbed into DSP c.
 DSP Report: operator c is absorbed into DSP c.
-DSP Report: Generating DSP u_mult_sign/c, operation Mode is: A*(B:0x0).
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
-DSP Report: Generating DSP u_mult_sign/c, operation Mode is: (PCIN>>17)+(A:0x10789)*B.
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
-DSP Report: Generating DSP u_mult_sign/c, operation Mode is: (A:0x10789)*B.
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
-DSP Report: Generating DSP u_mult_sign/c, operation Mode is: PCIN+A*(B:0x0).
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
-DSP Report: Generating DSP u_mult_sign/c, operation Mode is: (PCIN>>17)+(A:0x6086)*B.
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
-DSP Report: Generating DSP u_mult_sign/c, operation Mode is: PCIN+(A:0x10789)*B.
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
-DSP Report: Generating DSP u_mult_sign/c, operation Mode is: A*(B:0x6086).
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
-DSP Report: Generating DSP u_mult_sign/c, operation Mode is: PCIN+(A:0x10789)*B.
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
-DSP Report: Generating DSP u_mult_sign/c, operation Mode is: (PCIN>>17)+(A:0x1234)*B.
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
-DSP Report: Generating DSP u_mult_sign/c, operation Mode is: PCIN+A*(B:0x6086).
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
-DSP Report: Generating DSP u_mult_sign/c, operation Mode is: A*(B:0x1234).
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
-DSP Report: Generating DSP u_mult_sign/c, operation Mode is: (PCIN>>17)+A*(B:0x1234).
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
-DSP Report: Generating DSP u_mult_sign/c, operation Mode is: PCIN+A*(B:0x6086).
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
-DSP Report: Generating DSP u_mult_sign/c, operation Mode is: (PCIN>>17)+A*(B:0x1234).
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
-DSP Report: operator u_mult_sign/c is absorbed into DSP u_mult_sign/c.
+DSP Report: Generating DSP c, operation Mode is: A*B.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: Generating DSP c, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: Generating DSP c, operation Mode is: PCIN+A*B.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: Generating DSP c, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: Generating DSP c, operation Mode is: A*B.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: Generating DSP c, operation Mode is: PCIN+A*B.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: Generating DSP c, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: Generating DSP c, operation Mode is: PCIN+A*B.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: Generating DSP c, operation Mode is: A*B.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: Generating DSP c, operation Mode is: PCIN+A*B.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: Generating DSP c, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: Generating DSP c, operation Mode is: PCIN+A*B.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: Generating DSP c, operation Mode is: A*B.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: Generating DSP c, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: Generating DSP c, operation Mode is: PCIN+A*B.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: Generating DSP c, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator c is absorbed into DSP c.
+DSP Report: operator c is absorbed into DSP c.
 DSP Report: Generating DSP c, operation Mode is: A*B.
 DSP Report: operator c is absorbed into DSP c.
 DSP Report: operator c is absorbed into DSP c.
@@ -423,7 +472,7 @@ DSP Report: Generating DSP data_m0, operation Mode is: (PCIN>>17)+(A:0xd0000)*B.
 DSP Report: operator data_m0 is absorbed into DSP data_m0.
 DSP Report: operator data_m0 is absorbed into DSP data_m0.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:01 ; elapsed = 00:02:04 . Memory (MB): peak = 1970.195 ; gain = 482.352
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:02 ; elapsed = 00:02:04 . Memory (MB): peak = 1985.328 ; gain = 496.465
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -449,20 +498,22 @@ DSP: Preliminary Mapping	Report (see note below)
 |mult_sign   | (PCIN>>17)+A*B           | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
 |mult_sign   | PCIN+A*B                 | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
 |mult_sign   | (PCIN>>17)+A*B           | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|mult_sign   | A*(B:0x0)                | 18     | 1      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|mult_sign   | (PCIN>>17)+(A:0x10789)*B | 18     | 13     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|mult_sign   | (A:0x10789)*B            | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|mult_sign   | PCIN+A*(B:0x0)           | 18     | 1      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|mult_sign   | (PCIN>>17)+(A:0x6086)*B  | 16     | 13     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|mult_sign   | PCIN+(A:0x10789)*B       | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|mult_sign   | A*(B:0x6086)             | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|mult_sign   | PCIN+(A:0x10789)*B       | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|mult_sign   | (PCIN>>17)+(A:0x1234)*B  | 14     | 13     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|mult_sign   | PCIN+A*(B:0x6086)        | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|mult_sign   | A*(B:0x1234)             | 18     | 14     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|mult_sign   | (PCIN>>17)+A*(B:0x1234)  | 18     | 14     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|mult_sign   | PCIN+A*(B:0x6086)        | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|mult_sign   | (PCIN>>17)+A*(B:0x1234)  | 18     | 14     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mult_sign   | A*B                      | 18     | 13     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mult_sign   | (PCIN>>17)+A*B           | 18     | 13     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mult_sign   | PCIN+A*B                 | 18     | 13     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mult_sign   | (PCIN>>17)+A*B           | 13     | 13     | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mult_sign   | A*B                      | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mult_sign   | PCIN+A*B                 | 18     | 13     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mult_sign   | (PCIN>>17)+A*B           | 18     | 13     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mult_sign   | PCIN+A*B                 | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mult_sign   | A*B                      | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mult_sign   | PCIN+A*B                 | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mult_sign   | (PCIN>>17)+A*B           | 18     | 13     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mult_sign   | PCIN+A*B                 | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mult_sign   | A*B                      | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mult_sign   | (PCIN>>17)+A*B           | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mult_sign   | PCIN+A*B                 | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|mult_sign   | (PCIN>>17)+A*B           | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
 |mult_sign   | A*B                      | 18     | 13     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
 |mult_sign   | (PCIN>>17)+A*B           | 18     | 13     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
 |mult_sign   | PCIN+A*B                 | 18     | 13     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
@@ -491,19 +542,19 @@ Finished ROM, RAM, DSP and Shift Register Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:24 ; elapsed = 00:02:29 . Memory (MB): peak = 2410.371 ; gain = 922.527
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:25 ; elapsed = 00:02:29 . Memory (MB): peak = 2414.375 ; gain = 925.512
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:02:50 ; elapsed = 00:02:55 . Memory (MB): peak = 2593.414 ; gain = 1105.570
+Finished Timing Optimization : Time (s): cpu = 00:02:51 ; elapsed = 00:02:55 . Memory (MB): peak = 2618.801 ; gain = 1129.938
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:03:34 ; elapsed = 00:03:41 . Memory (MB): peak = 2609.285 ; gain = 1121.441
+Finished Technology Mapping : Time (s): cpu = 00:03:31 ; elapsed = 00:03:35 . Memory (MB): peak = 2644.918 ; gain = 1156.055
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -521,37 +572,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:03:45 ; elapsed = 00:03:53 . Memory (MB): peak = 2626.668 ; gain = 1138.824
+Finished IO Insertion : Time (s): cpu = 00:03:42 ; elapsed = 00:03:47 . Memory (MB): peak = 2668.367 ; gain = 1179.504
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:03:45 ; elapsed = 00:03:53 . Memory (MB): peak = 2626.668 ; gain = 1138.824
+Finished Renaming Generated Instances : Time (s): cpu = 00:03:43 ; elapsed = 00:03:47 . Memory (MB): peak = 2668.367 ; gain = 1179.504
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:04:00 ; elapsed = 00:04:07 . Memory (MB): peak = 2626.668 ; gain = 1138.824
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:04:00 ; elapsed = 00:04:05 . Memory (MB): peak = 2668.367 ; gain = 1179.504
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:04:00 ; elapsed = 00:04:07 . Memory (MB): peak = 2626.668 ; gain = 1138.824
+Finished Renaming Generated Ports : Time (s): cpu = 00:04:01 ; elapsed = 00:04:06 . Memory (MB): peak = 2668.367 ; gain = 1179.504
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:04:01 ; elapsed = 00:04:08 . Memory (MB): peak = 2626.668 ; gain = 1138.824
+Finished Handling Custom Attributes : Time (s): cpu = 00:04:01 ; elapsed = 00:04:06 . Memory (MB): peak = 2668.367 ; gain = 1179.504
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:04:01 ; elapsed = 00:04:09 . Memory (MB): peak = 2626.668 ; gain = 1138.824
+Finished Renaming Generated Nets : Time (s): cpu = 00:04:02 ; elapsed = 00:04:07 . Memory (MB): peak = 2668.367 ; gain = 1179.504
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -568,56 +619,55 @@ Report Cell Usage:
 |      |Cell            |Count |
 +------+----------------+------+
 |1     |BUFG            |    12|
-|2     |CARRY8          |   424|
-|3     |DSP_ALU         |   208|
-|4     |DSP_A_B_DATA    |   208|
-|5     |DSP_C_DATA      |   208|
-|6     |DSP_MULTIPLIER  |   208|
-|7     |DSP_M_DATA      |   208|
-|8     |DSP_OUTPUT      |   208|
-|10    |DSP_PREADD      |   208|
-|11    |DSP_PREADD_DATA |   208|
-|12    |LUT1            |   114|
-|13    |LUT2            |  2089|
-|14    |LUT3            |  1821|
-|15    |LUT4            |   902|
-|16    |LUT5            |  3531|
-|17    |LUT6            |  3556|
-|18    |MUXF7           |    92|
-|19    |MUXF8           |    28|
-|20    |FDCE            |  8250|
-|21    |FDPE            |     1|
-|22    |FDRE            |   288|
-|23    |FDSE            |     2|
-|24    |LD              |   449|
-|25    |IBUF            |    14|
-|26    |OBUF            |     1|
+|2     |CARRY8          |   575|
+|3     |DSP_ALU         |   210|
+|4     |DSP_A_B_DATA    |   210|
+|5     |DSP_C_DATA      |   210|
+|6     |DSP_MULTIPLIER  |   210|
+|7     |DSP_M_DATA      |   210|
+|8     |DSP_OUTPUT      |   210|
+|9     |DSP_PREADD      |   210|
+|10    |DSP_PREADD_DATA |   210|
+|11    |LUT1            |   459|
+|12    |LUT2            |  2292|
+|13    |LUT3            |  1172|
+|14    |LUT4            |  1739|
+|15    |LUT5            |  4089|
+|16    |LUT6            |  4230|
+|17    |MUXF7           |  1481|
+|18    |FDCE            |  9607|
+|19    |FDPE            |     5|
+|20    |FDRE            |   486|
+|21    |FDSE            |    32|
+|22    |LD              |   516|
+|23    |IBUF            |    14|
+|24    |OBUF            |     1|
 +------+----------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:04:01 ; elapsed = 00:04:09 . Memory (MB): peak = 2626.668 ; gain = 1138.824
+Finished Writing Synthesis Report : Time (s): cpu = 00:04:02 ; elapsed = 00:04:07 . Memory (MB): peak = 2668.367 ; gain = 1179.504
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 15 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:03:30 ; elapsed = 00:03:52 . Memory (MB): peak = 2626.668 ; gain = 986.754
-Synthesis Optimization Complete : Time (s): cpu = 00:04:01 ; elapsed = 00:04:09 . Memory (MB): peak = 2626.668 ; gain = 1138.824
+Synthesis finished with 0 errors, 0 critical warnings and 20 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:03:31 ; elapsed = 00:03:50 . Memory (MB): peak = 2668.367 ; gain = 1019.094
+Synthesis Optimization Complete : Time (s): cpu = 00:04:02 ; elapsed = 00:04:07 . Memory (MB): peak = 2668.367 ; gain = 1179.504
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.709 . Memory (MB): peak = 2641.684 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 1227 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.845 . Memory (MB): peak = 2680.387 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 2808 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 7 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 2734.441 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 2762.070 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 683 instances were transformed.
+  A total of 752 instances were transformed.
   BUFG => BUFGCE: 12 instances
-  DSP48E2 => DSP48E2 (DSP_ALU, DSP_A_B_DATA, DSP_C_DATA, DSP_MULTIPLIER, DSP_M_DATA, DSP_OUTPUT, DSP_PREADD, DSP_PREADD_DATA): 208 instances
+  DSP48E2 => DSP48E2 (DSP_ALU, DSP_A_B_DATA, DSP_C_DATA, DSP_MULTIPLIER, DSP_M_DATA, DSP_OUTPUT, DSP_PREADD, DSP_PREADD_DATA): 210 instances
   IBUF => IBUF (IBUFCTRL, INBUF): 14 instances
-  LD => LDCE: 449 instances
+  LD => LDCE: 516 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-54 Infos, 15 Warnings, 0 Critical Warnings and 0 Errors encountered.
+60 Infos, 20 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:04:45 ; elapsed = 00:04:59 . Memory (MB): peak = 2734.441 ; gain = 1700.234
+synth_design: Time (s): cpu = 00:04:45 ; elapsed = 00:04:54 . Memory (MB): peak = 2762.070 ; gain = 1726.488
 INFO: [Common 17-1381] The checkpoint 'D:/Desktop/Study_now/SRW/GoertzelAlgorithm/vivado/project/project_1.runs/synth_1/FourierTransform.dcp' has been generated.
-write_checkpoint: Time (s): cpu = 00:00:13 ; elapsed = 00:00:11 . Memory (MB): peak = 2734.441 ; gain = 0.000
+write_checkpoint: Time (s): cpu = 00:00:15 ; elapsed = 00:00:13 . Memory (MB): peak = 2762.070 ; gain = 0.000
 INFO: [runtcl-4] Executing : report_utilization -file FourierTransform_utilization_synth.rpt -pb FourierTransform_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sun May 21 12:11:37 2023...
+INFO: [Common 17-206] Exiting Vivado at Sun May 28 18:45:15 2023...

@@ -41,8 +41,8 @@ typedef enum {
 
 
 typedef enum {
-  AXI_RESET,
   AXI_IDLE ,
+  AXI_CMD  ,
   AXI_RADDR,
   AXI_RDATA,
   AXI_WADDR,
@@ -100,11 +100,9 @@ end
 
 always_ff @(posedge axi_clk, negedge axi_rstn) begin : spi_next_state
   if (!axi_rstn) begin
-    spi_sck_syn <= 0;
     spi_sck_old <= 0;
     spi_sck_re  <= 0;
     spi_sck_fe  <= 0;
-    spi_ss_syn  <= 0;
     spi_ss_old  <= 0;
     spi_ss_fe   <= 0;
   end
@@ -225,7 +223,7 @@ end
 
 always_ff @(negedge axi_clk, negedge axi_rstn) begin : axi_current_state
   if (!axi_rstn) begin
-    axi_cstate <= AXI_RESET;
+    axi_cstate <= AXI_IDLE;
   end
   else begin
     axi_cstate <= axi_nstate;
@@ -234,7 +232,7 @@ end
 
 always_ff @(posedge axi_clk) begin : axi_next_state
   case (axi_cstate)
-    AXI_RESET : begin
+    AXI_IDLE : begin
       axi_awvalid <= 0;
       axi_awaddr  <= 0;
       axi_awprot  <= 0;
@@ -247,11 +245,11 @@ always_ff @(posedge axi_clk) begin : axi_next_state
       axi_arvalid <= 0;
       axi_rready  <= 0;
       if (spi_cstate == SPI_IDLE)
-        axi_nstate <= AXI_IDLE;
+        axi_nstate <= AXI_CMD;
       else
-        axi_nstate <= AXI_RESET;
+        axi_nstate <= AXI_IDLE;
     end
-    AXI_IDLE : begin
+    AXI_CMD : begin
       spi_rdata <= 0;
       spi_stat  <= 0;
       if (spi_cstate > SPI_CMD) begin
@@ -276,7 +274,7 @@ always_ff @(posedge axi_clk) begin : axi_next_state
         spi_rdata  <= axi_rdata;
         spi_stat   <= axi_rresp;
         axi_rready <= 1;
-        axi_nstate <= AXI_RESET;
+        axi_nstate <= AXI_IDLE;
       end
       else
         axi_nstate <= AXI_RDATA;
@@ -305,7 +303,7 @@ always_ff @(posedge axi_clk) begin : axi_next_state
       if (axi_bvalid == 1) begin
         spi_stat   <= axi_bresp;
         axi_bready <= 1;
-        axi_nstate <= AXI_RESET;
+        axi_nstate <= AXI_IDLE;
       end
       else
         axi_nstate <= AXI_WRESP;

@@ -74,7 +74,6 @@ set_param power.BramSDPPropagationFix 1
 set_param power.enableUnconnectedCarry8PinPower 1
 set_param power.enableCarry8RouteBelPower 1
 set_param power.enableLutRouteBelPower 1
-set_msg_config -id {Common 17-41} -limit 10000000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xcvu9p-flga2104-2L-e
 
@@ -98,6 +97,8 @@ read_verilog -library xil_defaultlib -sv {
   D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv
   D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi_wrap.sv
   D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv
+  D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/divu.sv
+  D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/div_all.sv
   D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Angel.sv
   D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Cordic.sv
   D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/DataScale.sv
