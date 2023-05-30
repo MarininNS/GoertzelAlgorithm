@@ -7,19 +7,43 @@ module FourierTransform #(
 ) (
   // CLK&RST
   input        rstn    ,
+`ifdef TEST
   input        clk     ,
+`else
+  input        clk_p   ,
+  input        clk_n   ,
+`endif
   // SPI
-  input        spi_sck , 
-  input        spi_ss_n, 
-  input        spi_mosi, 
-  output       spi_miso, 
+  input        spi_sck ,
+  input        spi_ss_n,
+  input        spi_mosi,
+  output       spi_miso,
+`ifdef TEST
   // CTRL               
   input        enable_p,
   input        enable_n,
   // DATA
   input  [7:0] sample_p,
   input  [7:0] sample_n 
+`endif
 );
+
+`ifndef TEST
+logic clk;
+IBUFDS IBUFDS_clk
+(
+   .I (clk_p),
+   .IB(clk_n),
+   .O (clk  ) 
+);
+
+logic       enable_p;
+logic       enable_n;
+logic [7:0] sample_p;
+logic [7:0] sample_n;
+`endif
+
+logic       clkd;
 
 logic       enable    ;
 logic [7:0] sample    ;
@@ -60,8 +84,13 @@ axi_lite_miso axii;
 assign rstn_all = rstn_syn && (~reset_all_r);
 assign rstn_h   = rstn_syn && (~reset_all_r) && (~reset_h_r);
 
+clk_div u_clk_div (
+  .clk_i(clk ),
+  .clk_o(clkd) 
+);
+
 `ifndef TEST
-  IBUFDS IBUFDS_inst 
+  IBUFDS IBUFDS_enable 
   (
      .I (enable_p),
      .IB(enable_n),
@@ -70,7 +99,7 @@ assign rstn_h   = rstn_syn && (~reset_all_r) && (~reset_h_r);
   genvar gvar_buf;
   generate
     for (gvar_buf = 0; gvar_buf < 8; gvar_buf = gvar_buf + 1) begin : IBUFDS_sample
-      IBUFDS IBUFDS_inst 
+      IBUFDS IBUFDS_sample
       (
         .I (sample_p[gvar_buf]),
         .IB(sample_n[gvar_buf]),
@@ -89,7 +118,7 @@ assign rstn_h   = rstn_syn && (~reset_all_r) && (~reset_h_r);
 `endif
 
 resync_nrst u_resync_nrst(
-  .clk   (clk     ),
+  .clk   (clkd    ),
   .rstn_i(rstn    ),
   .rstn_o(rstn_syn) 
 );
@@ -98,7 +127,7 @@ resync_data #(
   .DW(1)
 ) u_resync_enable (
   .rstn  (rstn_syn  ),
-  .clk   (clk       ),
+  .clk   (clkd      ),
   .data_i(enable    ),
   .data_o(enable_syn) 
 );
@@ -107,14 +136,14 @@ resync_data #(
   .DW(8)
 ) u_resync_sample (
   .rstn  (rstn_syn  ),
-  .clk   (clk       ),
+  .clk   (clkd      ),
   .data_i(sample    ),
   .data_o(sample_syn) 
 );
 
 spi2axi_wrap u_spi2axi_wrap (
   .axi_rstn_i (rstn_syn),
-  .axi_clk_i  (clk     ),
+  .axi_clk_i  (clkd    ),
   .spi_sck_i  (spi_sck ),  
   .spi_ss_n_i (spi_ss_n), 
   .spi_mosi_i (spi_mosi), 
@@ -127,7 +156,7 @@ HerzelRegs #(
   .NF(NF)
 ) u_HerzelRegs (
   .rstn          (rstn_syn    ),
-  .clk           (clk         ),
+  .clk           (clkd        ),
   .freq_arr_o    (freq_arr    ),
   .en_cordic_o   (en_cordic   ),
   .valid_angel_i (valid_angel ),
@@ -147,7 +176,7 @@ div_all #(
   .NF(NF)
 ) u_div_all(
   .rstn       (rstn_all ),
-  .clk        (clk      ),
+  .clk        (clkd     ),
   .en         (en_cordic),
   .valid      (valid_div),
   .num_samp_i (num_samp ),
@@ -162,7 +191,7 @@ Angel #(
   .NF(NF)
 ) u_Angel (
   .rstn      (rstn_all   ),
-  .clk       (clk        ),
+  .clk       (clkd       ),
   .en        (valid_div  ),
   .valid     (valid_angel),
   .k_arr_i   (k_arr      ),
@@ -174,7 +203,7 @@ Cordic #(
   .NF(NF)
 ) u_Cordic (
   .rstn (rstn_all    ),
-  .clk  (clk         ),
+  .clk  (clkd        ),
   .en   (valid_angel ),
   .valid(valid_cordic),
   .ang_i(angel_arr   ),
@@ -187,7 +216,7 @@ assign en_scl = valid_cordic && enable_syn;
 
 DataScale u_DataScale (
   .rstn  (rstn_all  ),
-  .clk   (clk       ),
+  .clk   (clkd      ),
   .enable(en_scl    ),
   .valid (valid_scl ),
   .mode  (mode      ),
@@ -202,7 +231,7 @@ generate
       .NF(NF)
     ) u_Herzel (
       .rstn     (rstn_h            ),
-      .clk      (clk               ),
+      .clk      (clkd              ),
       .en       (valid_scl         ),
       .valid    (valid_herzel[gvar]),
       .ns_i     (num_samp          ),

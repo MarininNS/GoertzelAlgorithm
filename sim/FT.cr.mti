@@ -16,6 +16,20 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 Top level modules:
 	spi2axi_wrap
 
+} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Herzel.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Herzel.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module Herzel
+
+Top level modules:
+	Herzel
+
+} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/DataScale.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/DataScale.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module DataScale
+
+Top level modules:
+	DataScale
+
 } {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/mult_sign.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/mult_sign.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
 -- Compiling module mult_sign
@@ -37,14 +51,6 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 -- Importing package axi_pkg
 -- Compiling module HerzelRegs
 ** Warning: D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv(22): (vlog-13314) Defaulting port 'axio_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
-** Warning: D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv(110): (vlog-2182) 'version' might be read before written in always_comb or always @* block.
-** Warning: D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv(111): (vlog-2182) 'debug' might be read before written in always_comb or always @* block.
-** Warning: D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv(112): (vlog-2182) 'mode' might be read before written in always_comb or always @* block.
-** Warning: D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv(113): (vlog-2182) 'num_samp' might be read before written in always_comb or always @* block.
-** Warning: D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv(114): (vlog-2182) 'samp_freq' might be read before written in always_comb or always @* block.
-** Warning: D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv(115): (vlog-2182) 'en_cordic' might be read before written in always_comb or always @* block.
-** Warning: D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv(117): (vlog-2182) 'reset_all' might be read before written in always_comb or always @* block.
-** Warning: D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv(118): (vlog-2182) 'reset_h' might be read before written in always_comb or always @* block.
 
 Top level modules:
 	HerzelRegs
@@ -56,13 +62,19 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 Top level modules:
 	--none--
 
-} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/FourierTransform_tb.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/FourierTransform_tb.sv
+} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/clk_div.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/clk_div.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling package FourierTransform_tb_sv_unit
--- Compiling module FourierTransform_tb
+-- Compiling module clk_div
 
 Top level modules:
-	FourierTransform_tb
+	clk_div
+
+} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Cordic.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Cordic.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module Cordic
+
+Top level modules:
+	Cordic
 
 } {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_data.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_data.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
@@ -78,20 +90,6 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 Top level modules:
 	--none--
 
-} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/divu.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/divu.sv
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module divu
-
-Top level modules:
-	divu
-
-} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module spi2axi
-
-Top level modules:
-	spi2axi
-
 } {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/FourierTransform.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/FourierTransform.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
 -- Compiling package FourierTransform_sv_unit
@@ -101,11 +99,32 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 Top level modules:
 	FourierTransform
 
+} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module spi2axi
+
+Top level modules:
+	spi2axi
+
+} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/divu.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/divu.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module divu
+
+Top level modules:
+	divu
+
 } {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/spi_if.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/spi_if.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
 -- Compiling interface spi_if
 
 Top level modules:
 	--none--
+
+} {} {}} D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/div_all.sv {1 {vlog -work work -sv -stats=none D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/div_all.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module div_all
+
+Top level modules:
+	div_all
 
 } {} {}}

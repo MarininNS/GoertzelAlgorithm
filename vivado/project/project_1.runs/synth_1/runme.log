@@ -10,6 +10,7 @@
     ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 
 source FourierTransform.tcl -notrace
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1036.098 ; gain = 0.000
 Command: synth_design -top FourierTransform -part xcvu9p-flga2104-2L-e
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xcvu9p'
@@ -17,9 +18,9 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xcvu9p'
 INFO: [Device 21-403] Loading part xcvu9p-flga2104-2L-e
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 14756
+INFO: [Synth 8-7075] Helper process launched with PID 9620
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1730.793 ; gain = 241.930
+Starting RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1731.738 ; gain = 245.012
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'FourierTransform' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/FourierTransform.sv:5]
 	Parameter NF bound to: 11 - type: integer 
@@ -37,33 +38,42 @@ INFO: [Synth 8-6157] synthesizing module 'mult_sign' [D:/Desktop/Study_now/SRW/G
 	Parameter FRQ3 bound to: 32 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'mult_sign' (1#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/mult_sign.sv:1]
 INFO: [Synth 8-6155] done synthesizing module 'Herzel' (2#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Herzel.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'IBUFDS' [D:/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:32992]
+	Parameter CAPACITANCE bound to: DONT_CARE - type: string 
+	Parameter DIFF_TERM bound to: FALSE - type: string 
+	Parameter DQS_BIAS bound to: FALSE - type: string 
+	Parameter IBUF_DELAY_VALUE bound to: 0 - type: string 
+	Parameter IBUF_LOW_PWR bound to: TRUE - type: string 
+	Parameter IFD_DELAY_VALUE bound to: AUTO - type: string 
+	Parameter IOSTANDARD bound to: DEFAULT - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'IBUFDS' (3#1) [D:/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:32992]
 INFO: [Synth 8-6157] synthesizing module 'resync_nrst' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_nrst.sv:1]
 	Parameter NUM_STAGE bound to: 3 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'resync_nrst' (3#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_nrst.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'resync_nrst' (4#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_nrst.sv:1]
 INFO: [Synth 8-6157] synthesizing module 'resync_data' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_data.sv:1]
 	Parameter NUM_STAGE bound to: 3 - type: integer 
 	Parameter DW bound to: 1 - type: integer 
 	Parameter STG_DW bound to: 3 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'resync_data' (4#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_data.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'resync_data' (5#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_data.sv:1]
 INFO: [Synth 8-6157] synthesizing module 'resync_data__parameterized0' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_data.sv:1]
 	Parameter NUM_STAGE bound to: 3 - type: integer 
 	Parameter DW bound to: 8 - type: integer 
 	Parameter STG_DW bound to: 24 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'resync_data__parameterized0' (4#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_data.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'resync_data__parameterized0' (5#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_data.sv:1]
 INFO: [Synth 8-6157] synthesizing module 'spi2axi_wrap' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi_wrap.sv:3]
 INFO: [Synth 8-6157] synthesizing module 'spi2axi' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv:1]
 INFO: [Synth 8-6157] synthesizing module 'resync_data__parameterized1' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_data.sv:1]
 	Parameter NUM_STAGE bound to: 3 - type: integer 
 	Parameter DW bound to: 1 - type: integer 
 	Parameter STG_DW bound to: 3 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'resync_data__parameterized1' (4#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_data.sv:1]
-INFO: [Synth 8-6155] done synthesizing module 'spi2axi' (5#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv:1]
-INFO: [Synth 8-6155] done synthesizing module 'spi2axi_wrap' (6#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi_wrap.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'resync_data__parameterized1' (5#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_data.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'spi2axi' (6#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'spi2axi_wrap' (7#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/spi2axi_wrap.sv:3]
 INFO: [Synth 8-6157] synthesizing module 'HerzelRegs' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:3]
 	Parameter NF bound to: 11 - type: integer 
 	Parameter FREQ_BA bound to: 268435456 - type: integer 
 	Parameter DATA_BA bound to: 536870912 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'HerzelRegs' (7#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'HerzelRegs' (8#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:3]
 INFO: [Synth 8-6157] synthesizing module 'div_all' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/div_all.sv:1]
 	Parameter NF bound to: 11 - type: integer 
 INFO: [Synth 8-6157] synthesizing module 'divu' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/divu.sv:5]
@@ -71,8 +81,8 @@ INFO: [Synth 8-6157] synthesizing module 'divu' [D:/Desktop/Study_now/SRW/Goertz
 	Parameter FBITS bound to: 44 - type: integer 
 	Parameter FBITSW bound to: 44 - type: integer 
 	Parameter ITER bound to: 108 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'divu' (8#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/divu.sv:5]
-INFO: [Synth 8-6155] done synthesizing module 'div_all' (9#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/div_all.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'divu' (9#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/divu.sv:5]
+INFO: [Synth 8-6155] done synthesizing module 'div_all' (10#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/div_all.sv:1]
 INFO: [Synth 8-6157] synthesizing module 'Angel' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Angel.sv:1]
 	Parameter NF bound to: 11 - type: integer 
 INFO: [Synth 8-6157] synthesizing module 'mult_sign__parameterized0' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/mult_sign.sv:1]
@@ -85,50 +95,56 @@ INFO: [Synth 8-6157] synthesizing module 'mult_sign__parameterized0' [D:/Desktop
 	Parameter FRQ3_O bound to: 44 - type: integer 
 	Parameter INT3 bound to: 40 - type: integer 
 	Parameter FRQ3 bound to: 44 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'mult_sign__parameterized0' (9#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/mult_sign.sv:1]
-INFO: [Synth 8-6155] done synthesizing module 'Angel' (10#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Angel.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'mult_sign__parameterized0' (10#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/mult_sign.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'Angel' (11#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Angel.sv:1]
 INFO: [Synth 8-6157] synthesizing module 'Cordic' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Cordic.sv:1]
 	Parameter NF bound to: 11 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'Cordic' (11#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Cordic.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'Cordic' (12#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/Cordic.sv:1]
 INFO: [Synth 8-6157] synthesizing module 'DataScale' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/DataScale.sv:1]
 INFO: [Synth 8-6157] synthesizing module 'resync_data__parameterized2' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_data.sv:1]
 	Parameter NUM_STAGE bound to: 2 - type: integer 
 	Parameter DW bound to: 1 - type: integer 
 	Parameter STG_DW bound to: 2 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'resync_data__parameterized2' (11#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_data.sv:1]
-INFO: [Synth 8-6155] done synthesizing module 'DataScale' (12#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/DataScale.sv:1]
-INFO: [Synth 8-6155] done synthesizing module 'FourierTransform' (13#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/FourierTransform.sv:5]
+INFO: [Synth 8-6155] done synthesizing module 'resync_data__parameterized2' (12#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/resync_data.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'DataScale' (13#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/DataScale.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'FourierTransform' (14#1) [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/FourierTransform.sv:5]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1806.992 ; gain = 318.129
+Finished RTL Elaboration : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 1810.031 ; gain = 323.305
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1824.918 ; gain = 336.055
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1827.957 ; gain = 341.230
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1824.918 ; gain = 336.055
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1827.957 ; gain = 341.230
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.563 . Memory (MB): peak = 1824.918 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.562 . Memory (MB): peak = 1839.980 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
 Parsing XDC File [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/constraints.xdc]
-create_clock: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1985.328 ; gain = 6.988
+create_clock: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1985.793 ; gain = 10.992
+WARNING: [Vivado 12-661] port or pin 'DUT.clkd' not found. [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/constraints.xdc:3]
+CRITICAL WARNING: [Vivado 12-4739] create_generated_clock:No valid object(s) found for '-objects DUT.clkd'. [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/constraints.xdc:3]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
 Finished Parsing XDC File [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/constraints.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/constraints.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/FourierTransform_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/FourierTransform_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 1985.328 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 1985.793 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-No Unisim elements were transformed.
+  A total of 1 instances were transformed.
+  IBUFDS => IBUFDS (DIFFINBUF, IBUFCTRL): 1 instance 
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.154 . Memory (MB): peak = 1985.328 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.164 . Memory (MB): peak = 1985.793 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 1985.328 ; gain = 496.465
+Finished Constraint Validation : Time (s): cpu = 00:00:39 ; elapsed = 00:00:41 . Memory (MB): peak = 1985.793 ; gain = 499.066
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -136,13 +152,13 @@ Start Loading Part and Timing Information
 Loading part: xcvu9p-flga2104-2L-e
 INFO: [Synth 8-6742] Reading net delay rules and data
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 1985.328 ; gain = 496.465
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:39 ; elapsed = 00:00:41 . Memory (MB): peak = 1985.793 ; gain = 499.066
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 1985.328 ; gain = 496.465
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:40 ; elapsed = 00:00:41 . Memory (MB): peak = 1985.793 ; gain = 499.066
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'axi_cstate_reg' in module 'spi2axi'
 INFO: [Synth 8-802] inferred FSM for state register 'curr_state_reg' in module 'HerzelRegs'
@@ -172,26 +188,6 @@ INFO: [Synth 8-3354] encoded FSM with state register 'axi_cstate_reg' using enco
                    WRESP |                              101 | 00000000000000000000000000000101
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'curr_state_reg' using encoding 'sequential' in module 'HerzelRegs'
-WARNING: [Synth 8-327] inferring latch for variable 'freq_reg[10]' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:124]
-WARNING: [Synth 8-327] inferring latch for variable 'freq_reg[9]' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:124]
-WARNING: [Synth 8-327] inferring latch for variable 'freq_reg[8]' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:124]
-WARNING: [Synth 8-327] inferring latch for variable 'freq_reg[7]' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:124]
-WARNING: [Synth 8-327] inferring latch for variable 'freq_reg[6]' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:124]
-WARNING: [Synth 8-327] inferring latch for variable 'freq_reg[5]' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:124]
-WARNING: [Synth 8-327] inferring latch for variable 'freq_reg[4]' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:124]
-WARNING: [Synth 8-327] inferring latch for variable 'freq_reg[3]' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:124]
-WARNING: [Synth 8-327] inferring latch for variable 'freq_reg[2]' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:124]
-WARNING: [Synth 8-327] inferring latch for variable 'freq_reg[1]' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:124]
-WARNING: [Synth 8-327] inferring latch for variable 'freq_reg[0]' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:124]
-WARNING: [Synth 8-327] inferring latch for variable 'en_cordic_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:115]
-WARNING: [Synth 8-327] inferring latch for variable 'num_samp_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:113]
-WARNING: [Synth 8-327] inferring latch for variable 'samp_freq_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:114]
-WARNING: [Synth 8-327] inferring latch for variable 'mode_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:112]
-WARNING: [Synth 8-327] inferring latch for variable 'reset_all_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:117]
-WARNING: [Synth 8-327] inferring latch for variable 'reset_h_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:118]
-WARNING: [Synth 8-327] inferring latch for variable 'version_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:110]
-WARNING: [Synth 8-327] inferring latch for variable 'debug_reg' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:111]
-WARNING: [Synth 8-327] inferring latch for variable 'axii_o_reg[bresp]' [D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/HerzelRegs.sv:84]
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -233,7 +229,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'curr_state_reg' using enco
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'curr_state_reg' using encoding 'sequential' in module 'Herzel'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:44 ; elapsed = 00:00:45 . Memory (MB): peak = 1985.328 ; gain = 496.465
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:46 ; elapsed = 00:00:48 . Memory (MB): peak = 1985.793 ; gain = 499.066
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -252,15 +248,15 @@ Detailed RTL Component Info :
 +---Registers : 
 	               65 Bit    Registers := 1     
 	               64 Bit    Registers := 145   
-	               32 Bit    Registers := 18    
+	               32 Bit    Registers := 46    
 	               24 Bit    Registers := 1     
 	                9 Bit    Registers := 2     
 	                8 Bit    Registers := 5     
 	                7 Bit    Registers := 1     
 	                4 Bit    Registers := 1     
 	                3 Bit    Registers := 5     
-	                2 Bit    Registers := 2     
-	                1 Bit    Registers := 35    
+	                2 Bit    Registers := 4     
+	                1 Bit    Registers := 45    
 +---Multipliers : 
 	              20x32  Multipliers := 1     
 +---Muxes : 
@@ -275,11 +271,10 @@ Detailed RTL Component Info :
 	   2 Input   45 Bit        Muxes := 1     
 	   8 Input   32 Bit        Muxes := 13    
 	   7 Input   32 Bit        Muxes := 1     
-	   2 Input   32 Bit        Muxes := 7     
+	   2 Input   32 Bit        Muxes := 8     
+	  11 Input   32 Bit        Muxes := 3     
 	  10 Input   32 Bit        Muxes := 1     
-	   4 Input   32 Bit        Muxes := 1     
-	   6 Input   32 Bit        Muxes := 2     
-	  11 Input   32 Bit        Muxes := 1     
+	   6 Input   32 Bit        Muxes := 3     
 	  11 Input   11 Bit        Muxes := 1     
 	   2 Input   11 Bit        Muxes := 3     
 	  11 Input    9 Bit        Muxes := 1     
@@ -290,22 +285,22 @@ Detailed RTL Component Info :
 	   2 Input    6 Bit        Muxes := 5     
 	   2 Input    5 Bit        Muxes := 2     
 	   2 Input    4 Bit        Muxes := 4     
+	  11 Input    4 Bit        Muxes := 2     
 	   8 Input    3 Bit        Muxes := 11    
 	   2 Input    3 Bit        Muxes := 24    
 	   7 Input    3 Bit        Muxes := 1     
 	   6 Input    3 Bit        Muxes := 1     
-	   4 Input    2 Bit        Muxes := 1     
-	   2 Input    2 Bit        Muxes := 5     
-	  10 Input    2 Bit        Muxes := 1     
 	   6 Input    2 Bit        Muxes := 2     
-	   2 Input    1 Bit        Muxes := 97    
+	   2 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 95    
 	   8 Input    1 Bit        Muxes := 93    
 	   7 Input    1 Bit        Muxes := 12    
-	  10 Input    1 Bit        Muxes := 8     
-	   4 Input    1 Bit        Muxes := 10    
-	  11 Input    1 Bit        Muxes := 40    
+	   4 Input    1 Bit        Muxes := 12    
+	  11 Input    1 Bit        Muxes := 39    
 	  12 Input    1 Bit        Muxes := 1     
-	   6 Input    1 Bit        Muxes := 45    
+	  10 Input    1 Bit        Muxes := 9     
+	  13 Input    1 Bit        Muxes := 1     
+	   6 Input    1 Bit        Muxes := 52    
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -472,7 +467,7 @@ DSP Report: Generating DSP data_m0, operation Mode is: (PCIN>>17)+(A:0xd0000)*B.
 DSP Report: operator data_m0 is absorbed into DSP data_m0.
 DSP Report: operator data_m0 is absorbed into DSP data_m0.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:02 ; elapsed = 00:02:04 . Memory (MB): peak = 1985.328 ; gain = 496.465
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:27 ; elapsed = 00:02:30 . Memory (MB): peak = 1985.793 ; gain = 499.066
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -542,19 +537,19 @@ Finished ROM, RAM, DSP and Shift Register Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:25 ; elapsed = 00:02:29 . Memory (MB): peak = 2414.375 ; gain = 925.512
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:49 ; elapsed = 00:02:54 . Memory (MB): peak = 2423.082 ; gain = 936.355
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:02:51 ; elapsed = 00:02:55 . Memory (MB): peak = 2618.801 ; gain = 1129.938
+Finished Timing Optimization : Time (s): cpu = 00:02:54 ; elapsed = 00:02:59 . Memory (MB): peak = 2546.977 ; gain = 1060.250
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:03:31 ; elapsed = 00:03:35 . Memory (MB): peak = 2644.918 ; gain = 1156.055
+Finished Technology Mapping : Time (s): cpu = 00:03:09 ; elapsed = 00:03:14 . Memory (MB): peak = 2595.922 ; gain = 1109.195
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -572,37 +567,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:03:42 ; elapsed = 00:03:47 . Memory (MB): peak = 2668.367 ; gain = 1179.504
+Finished IO Insertion : Time (s): cpu = 00:03:19 ; elapsed = 00:03:24 . Memory (MB): peak = 2613.086 ; gain = 1126.359
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:03:43 ; elapsed = 00:03:47 . Memory (MB): peak = 2668.367 ; gain = 1179.504
+Finished Renaming Generated Instances : Time (s): cpu = 00:03:19 ; elapsed = 00:03:24 . Memory (MB): peak = 2613.086 ; gain = 1126.359
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:04:00 ; elapsed = 00:04:05 . Memory (MB): peak = 2668.367 ; gain = 1179.504
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:03:24 ; elapsed = 00:03:29 . Memory (MB): peak = 2613.086 ; gain = 1126.359
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:04:01 ; elapsed = 00:04:06 . Memory (MB): peak = 2668.367 ; gain = 1179.504
+Finished Renaming Generated Ports : Time (s): cpu = 00:03:24 ; elapsed = 00:03:29 . Memory (MB): peak = 2613.086 ; gain = 1126.359
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:04:01 ; elapsed = 00:04:06 . Memory (MB): peak = 2668.367 ; gain = 1179.504
+Finished Handling Custom Attributes : Time (s): cpu = 00:03:25 ; elapsed = 00:03:31 . Memory (MB): peak = 2613.086 ; gain = 1126.359
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:04:02 ; elapsed = 00:04:07 . Memory (MB): peak = 2668.367 ; gain = 1179.504
+Finished Renaming Generated Nets : Time (s): cpu = 00:03:26 ; elapsed = 00:03:31 . Memory (MB): peak = 2613.086 ; gain = 1126.359
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -618,56 +613,58 @@ Report Cell Usage:
 +------+----------------+------+
 |      |Cell            |Count |
 +------+----------------+------+
-|1     |BUFG            |    12|
-|2     |CARRY8          |   575|
-|3     |DSP_ALU         |   210|
-|4     |DSP_A_B_DATA    |   210|
-|5     |DSP_C_DATA      |   210|
-|6     |DSP_MULTIPLIER  |   210|
-|7     |DSP_M_DATA      |   210|
-|8     |DSP_OUTPUT      |   210|
-|9     |DSP_PREADD      |   210|
-|10    |DSP_PREADD_DATA |   210|
-|11    |LUT1            |   459|
-|12    |LUT2            |  2292|
-|13    |LUT3            |  1172|
-|14    |LUT4            |  1739|
-|15    |LUT5            |  4089|
-|16    |LUT6            |  4230|
-|17    |MUXF7           |  1481|
-|18    |FDCE            |  9607|
-|19    |FDPE            |     5|
-|20    |FDRE            |   486|
+|1     |BUFG            |     2|
+|2     |CARRY8          |   421|
+|3     |DSP_ALU         |   208|
+|4     |DSP_A_B_DATA    |   208|
+|5     |DSP_C_DATA      |   208|
+|6     |DSP_MULTIPLIER  |   208|
+|7     |DSP_M_DATA      |   208|
+|8     |DSP_OUTPUT      |   208|
+|9     |DSP_PREADD      |   208|
+|10    |DSP_PREADD_DATA |   208|
+|11    |LUT1            |  1154|
+|12    |LUT2            |  1805|
+|13    |LUT3            |  1140|
+|14    |LUT4            |   782|
+|15    |LUT5            |  1171|
+|16    |LUT6            |  4698|
+|17    |MUXF7           |    78|
+|18    |FDCE            |  7860|
+|19    |FDPE            |    41|
+|20    |FDRE            |   523|
 |21    |FDSE            |    32|
-|22    |LD              |   516|
-|23    |IBUF            |    14|
+|22    |IBUF            |     4|
+|23    |IBUFDS          |     1|
 |24    |OBUF            |     1|
 +------+----------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:04:02 ; elapsed = 00:04:07 . Memory (MB): peak = 2668.367 ; gain = 1179.504
+Finished Writing Synthesis Report : Time (s): cpu = 00:03:26 ; elapsed = 00:03:31 . Memory (MB): peak = 2613.086 ; gain = 1126.359
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 20 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:03:31 ; elapsed = 00:03:50 . Memory (MB): peak = 2668.367 ; gain = 1019.094
-Synthesis Optimization Complete : Time (s): cpu = 00:04:02 ; elapsed = 00:04:07 . Memory (MB): peak = 2668.367 ; gain = 1179.504
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:02:54 ; elapsed = 00:03:14 . Memory (MB): peak = 2613.086 ; gain = 968.523
+Synthesis Optimization Complete : Time (s): cpu = 00:03:26 ; elapsed = 00:03:31 . Memory (MB): peak = 2613.086 ; gain = 1126.359
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.845 . Memory (MB): peak = 2680.387 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 2808 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 7 CPU seconds
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.701 . Memory (MB): peak = 2628.961 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 714 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 6 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 2762.070 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 2713.250 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 752 instances were transformed.
-  BUFG => BUFGCE: 12 instances
-  DSP48E2 => DSP48E2 (DSP_ALU, DSP_A_B_DATA, DSP_C_DATA, DSP_MULTIPLIER, DSP_M_DATA, DSP_OUTPUT, DSP_PREADD, DSP_PREADD_DATA): 210 instances
-  IBUF => IBUF (IBUFCTRL, INBUF): 14 instances
-  LD => LDCE: 516 instances
+  A total of 215 instances were transformed.
+  BUFG => BUFGCE: 2 instances
+  DSP48E2 => DSP48E2 (DSP_ALU, DSP_A_B_DATA, DSP_C_DATA, DSP_MULTIPLIER, DSP_M_DATA, DSP_OUTPUT, DSP_PREADD, DSP_PREADD_DATA): 208 instances
+  IBUF => IBUF (IBUFCTRL, INBUF): 4 instances
+  IBUFDS => IBUFDS (DIFFINBUF, IBUFCTRL): 1 instance 
 
 INFO: [Common 17-83] Releasing license: Synthesis
-60 Infos, 20 Warnings, 0 Critical Warnings and 0 Errors encountered.
+64 Infos, 1 Warnings, 1 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:04:45 ; elapsed = 00:04:54 . Memory (MB): peak = 2762.070 ; gain = 1726.488
+synth_design: Time (s): cpu = 00:04:16 ; elapsed = 00:04:25 . Memory (MB): peak = 2713.250 ; gain = 1677.152
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'D:/Desktop/Study_now/SRW/GoertzelAlgorithm/vivado/project/project_1.runs/synth_1/FourierTransform.dcp' has been generated.
-write_checkpoint: Time (s): cpu = 00:00:15 ; elapsed = 00:00:13 . Memory (MB): peak = 2762.070 ; gain = 0.000
+write_checkpoint: Time (s): cpu = 00:00:13 ; elapsed = 00:00:11 . Memory (MB): peak = 2713.250 ; gain = 0.000
 INFO: [runtcl-4] Executing : report_utilization -file FourierTransform_utilization_synth.rpt -pb FourierTransform_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sun May 28 18:45:15 2023...
+INFO: [Common 17-206] Exiting Vivado at Mon May 29 23:59:46 2023...

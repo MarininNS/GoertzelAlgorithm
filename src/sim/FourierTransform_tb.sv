@@ -6,7 +6,7 @@ module FourierTransform_tb;
 localparam CLK_PER     = 10  ;
 localparam ADC_CLK_PER = 100 ;
 localparam SPI_CLK_PER = 1000;
-localparam NF          = 14  ;
+localparam NF          = 12  ;
 
 logic ok   ;
 
@@ -96,7 +96,7 @@ end
 initial begin
   @(posedge enable_p);
   while (!(DUT.herzel[9].u_Herzel.valid)) begin
-    @(posedge clk);
+    @(posedge DUT.clkd);
     $fwrite(fd_w_v, "%h\n", DUT.herzel[8].u_Herzel.vm1);
   end
   $fwrite(fd_w_v, "%h\n", DUT.herzel[8].u_Herzel.vm1);
@@ -169,7 +169,7 @@ task herzel();
   while (!(spi_data&STATUS_CORDIC_MSK)) begin
     spi_if.read_data(STATUS, spi_data, spi_stat);
   end
-  @(posedge clk);
+  @(posedge DUT.clkd);
   if (fd_r_s != 0)
     $fclose(fd_r_s);
   fd_r_s = $fopen("D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/data/sample.csv", "r");
@@ -177,7 +177,7 @@ task herzel();
     $fscanf(fd_r_s, "%d\n", sample_p);
     enable_p = 1;
     while (!$feof(fd_r_s)) begin
-      @(posedge clk);
+      @(posedge DUT.clkd);
       $fscanf(fd_r_s, "%d\n", sample_p);
     end
     enable_p = 0;
@@ -203,23 +203,28 @@ initial begin
   spi_data  = 0;
   vlog_data = 0;
   spi_if.init();
-  repeat(5) @(posedge clk);
+  repeat(20) @(posedge DUT.clkd);
   rstn = 1;
-  repeat(20) @(posedge clk);
-
-  spi_if.write_data(NUM_SAMP , 32'd5000, spi_stat);
-  spi_if.write_data(SAMP_FREQ, 32'd100000, spi_stat);
-  spi_if.write_data(MODE     , 32'd1, spi_stat);
-
-  $display("[%010t] Write freq", $time);
-  for (int i = 0; i < NF; i = i + 1) begin
-    spi_if.write_data(FREQ_1 + 32'h4*i, mcad_freq[i], spi_stat);
-  end
+  repeat(20) @(posedge DUT.clkd);
   
-  repeat(1) begin
+  repeat(2) begin
     spi_if.write_data(RESET_ALL, 32'd1, spi_stat);
-    repeat(5) @(posedge clk);
+    repeat(20) @(posedge DUT.clkd);
     spi_if.write_data(RESET_ALL, 32'd0, spi_stat);
+
+    // rstn = 0;
+    // repeat(20) @(posedge DUT.clkd);
+    // rstn = 1;
+    // repeat(20) @(posedge DUT.clkd);
+
+    $display("[%010t] Write freq", $time);
+    for (int i = 0; i < NF; i = i + 1) begin
+      spi_if.write_data(FREQ_1 + 32'h4*i, mcad_freq[i], spi_stat);
+    end
+
+    spi_if.write_data(NUM_SAMP , 32'd5000, spi_stat);
+    spi_if.write_data(SAMP_FREQ, 32'd10000, spi_stat);
+    spi_if.write_data(MODE     , 32'd1, spi_stat);
 
     $display("[%010t] Start Herzel", $time);
     herzel();

@@ -1,13 +1,13 @@
 onerror {resume}
 quietly WaveActivateNextPane {} 0
-add wave -noupdate -group DUT -radix hexadecimal /FourierTransform_tb/DUT/rstn
-add wave -noupdate -group DUT -radix hexadecimal /FourierTransform_tb/DUT/clk
-add wave -noupdate -group DUT -radix hexadecimal /FourierTransform_tb/DUT/spi_sck
-add wave -noupdate -group DUT -radix hexadecimal /FourierTransform_tb/DUT/spi_ss_n
-add wave -noupdate -group DUT -radix hexadecimal /FourierTransform_tb/DUT/spi_mosi
-add wave -noupdate -group DUT -radix hexadecimal /FourierTransform_tb/DUT/spi_miso
-add wave -noupdate -group DUT -radix hexadecimal /FourierTransform_tb/DUT/enable_p
-add wave -noupdate -group DUT -radix hexadecimal /FourierTransform_tb/DUT/sample_p
+add wave -noupdate -expand -group DUT -radix hexadecimal /FourierTransform_tb/DUT/rstn
+add wave -noupdate -expand -group DUT -radix hexadecimal /FourierTransform_tb/DUT/clk
+add wave -noupdate -expand -group DUT -radix hexadecimal /FourierTransform_tb/DUT/spi_sck
+add wave -noupdate -expand -group DUT -radix hexadecimal /FourierTransform_tb/DUT/spi_ss_n
+add wave -noupdate -expand -group DUT -radix hexadecimal /FourierTransform_tb/DUT/spi_mosi
+add wave -noupdate -expand -group DUT -radix hexadecimal /FourierTransform_tb/DUT/spi_miso
+add wave -noupdate -expand -group DUT -radix hexadecimal /FourierTransform_tb/DUT/enable_p
+add wave -noupdate -expand -group DUT -radix hexadecimal /FourierTransform_tb/DUT/sample_p
 add wave -noupdate -group DataScale -radix hexadecimal /FourierTransform_tb/DUT/u_DataScale/SCALE_COEF
 add wave -noupdate -group DataScale -radix hexadecimal /FourierTransform_tb/DUT/u_DataScale/rstn
 add wave -noupdate -group DataScale -radix hexadecimal /FourierTransform_tb/DUT/u_DataScale/clk
@@ -131,7 +131,7 @@ add wave -noupdate -radix hexadecimal -childformat {{/FourierTransform_tb/DUT/ax
 add wave -noupdate -radix hexadecimal /FourierTransform_tb/DUT/axii
 add wave -noupdate -radix hexadecimal /FourierTransform_tb/spi_data
 add wave -noupdate -radix hexadecimal /FourierTransform_tb/spi_stat
-add wave -noupdate /FourierTransform_tb/DUT/u_HerzelRegs/status
+add wave -noupdate -radix hexadecimal /FourierTransform_tb/DUT/u_HerzelRegs/status
 add wave -noupdate -radix hexadecimal /FourierTransform_tb/mcad_freq
 add wave -noupdate -radix hexadecimal /FourierTransform_tb/mcad_data
 add wave -noupdate -radix hexadecimal /FourierTransform_tb/mcad_flog
@@ -163,48 +163,48 @@ add wave -noupdate -group H8 -radix hexadecimal {/FourierTransform_tb/DUT/herzel
 add wave -noupdate -group H8 -radix hexadecimal {/FourierTransform_tb/DUT/herzel[8]/u_Herzel/mul_a}
 add wave -noupdate -group H8 -radix hexadecimal {/FourierTransform_tb/DUT/herzel[8]/u_Herzel/mul_b}
 add wave -noupdate -group H8 -radix hexadecimal {/FourierTransform_tb/DUT/herzel[8]/u_Herzel/mul_c}
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_sck
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_ss
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_mosi
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_miso
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_clk
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_rstn
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_awvalid
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_awaddr
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_awprot
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_awready
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_wvalid
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_wdata
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_wstrb
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_wready
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_bvalid
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_bresp
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_bready
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_arvalid
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_araddr
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_arprot
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_arready
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_rvalid
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_rdata
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_rresp
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_rready
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_cstate
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_nstate
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_cstate
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_nstate
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_sck_syn
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_sck_old
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_sck_re
-add wave -noupdate -expand -group spi2axi -radix unsigned /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_cntr
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_cmd
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_addr
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_wdata
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_rdata
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_dumm
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_stat
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_ss_syn
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_ss_old
-add wave -noupdate -expand -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_ss_fe
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_sck
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_ss
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_mosi
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_miso
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_clk
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_rstn
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_awvalid
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_awaddr
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_awprot
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_awready
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_wvalid
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_wdata
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_wstrb
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_wready
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_bvalid
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_bresp
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_bready
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_arvalid
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_araddr
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_arprot
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_arready
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_rvalid
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_rdata
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_rresp
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_rready
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_cstate
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_nstate
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_cstate
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/axi_nstate
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_sck_syn
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_sck_old
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_sck_re
+add wave -noupdate -group spi2axi -radix unsigned /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_cntr
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_cmd
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_addr
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_wdata
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_rdata
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_dumm
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_stat
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_ss_syn
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_ss_old
+add wave -noupdate -group spi2axi -radix hexadecimal /FourierTransform_tb/DUT/u_spi2axi_wrap/u_spi2axi/spi_ss_fe
 add wave -noupdate -group div -radix hexadecimal /FourierTransform_tb/DUT/u_div_all/NF
 add wave -noupdate -group div -radix hexadecimal /FourierTransform_tb/DUT/u_div_all/rstn
 add wave -noupdate -group div -radix hexadecimal /FourierTransform_tb/DUT/u_div_all/clk
@@ -282,8 +282,11 @@ add wave -noupdate -group HREGS -radix hexadecimal /FourierTransform_tb/DUT/u_He
 add wave -noupdate -group HREGS -radix hexadecimal /FourierTransform_tb/DUT/u_HerzelRegs/data
 add wave -noupdate -group HREGS -radix hexadecimal /FourierTransform_tb/DUT/u_HerzelRegs/curr_state
 add wave -noupdate -group HREGS -radix hexadecimal /FourierTransform_tb/DUT/u_HerzelRegs/next_state
+add wave -noupdate /FourierTransform_tb/DUT/clk
+add wave -noupdate /FourierTransform_tb/DUT/clkt
+add wave -noupdate /FourierTransform_tb/DUT/clkd
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {338841237 ps} 0}
+WaveRestoreCursors {{Cursor 1} {23864 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 150
 configure wave -valuecolwidth 122
@@ -299,4 +302,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {0 ps} {3188120250 ps}
+WaveRestoreZoom {65196012 ps} {71445 ns}
