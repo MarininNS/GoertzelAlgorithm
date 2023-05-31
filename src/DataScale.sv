@@ -7,20 +7,18 @@ module DataScale (
   output logic               valid ,
   input                      mode  ,
   // DATA
-  input               [7 :0] data_i,
-  output logic signed [31:0] data_o 
+  input               [7 :0] data_i, // (8.0)
+  output logic signed [63:0] data_o  // (32.32)
 ); 
 
-logic [31:0] SCALE_COEF = 32'h00_0D0000; // 13/256 (8.24)
-logic [31:0] data  ;
-logic [63:0] data_m;
+logic [7 :0] SCALE_COEF = 8'h0D; // 13/256 (0.8)
+logic [15:0] data_m; // (8.8)
 
 logic enable_syn;
 logic enable_old;
 logic enable_re ;
 
-assign data   = {data_i, 24'h00};
-assign data_o = data_m[55:24]   ;
+assign data_o = {24'h0, data_m[15:0], 24'h0};
 
 resync_data #(
   .NUM_STAGE(2)
@@ -45,7 +43,7 @@ always_ff @(negedge clk, negedge rstn) begin
 
     if (enable_re || mode) begin
       valid  <= enable           ;
-      data_m <= SCALE_COEF * data;
+      data_m <= SCALE_COEF * data_i;
     end
     else begin
       valid  <= 0;

@@ -3,27 +3,32 @@ import axi_pkg::*;
 // `define TEST
 
 module FourierTransform #(
-  parameter NF = 7 // NUM_FREQ
+  parameter NF = 11 // NUM_FREQ
 ) (
   // CLK&RST
   input        rstn    ,
+// `ifdef TEST
   input        clk     ,
+// `else
   // input        clk_p   ,
   // input        clk_n   ,
+// `endif
   // SPI
   input        spi_sck ,
   input        spi_ss_n,
   input        spi_mosi,
   output       spi_miso,
+// `ifdef TEST
   // CTRL               
   input        enable_p,
-  input        enable_n,
+  // input        enable_n,
   // // DATA
-  input  [7:0] sample_p,
-  input  [7:0] sample_n 
+  input  [7:0] sample_p
+  // input  [7:0] sample_n 
+// `endif
 );
 
-
+// `ifndef TEST
 // logic clk;
 // IBUFDS IBUFDS_clk
 // (
@@ -36,7 +41,7 @@ module FourierTransform #(
 // logic       enable_n;
 // logic [7:0] sample_p;
 // logic [7:0] sample_n;
-
+// `endif
 
 logic       clkd;
 
@@ -62,7 +67,7 @@ logic signed [NF-1:0][63:0] angel_arr;
 logic signed [NF-1:0][63:0] coefW_re ;
 logic signed [NF-1:0][63:0] coefW_im ;
 logic signed [NF-1:0][63:0] alpha    ;
-logic signed         [63:0] data_scl ;
+logic signed         [31:0] data_scl ;
 logic signed [NF-1:0][31:0] data_hrz ;
 
 logic          en_cordic   ;
@@ -86,7 +91,7 @@ assign rstn_h   = rstn_syn && (~reset_all_r) && (~reset_h_r);
 
 assign clkd = clk;
 
-
+// `ifndef TEST
   // IBUFDS IBUFDS_enable 
   // (
   //    .I (enable_p),
@@ -104,7 +109,7 @@ assign clkd = clk;
   //     );
   //   end
   // endgenerate
-
+// `else
   assign enable = enable_p;
   genvar gvar_buf;
   generate
@@ -112,7 +117,7 @@ assign clkd = clk;
       assign sample[gvar_buf] = sample_p[gvar_buf];
     end
   endgenerate
-
+// `endif
 
 resync_nrst u_resync_nrst(
   .clk   (clkd    ),

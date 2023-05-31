@@ -9,9 +9,9 @@ module Cordic #(
   output logic                       valid,
   // DATA
   input        signed [NF-1:0][63:0] ang_i, // (20.44)
-  output logic signed [NF-1:0][63:0] cos_o, // (20.44)
-  output logic signed [NF-1:0][63:0] sin_o, // (20.44)
-  output logic signed [NF-1:0][63:0] alpha  // (20.44)
+  output logic signed [NF-1:0][63:0] cos_o, // (32.32)
+  output logic signed [NF-1:0][63:0] sin_o, // (32.32)
+  output logic signed [NF-1:0][63:0] alpha  // (32.32)
 );
 
 typedef enum {  
@@ -34,7 +34,7 @@ state next_state;
 logic signed [63:0] PI       = 64'h00003_243F6A8885A; // (20.44)
 logic signed [63:0] PI2      = 64'h00001_921FB54442D; // (20.44)
 logic signed [63:0] COEF_DEF = 64'h00000_9B74EDA8436; // (20.44)
-logic signed [63:0] ZERO     = 64'h00000_00000000000; // (20.44)
+logic signed [63:0] ZERO     = 64'h0; 
 
 logic signed [63:0] ang  ; // (20.44)
 logic signed [63:0] cos  ; // (20.44)
@@ -54,7 +54,7 @@ mult_sign #(
   .DW    (64),
   .INT1_I(20),
   .INT2_I(20),
-  .INT3_O(20) 
+  .INT3_O(32) 
 ) u_mult_sign (
   .a_in (mul_a),
   .b_in (mul_b),

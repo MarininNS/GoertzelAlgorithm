@@ -1,6 +1,8 @@
 `timescale 1ns/1ns
 `include "./FourierTransformAM.sv"
 
+`define TEST
+
 module FourierTransform_tb;
 
 localparam CLK_PER     = 10  ;
@@ -207,7 +209,7 @@ initial begin
   rstn = 1;
   repeat(20) @(posedge DUT.clkd);
   
-  repeat(2) begin
+  repeat(1) begin
     spi_if.write_data(RESET_ALL, 32'd1, spi_stat);
     repeat(20) @(posedge DUT.clkd);
     spi_if.write_data(RESET_ALL, 32'd0, spi_stat);

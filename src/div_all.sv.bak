@@ -10,7 +10,7 @@ module div_all #(
   input        [NF-1:0][31:0] freq_i     , // (32.0 )
   output logic [NF-1:0][63:0] k_arr_o    , // (20.44)
   output logic         [63:0] ang_coef_o , // (20.44)
-  output logic         [63:0] ns_coef_o    // (32.32)
+  output logic         [63:0] ns_coef_o    // (20.44)
 );
 
 typedef enum {  
@@ -49,7 +49,7 @@ assign samp_freq = {samp_freq_i[19:0], {44{1'b0}}};
 
 genvar gvar;
 generate
-  for (gvar = 0; gvar < NF; gvar = gvar + 1) begin : freq_scale
+  for (gvar = 0; gvar < NF; gvar = gvar + 1) begin
     assign freq[gvar] = {freq_i[gvar][19:0], {44{1'b0}}};
   end
 endgenerate
@@ -155,7 +155,7 @@ always_ff @(posedge clk, negedge rstn) begin
         a <= hcoef;
         b <= num_samp;
         if (done) begin
-          ns_coef_o <= {{13{val[63]}}, val[62:12]};
+          ns_coef_o <= val;
           start <= 0;
           srst  <= 1;
           next_state <= VALID;

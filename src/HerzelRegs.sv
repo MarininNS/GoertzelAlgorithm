@@ -29,19 +29,19 @@ localparam DATA_BA = 32'h2000_0000;
 // addres map of regs and default value
 logic [31:0] version   ; // RW 0x0000_0000
 logic [31:0] debug     ; // RW 0x0000_0004
-logic        mode      ; // RW 0x0000_0008
+logic [31:0] mode      ; // RW 0x0000_0008
 logic [31:0] num_samp  ; // RW 0x0000_000C
 logic [31:0] samp_freq ; // RW 0x0000_0010
 logic [31:0] en_cordic ; // RW 0x0000_0014
 logic [31:0] status    ; // R  0x0000_0018
-logic        reset_all ; // RW 0x0000_001C
-logic        reset_h   ; // RW 0x0000_0020
+logic [31:0] reset_all ; // RW 0x0000_001C
+logic [31:0] reset_h   ; // RW 0x0000_0020
 
 logic [NF-1:0][31:0] freq ; // RW 0x1000_0000
 logic [NF-1:0][31:0] data ; // R  0x2000_0000
 
 always_comb begin
-  mode_o         = mode              ;
+  mode_o         = mode[0]           ;
   num_samp_o     = num_samp          ;
   samp_freq_o    = samp_freq         ;
   en_cordic_o    = en_cordic[0]      ;
@@ -49,8 +49,8 @@ always_comb begin
   status[0]      = valid_angel_i     ;
   status[1]      = valid_cordic_i    ;
   status[2]      = &valid_herzel_i   ;
-  reset_all_o    = reset_all         ;
-  reset_h_o      = reset_h           ;
+  reset_all_o    = reset_all[0]      ;
+  reset_h_o      = reset_h[0]        ;
 
   for (int i=0; i<NF; i=i+1) begin
     freq_arr_o[i] = freq[i];

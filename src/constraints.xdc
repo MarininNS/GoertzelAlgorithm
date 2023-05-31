@@ -3,7 +3,7 @@ create_clock -name clk -period 4.0 [get_ports clk_p]
 create_generated_clock -name clk_div \
                        -source [get_ports clk_p] \
                        -divide_by 4 \
-                       [get_ports DUT.u_clk_div.clk_o]
+                       [get_pins u_clk_div/clk_o]
 # clk
 set_property -dict {IOSTANDARD LVDS     PACKAGE_PIN AY24} [get_ports clk_p      ]
 set_property -dict {IOSTANDARD LVDS     PACKAGE_PIN AY23} [get_ports clk_n      ]
