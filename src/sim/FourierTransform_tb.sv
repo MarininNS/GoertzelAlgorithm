@@ -97,11 +97,11 @@ end
 
 initial begin
   @(posedge enable_p);
-  while (!(DUT.herzel[9].u_Herzel.valid)) begin
+  while (!(DUT.u_Herzel.valid[0])) begin
     @(posedge DUT.clkd);
-    $fwrite(fd_w_v, "%h\n", DUT.herzel[8].u_Herzel.vm1);
+    $fwrite(fd_w_v, "%h\n", DUT.u_Herzel.vm1[0]);
   end
-  $fwrite(fd_w_v, "%h\n", DUT.herzel[8].u_Herzel.vm1);
+  $fwrite(fd_w_v, "%h\n", DUT.u_Herzel.vm1[0]);
 end
 
 initial begin

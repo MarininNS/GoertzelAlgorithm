@@ -1,5 +1,5 @@
 module Herzel #(
-  parameter NF = 2
+  parameter NF = 11
 )(
   // CLK&RST
   input                                rstn     ,
@@ -82,16 +82,13 @@ always_ff @(posedge clk, negedge rstn) begin
         if (en) begin
           if (indx < ns_i) begin
             if (indx == 0) begin
-              for (int i=0;i<NF;i++)
-                vm1[i] <= data_i;
+              vm1 <= {NF{data_i}};
             end
             else if (indx == 1) begin
-              for (int i=0;i<NF;i++)
-                vm1[i] <= data_i + mul_c[i];
+              vm1 <= {NF{data_i}} + mul_c;
             end
             else begin
-              for (int i=0;i<NF;i++)
-                vm1[i] <= data_i + mul_c[i] - vm2[i];
+              vm1 <= {NF{data_i}} + mul_c - vm2;
             end
             indx <= indx + 1;
           end
@@ -139,8 +136,8 @@ end
 
 always_ff @(negedge clk, negedge rstn) begin
     if (!rstn) begin
-    vm2 <= 0;
-    tmp <= 0;
+    vm2        <= 0;
+    tmp        <= 0;
   end
   else begin
     case (curr_state)
@@ -167,8 +164,7 @@ always_comb begin
     end
     NORMR : begin
       mul_a = data;
-      for (int i=0;i<NF;i++)
-        mul_b[i] = ns_coef_i;
+      mul_b = {NF{ns_coef_i}};
     end
     GRADR : begin
       mul_a = data;
@@ -180,8 +176,7 @@ always_comb begin
     end
     NORMI : begin
       mul_a = data;
-      for (int i=0;i<NF;i++)
-        mul_b[i] = ns_coef_i;
+      mul_b = {NF{ns_coef_i}};
     end
     GRADI : begin
       mul_a = data;

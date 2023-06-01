@@ -38,40 +38,40 @@ module FourierTransform #(
 // logic [7:0] sample_n;
 
 
-logic       clkd;
+wire       clkd;
 
-logic       enable    ;
-logic [7:0] sample    ;
-logic       enable_syn;
-logic [7:0] sample_syn;
-logic       rstn_syn  ;
+wire       enable    ;
+wire [7:0] sample    ;
+wire       enable_syn;
+wire [7:0] sample_syn;
+wire       rstn_syn  ;
 
-logic mode       ;
-logic reset_all_r;
-logic reset_h_r  ;
-logic rstn_all   ;
-logic rstn_h     ;
+wire mode       ;
+wire reset_all_r;
+wire reset_h_r  ;
+wire rstn_all   ;
+wire rstn_h     ;
 
-logic                [31:0] num_samp ;
-logic                [31:0] samp_freq;
-logic        [NF-1:0][31:0] freq_arr ;
-logic        [NF-1:0][63:0] k_arr    ;
-logic                [63:0] ang_coef ;
-logic                [63:0] ns_coef  ;
-logic signed [NF-1:0][63:0] angel_arr;
-logic signed [NF-1:0][63:0] coefW_re ;
-logic signed [NF-1:0][63:0] coefW_im ;
-logic signed [NF-1:0][63:0] alpha    ;
-logic signed         [63:0] data_scl ;
-logic signed [NF-1:0][31:0] data_hrz ;
+wire                [31:0] num_samp ;
+wire                [31:0] samp_freq;
+wire        [NF-1:0][31:0] freq_arr ;
+wire        [NF-1:0][63:0] k_arr    ;
+wire                [63:0] ang_coef ;
+wire                [63:0] ns_coef  ;
+wire signed [NF-1:0][63:0] angel_arr;
+wire signed [NF-1:0][63:0] coefW_re ;
+wire signed [NF-1:0][63:0] coefW_im ;
+wire signed [NF-1:0][63:0] alpha    ;
+wire signed         [63:0] data_scl ;
+wire signed [NF-1:0][31:0] data_hrz ;
 
-logic          en_cordic   ;
-logic          en_scl      ;
-logic          valid_div   ;
-logic          valid_angel ;
-logic          valid_cordic;
-logic          valid_scl   ;
-logic [NF-1:0] valid_herzel;
+wire          en_cordic   ;
+wire          en_scl      ;
+wire          valid_div   ;
+wire          valid_angel ;
+wire          valid_cordic;
+wire          valid_scl   ;
+wire [NF-1:0] valid_herzel;
 
 axi_lite_mosi axio;
 axi_lite_miso axii;
@@ -221,25 +221,20 @@ DataScale u_DataScale (
   .data_o(data_scl  ) 
 );
 
-genvar gvar;
-generate 
-  for (gvar = 0; gvar < NF; gvar = gvar + 1) begin : herzel
-    Herzel #(
-      .NF(NF)
-    ) u_Herzel (
-      .rstn     (rstn_h            ),
-      .clk      (clkd              ),
-      .en       (valid_scl         ),
-      .valid    (valid_herzel[gvar]),
-      .ns_i     (num_samp          ),
-      .ns_coef_i(ns_coef           ),
-      .alpha_i  (alpha[gvar]       ),
-      .cW_re_i  (coefW_re[gvar]    ),
-      .cW_im_i  (coefW_im[gvar]    ),
-      .data_i   (data_scl          ),
-      .data_o   (data_hrz[gvar]    ) 
-    ); 
-  end
-endgenerate
+Herzel #(
+  .NF(NF)
+) u_Herzel (
+  .rstn     (rstn_h      ),
+  .clk      (clkd        ),
+  .en       (valid_scl   ),
+  .valid    (valid_herzel),
+  .ns_i     (num_samp    ),
+  .ns_coef_i(ns_coef     ),
+  .alpha_i  (alpha       ),
+  .cW_re_i  (coefW_re    ),
+  .cW_im_i  (coefW_im    ),
+  .data_i   (data_scl    ),
+  .data_o   (data_hrz    ) 
+); 
 
 endmodule
