@@ -5,8 +5,8 @@
 
 module FourierTransform_tb;
 
-localparam CLK_PER     = 10  ;
-localparam ADC_CLK_PER = 100 ;
+localparam CLK_PER     = 5   ;
+localparam ADC_CLK_PER = 500 ;
 localparam SPI_CLK_PER = 1000;
 localparam NF          = 12  ;
 
@@ -40,10 +40,10 @@ logic        enable_n;
 logic [7 :0] sample_p;
 logic [7 :0] sample_n;
 
-assign spi_sck     = spi_if.mst.sck ;
-assign spi_ss_n    = spi_if.mst.ss_n;
-assign spi_mosi    = spi_if.mst.mosi;
-assign spi_if.miso = spi_miso       ;
+assign spi_sck     = spi_if.sck ;
+assign spi_ss_n    = spi_if.ss_n;
+assign spi_mosi    = spi_if.mosi;
+assign spi_if.miso = spi_miso   ;
 
 assign enable_n    = ~enable_p   ;
 assign sample_n[0] = ~sample_p[0];
@@ -98,6 +98,7 @@ end
 initial begin
   @(posedge enable_p);
   while (!(DUT.u_Herzel.valid[0])) begin
+    wait(&DUT.u_Herzel.mul_valid)
     @(posedge DUT.clkd);
     $fwrite(fd_w_v, "%h\n", DUT.u_Herzel.vm1[0]);
   end
@@ -209,7 +210,7 @@ initial begin
   rstn = 1;
   repeat(20) @(posedge DUT.clkd);
   
-  repeat(1) begin
+  repeat(2) begin
     spi_if.write_data(RESET_ALL, 32'd1, spi_stat);
     repeat(20) @(posedge DUT.clkd);
     spi_if.write_data(RESET_ALL, 32'd0, spi_stat);
@@ -226,7 +227,7 @@ initial begin
 
     spi_if.write_data(NUM_SAMP , 32'd5000, spi_stat);
     spi_if.write_data(SAMP_FREQ, 32'd10000, spi_stat);
-    spi_if.write_data(MODE     , 32'd1, spi_stat);
+    spi_if.write_data(MODE     , 32'd0, spi_stat);
 
     $display("[%010t] Start Herzel", $time);
     herzel();

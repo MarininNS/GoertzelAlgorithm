@@ -156,7 +156,7 @@ always_ff @(posedge clk, negedge rstn) begin
         next_state <= ALPHA;
       end
       ALPHA : begin
-        alpha[indx0] = cos_o[indx0] <<< 1;
+        alpha[indx0] <= cos_o[indx0] <<< 1;
         next_state <= MULS;
       end
       MULS : begin

@@ -47,7 +47,7 @@ always_ff @(negedge clk, negedge rstn) begin
     end
     else begin
       valid  <= 0;
-      data_m <= 1;
+      data_m <= 0;
     end
 
   end

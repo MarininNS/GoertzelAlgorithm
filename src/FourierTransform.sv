@@ -3,7 +3,7 @@ import axi_pkg::*;
 // `define TEST
 
 module FourierTransform #(
-  parameter NF = 7 // NUM_FREQ
+  parameter NF = 2 // NUM_FREQ
 ) (
   // CLK&RST
   input        rstn    ,
