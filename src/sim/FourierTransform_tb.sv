@@ -9,6 +9,7 @@ localparam CLK_PER     = 5   ;
 localparam ADC_CLK_PER = 500 ;
 localparam SPI_CLK_PER = 1000;
 localparam NF          = 12  ;
+localparam DW          = 64  ;
 
 logic ok   ;
 
@@ -56,7 +57,8 @@ assign sample_n[6] = ~sample_p[6];
 assign sample_n[7] = ~sample_p[7];
 
 FourierTransform #(
-  .NF(NF) 
+  .NF(NF), 
+  .DW(DW) 
 ) DUT (
   .rstn    (rstn    ),
   .clk     (clk     ),
@@ -210,7 +212,7 @@ initial begin
   rstn = 1;
   repeat(20) @(posedge DUT.clkd);
   
-  repeat(2) begin
+  repeat(1) begin
     spi_if.write_data(RESET_ALL, 32'd1, spi_stat);
     repeat(20) @(posedge DUT.clkd);
     spi_if.write_data(RESET_ALL, 32'd0, spi_stat);

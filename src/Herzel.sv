@@ -1,20 +1,21 @@
 module Herzel #(
-  parameter NF = 3
+  parameter NF = 11,
+  parameter DW = 64
 )(
   // CLK&RST
-  input                                rstn     ,
-  input                                clk      ,
+  input                                  rstn     ,
+  input                                  clk      ,
   // CTRL
-  input                                en       ,
-  output logic          [NF-1:0]       valid    ,
+  input                                  en       ,
+  output logic          [NF-1:0]         valid    ,
   // data_i
-  input                         [31:0] ns_i     , // (32.0 )
-  input                         [63:0] ns_coef_i, // (32.32)
-  input          signed [NF-1:0][63:0] alpha_i  , // (32.32)
-  input          signed [NF-1:0][63:0] cW_re_i  , // (32.32)
-  input          signed [NF-1:0][63:0] cW_im_i  , // (32.32)
-  input          signed         [63:0] data_i   , // (32.32)
-  output logic unsigned [NF-1:0][31:0] data_o     // (16.16)
+  input                         [31  :0] ns_i     , // (32.0 )
+  input                         [DW-1:0] ns_coef_i, // (32.32)
+  input          signed [NF-1:0][DW-1:0] alpha_i  , // (32.32)
+  input          signed [NF-1:0][DW-1:0] cW_re_i  , // (32.32)
+  input          signed [NF-1:0][DW-1:0] cW_im_i  , // (32.32)
+  input          signed         [DW-1:0] data_i   , // (32.32)
+  output logic unsigned [NF-1:0][31  :0] data_o     // (16.16)
 );
 
 typedef enum {  
@@ -31,19 +32,19 @@ typedef enum {
 state curr_state;
 state next_state;
 
-logic signed [NF-1:0][63:0] vm1 ; // (32.32)
-logic signed [NF-1:0][63:0] vm2 ; // (32.32)
-logic signed [NF-1:0][63:0] data; // (32.32)
-logic                [31:0] indx; // (32.32)
+logic signed [NF-1:0][DW-1:0] vm1 ; // (32.32)
+logic signed [NF-1:0][DW-1:0] vm2 ; // (32.32)
+logic signed [NF-1:0][DW-1:0] data; // (32.32)
+logic                [31  :0] indx; // (32.32)
 
-logic signed [NF-1:0][63:0] mul_a; // (32.32)
-logic signed [NF-1:0][63:0] mul_b; // (32.32)
-logic signed [NF-1:0][63:0] mul_c; // (32.32)
+logic signed [NF-1:0][DW-1:0] mul_a; // (32.32)
+logic signed [NF-1:0][DW-1:0] mul_b; // (32.32)
+logic signed [NF-1:0][DW-1:0] mul_c; // (32.32)
 
 logic          en_r     ;
-logic [63  :0] data_r   ;
-logic          mul_start;
+logic [DW-1:0] data_r   ;
 logic          mul_en   ;
+logic          mul_start;
 logic          mul_busy ;
 logic [NF-1:0] mul_valid;
 
@@ -51,10 +52,10 @@ genvar gvar;
 generate 
   for (gvar = 0; gvar < NF; gvar = gvar + 1) begin : herzel
     mult_sign_clk #(
-      .DW    (64),
-      .INT1_I(32),
-      .INT2_I(32),
-      .INT3_O(32) 
+      .DW    (DW  ),
+      .INT1_I(DW/2),
+      .INT2_I(DW/2),
+      .INT3_O(DW/2) 
     ) u_mult_sign_clk(
       .rstn (rstn           ),
       .clk  (clk            ),
@@ -122,7 +123,7 @@ always_ff @(posedge clk, negedge rstn) begin
         end
         GRADR : begin
           for (int i=0;i<NF;i++)
-            data_o[i] <= mul_c[i][47:16];
+            data_o[i] <= mul_c[i][DW/2+16-1:DW/2-16];
           next_state <= MULI;
         end
         MULI : begin
@@ -135,7 +136,7 @@ always_ff @(posedge clk, negedge rstn) begin
         end
         GRADI : begin
           for (int i=0;i<NF;i++)
-            data_o[i] <= data_o[i] + mul_c[i][47:16];
+            data_o[i] <= data_o[i] + mul_c[i][DW/2+16-1:DW/2-16];
           next_state <= VALID;
         end
         VALID : begin

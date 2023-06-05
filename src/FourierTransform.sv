@@ -3,7 +3,8 @@ import axi_pkg::*;
 // `define TEST
 
 module FourierTransform #(
-  parameter NF = 2 // NUM_FREQ
+  parameter NF = 11 , // NUM_FREQ
+  parameter DW = 32  // 
 ) (
   // CLK&RST
   input        rstn    ,
@@ -38,40 +39,40 @@ module FourierTransform #(
 // logic [7:0] sample_n;
 
 
-wire       clkd;
+logic       clkd;
 
-wire       enable    ;
-wire [7:0] sample    ;
-wire       enable_syn;
-wire [7:0] sample_syn;
-wire       rstn_syn  ;
+logic       enable    ;
+logic [7:0] sample    ;
+logic       enable_syn;
+logic [7:0] sample_syn;
+logic       rstn_syn  ;
 
-wire mode       ;
-wire reset_all_r;
-wire reset_h_r  ;
-wire rstn_all   ;
-wire rstn_h     ;
+logic mode       ;
+logic reset_all_r;
+logic reset_h_r  ;
+logic rstn_all   ;
+logic rstn_h     ;
 
-wire                [31:0] num_samp ;
-wire                [31:0] samp_freq;
-wire        [NF-1:0][31:0] freq_arr ;
-wire        [NF-1:0][63:0] k_arr    ;
-wire                [63:0] ang_coef ;
-wire                [63:0] ns_coef  ;
-wire signed [NF-1:0][63:0] angel_arr;
-wire signed [NF-1:0][63:0] coefW_re ;
-wire signed [NF-1:0][63:0] coefW_im ;
-wire signed [NF-1:0][63:0] alpha    ;
-wire signed         [63:0] data_scl ;
-wire signed [NF-1:0][31:0] data_hrz ;
+logic                [31:0] num_samp ;
+logic                [31:0] samp_freq;
+logic        [NF-1:0][31:0] freq_arr ;
+logic        [NF-1:0][63:0] k_arr    ;
+logic                [63:0] ang_coef ;
+logic                [63:0] ns_coef  ;
+logic signed [NF-1:0][63:0] angel_arr;
+logic signed [NF-1:0][63:0] coefW_re ;
+logic signed [NF-1:0][63:0] coefW_im ;
+logic signed [NF-1:0][63:0] alpha    ;
+logic signed         [63:0] data_scl ;
+logic signed [NF-1:0][31:0] data_hrz ;
 
-wire          en_cordic   ;
-wire          en_scl      ;
-wire          valid_div   ;
-wire          valid_angel ;
-wire          valid_cordic;
-wire          valid_scl   ;
-wire [NF-1:0] valid_herzel;
+logic          en_cordic   ;
+logic          en_scl      ;
+logic          valid_div   ;
+logic          valid_angel ;
+logic          valid_cordic;
+logic          valid_scl   ;
+logic [NF-1:0] valid_herzel;
 
 axi_lite_mosi axio;
 axi_lite_miso axii;
@@ -221,19 +222,38 @@ DataScale u_DataScale (
   .data_o(data_scl  ) 
 );
 
+logic                [DW-1:0] tns_coef  ;
+logic signed [NF-1:0][DW-1:0] talpha    ;
+logic signed [NF-1:0][DW-1:0] tcoefW_re ;
+logic signed [NF-1:0][DW-1:0] tcoefW_im ;
+logic signed         [DW-1:0] tdata_scl ;
+
+assign tns_coef  = ns_coef [64/2+DW/2-1:64/2-DW/2];
+assign tdata_scl = data_scl[64/2+DW/2-1:64/2-DW/2];
+
+genvar gvar;
+generate
+  for (gvar=0;gvar<NF;gvar=gvar+1) begin : bits_slice
+    assign talpha   [gvar] = alpha   [gvar][64/2+DW/2-1:64/2-DW/2];
+    assign tcoefW_re[gvar] = coefW_re[gvar][64/2+DW/2-1:64/2-DW/2];
+    assign tcoefW_im[gvar] = coefW_im[gvar][64/2+DW/2-1:64/2-DW/2];
+  end
+endgenerate
+
 Herzel #(
-  .NF(NF)
+  .NF(NF),
+  .DW(DW) 
 ) u_Herzel (
   .rstn     (rstn_h      ),
   .clk      (clkd        ),
   .en       (valid_scl   ),
   .valid    (valid_herzel),
   .ns_i     (num_samp    ),
-  .ns_coef_i(ns_coef     ),
-  .alpha_i  (alpha       ),
-  .cW_re_i  (coefW_re    ),
-  .cW_im_i  (coefW_im    ),
-  .data_i   (data_scl    ),
+  .ns_coef_i(tns_coef    ),
+  .alpha_i  (talpha      ),
+  .cW_re_i  (tcoefW_re   ),
+  .cW_im_i  (tcoefW_im   ),
+  .data_i   (tdata_scl   ),
   .data_o   (data_hrz    ) 
 ); 
 
