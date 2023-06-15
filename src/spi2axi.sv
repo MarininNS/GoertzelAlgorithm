@@ -100,11 +100,13 @@ end
 
 always_ff @(posedge axi_clk, negedge axi_rstn) begin : spi_next_state
   if (!axi_rstn) begin
+    spi_miso    <= 0;
     spi_sck_old <= 0;
     spi_sck_re  <= 0;
     spi_sck_fe  <= 0;
     spi_ss_old  <= 0;
     spi_ss_fe   <= 0;
+    spi_nstate <= SPI_IDLE;
   end
   else begin
 
@@ -128,14 +130,14 @@ always_ff @(posedge axi_clk, negedge axi_rstn) begin : spi_next_state
           spi_nstate <= SPI_IDLE;
       end
       SPI_CMD : begin
-        if (spi_cntr < 7) begin
+        if (spi_cntr < 8) begin
           if (spi_sck_re) begin
             spi_cmd    <= {spi_cmd[6:0], spi_mosi};
             spi_cntr   <= spi_cntr + 1;
             spi_nstate <= SPI_CMD;
           end
         end
-        else if (spi_sck_re) begin
+        else begin
           spi_cntr   <= 0;
           spi_nstate <= SPI_ADDR;
         end
@@ -230,86 +232,104 @@ always_ff @(negedge axi_clk, negedge axi_rstn) begin : axi_current_state
   end
 end
 
-always_ff @(posedge axi_clk) begin : axi_next_state
-  case (axi_cstate)
-    AXI_IDLE : begin
-      axi_awvalid <= 0;
-      axi_awaddr  <= 0;
-      axi_awprot  <= 0;
-      axi_wvalid  <= 0;
-      axi_wdata   <= 0;
-      axi_wstrb   <= 0;
-      axi_bready  <= 0;
-      axi_araddr  <= 0;
-      axi_arprot  <= 0;
-      axi_arvalid <= 0;
-      axi_rready  <= 0;
-      if (spi_cstate == SPI_IDLE)
-        axi_nstate <= AXI_CMD;
-      else
-        axi_nstate <= AXI_IDLE;
-    end
-    AXI_CMD : begin
-      spi_rdata <= 0;
-      spi_stat  <= 0;
-      if (spi_cstate > SPI_CMD) begin
-        if (spi_cmd == 1)
-          axi_nstate <= AXI_RADDR;
+always_ff @(posedge axi_clk, negedge axi_rstn) begin : axi_next_state
+  if (!axi_rstn) begin
+    axi_awvalid <= 0;
+    axi_awaddr  <= 0;
+    axi_awprot  <= 0;
+    axi_wvalid  <= 0;
+    axi_wdata   <= 0;
+    axi_wstrb   <= 0;
+    axi_bready  <= 0;
+    axi_araddr  <= 0;
+    axi_arprot  <= 0;
+    axi_arvalid <= 0;
+    axi_rready  <= 0;
+    spi_rdata   <= 0;
+    spi_stat    <= 0;
+    axi_nstate <= AXI_IDLE;
+  end
+  else begin
+    case (axi_cstate)
+      AXI_IDLE : begin
+        axi_awvalid <= 0;
+        axi_awaddr  <= 0;
+        axi_awprot  <= 0;
+        axi_wvalid  <= 0;
+        axi_wdata   <= 0;
+        axi_wstrb   <= 0;
+        axi_bready  <= 0;
+        axi_araddr  <= 0;
+        axi_arprot  <= 0;
+        axi_arvalid <= 0;
+        axi_rready  <= 0;
+        if (spi_cstate == SPI_IDLE)
+          axi_nstate <= AXI_CMD;
         else
-          axi_nstate <= AXI_WADDR;
+          axi_nstate <= AXI_IDLE;
       end
-    end
-    AXI_RADDR : begin
-      if (spi_cstate > SPI_ADDR) begin
-        axi_araddr  <= spi_addr;
-        axi_arvalid <= 1;
-        if (axi_arready == 1)   
+      AXI_CMD : begin
+        spi_rdata <= 0;
+        spi_stat  <= 0;
+        if (spi_cstate > SPI_CMD) begin
+          if (spi_cmd == 1)
+            axi_nstate <= AXI_RADDR;
+          else
+            axi_nstate <= AXI_WADDR;
+        end
+      end
+      AXI_RADDR : begin
+        if (spi_cstate > SPI_ADDR) begin
+          axi_araddr  <= spi_addr;
+          axi_arvalid <= 1;
+          if (axi_arready == 1)   
+            axi_nstate <= AXI_RDATA;
+          else
+            axi_nstate <= AXI_RADDR;
+        end
+      end
+      AXI_RDATA : begin
+        if (axi_rvalid == 1) begin
+          spi_rdata  <= axi_rdata;
+          spi_stat   <= axi_rresp;
+          axi_rready <= 1;
+          axi_nstate <= AXI_IDLE;
+        end
+        else
           axi_nstate <= AXI_RDATA;
+      end
+      AXI_WADDR : begin
+        if (spi_cstate > SPI_WDATA) begin
+          axi_awaddr  <= spi_addr;
+          axi_awvalid <= 1;
+          if (axi_awready == 1)   
+            axi_nstate <= AXI_WDATA;
+          else
+            axi_nstate <= AXI_WADDR;
+        end
+      end
+      AXI_WDATA : begin
+        if (spi_cstate > SPI_WDATA) begin
+          axi_wdata  <= spi_wdata;
+          axi_wvalid <= 1;
+          if (axi_wready == 1)   
+            axi_nstate <= AXI_WRESP;
+          else
+            axi_nstate <= AXI_WDATA;
+        end
+      end
+      AXI_WRESP : begin
+        if (axi_bvalid == 1) begin
+          spi_stat   <= axi_bresp;
+          axi_bready <= 1;
+          axi_nstate <= AXI_IDLE;
+        end
         else
-          axi_nstate <= AXI_RADDR;
-      end
-    end
-    AXI_RDATA : begin
-      if (axi_rvalid == 1) begin
-        spi_rdata  <= axi_rdata;
-        spi_stat   <= axi_rresp;
-        axi_rready <= 1;
-        axi_nstate <= AXI_IDLE;
-      end
-      else
-        axi_nstate <= AXI_RDATA;
-    end
-    AXI_WADDR : begin
-      if (spi_cstate > SPI_WDATA) begin
-        axi_awaddr  <= spi_addr;
-        axi_awvalid <= 1;
-        if (axi_awready == 1)   
-          axi_nstate <= AXI_WDATA;
-        else
-          axi_nstate <= AXI_WADDR;
-      end
-    end
-    AXI_WDATA : begin
-      if (spi_cstate > SPI_WDATA) begin
-        axi_wdata  <= spi_wdata;
-        axi_wvalid <= 1;
-        if (axi_wready == 1)   
           axi_nstate <= AXI_WRESP;
-        else
-          axi_nstate <= AXI_WDATA;
-      end
-    end
-    AXI_WRESP : begin
-      if (axi_bvalid == 1) begin
-        spi_stat   <= axi_bresp;
-        axi_bready <= 1;
-        axi_nstate <= AXI_IDLE;
-      end
-      else
-        axi_nstate <= AXI_WRESP;
-    end 
-    default: axi_nstate <= axi_cstate;
-  endcase
+      end 
+      default: axi_nstate <= axi_cstate;
+    endcase
+  end
 end
 
 

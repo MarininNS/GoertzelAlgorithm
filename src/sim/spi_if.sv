@@ -6,7 +6,7 @@ interface spi_if #(SPI_CLK_PER, DISPLAY = 0) ();
 
 logic [31:0] write_instr = 32'h0000_0000;
 logic [31:0] read_instr  = 32'h0000_0001;
-logic [31:0] dummy_word  = 32'h0000_0001;
+logic [31:0] dummy_word  = 32'h0000_0000;
 
 logic sck ;
 logic ss_n;
@@ -45,7 +45,7 @@ endtask
 task write(input int num_bit, input [31:0] data);
   for (int i=num_bit-1; i>=0; i=i-1) begin
     mst.mosi = data[i];
-    @(posedge sck);
+    @(negedge sck);
   end
   mst.mosi = 0;
 endtask
@@ -53,8 +53,8 @@ endtask
 task read(input int num_bit, output [31:0] data);
   data = 0;
   for (int i=num_bit-1; i>=0; i=i-1) begin
-    data[i] = mst.miso;
     @(posedge sck);
+    data[i] = mst.miso;
   end
 endtask
 
@@ -69,21 +69,21 @@ task read_data(input [31:0] addr, output [31:0] data, output [31:0] status);
       // instruction byte
       write(8, read_instr);
       // 4 address bytes
-      @(posedge sck);
       write(32, addr);
       // dummy byte
       write(8, dummy_word);
       // 4 data bytes
       read(32, data);
       // status byte
-      @(posedge sck);
       read(8, status);
-      // slave select
-      mst.ss_n = 1;
+      #(SPI_CLK_PER/2);
     end
   join_any
-  @(negedge sck);
   disable fork;
+  #(SPI_CLK_PER/2);
+  // slave select
+  mst.ss_n = 1;
+  #(SPI_CLK_PER);
   if (DISPLAY) $display("[%010t] spi read : addr = 0x%08h, data = 0x%08h, status = 0x%02h", $time, addr, data, status);
 endtask 
 
@@ -98,21 +98,21 @@ task write_data(input [31:0] addr, input [31:0] data, output [31:0] status);
       // instruction byte
       write(8, write_instr);
       // 4 address bytes
-      @(posedge sck);
       write(32, addr);
       // 4 data bytes
       write(32, data);
       // dummy byte
       write(8, dummy_word);
       // status byte
-      @(posedge sck);
       read(8, status);
-      // slave select
-      mst.ss_n = 1;
+      #(SPI_CLK_PER/2);
     end
   join_any
-  @(negedge sck);
   disable fork;
+  #(SPI_CLK_PER/2);
+  // slave select
+  mst.ss_n = 1;
+  #(SPI_CLK_PER);
   if (DISPLAY) $display("[%010t] spi write: addr = 0x%08h, data = 0x%08h, status = 0x%02h", $time, addr, data, status);
 endtask 
 

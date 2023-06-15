@@ -9,7 +9,7 @@ localparam CLK_PER     = 5   ;
 localparam ADC_CLK_PER = 500 ;
 localparam SPI_CLK_PER = 1000;
 localparam NF          = 12  ;
-localparam DW          = 64  ;
+localparam DW          = 16  ;
 
 logic ok   ;
 
@@ -178,23 +178,12 @@ task herzel();
   if (fd_r_s != 0)
     $fclose(fd_r_s);
   fd_r_s = $fopen("D:/Desktop/Study_now/SRW/GoertzelAlgorithm/src/sim/data/sample.csv", "r");
-  if (DUT.u_DataScale.mode == 1) begin
-    $fscanf(fd_r_s, "%d\n", sample_p);
+  while (!$feof(fd_r_s)) begin
+    #(ADC_CLK_PER/2);
     enable_p = 1;
-    while (!$feof(fd_r_s)) begin
-      @(posedge DUT.clkd);
-      $fscanf(fd_r_s, "%d\n", sample_p);
-    end
+    $fscanf(fd_r_s, "%d\n", sample_p);
+    #(ADC_CLK_PER/2);
     enable_p = 0;
-  end
-  else begin
-    while (!$feof(fd_r_s)) begin
-      #(ADC_CLK_PER/2);
-      enable_p = 1;
-      $fscanf(fd_r_s, "%d\n", sample_p);
-      #(ADC_CLK_PER/2);
-      enable_p = 0;
-    end
   end
   herzel_wait_all_valid();
 endtask
@@ -229,7 +218,6 @@ initial begin
 
     spi_if.write_data(NUM_SAMP , 32'd5000, spi_stat);
     spi_if.write_data(SAMP_FREQ, 32'd10000, spi_stat);
-    spi_if.write_data(MODE     , 32'd0, spi_stat);
 
     $display("[%010t] Start Herzel", $time);
     herzel();

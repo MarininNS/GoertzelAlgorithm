@@ -3,7 +3,7 @@ import axi_pkg::*;
 // `define TEST
 
 module FourierTransform #(
-  parameter NF = 11 , // NUM_FREQ
+  parameter NF = 6 , // NUM_FREQ
   parameter DW = 32  // 
 ) (
   // CLK&RST
@@ -15,13 +15,13 @@ module FourierTransform #(
   input        spi_sck ,
   input        spi_ss_n,
   input        spi_mosi,
-  output       spi_miso,
+  output       spi_miso
   // CTRL               
-  input        enable_p,
-  input        enable_n,
-  // // DATA
-  input  [7:0] sample_p,
-  input  [7:0] sample_n 
+  // input        enable_p,
+  // input        enable_n,
+  // // // DATA
+  // input  [7:0] sample_p,
+  // input  [7:0] sample_n 
 );
 
 
@@ -33,10 +33,10 @@ module FourierTransform #(
 //    .O (clk  ) 
 // );
 
-// logic       enable_p;
-// logic       enable_n;
-// logic [7:0] sample_p;
-// logic [7:0] sample_n;
+logic       enable_p;
+logic       enable_n;
+logic [7:0] sample_p;
+logic [7:0] sample_n;
 
 
 logic       clkd;
@@ -47,7 +47,6 @@ logic       enable_syn;
 logic [7:0] sample_syn;
 logic       rstn_syn  ;
 
-logic mode       ;
 logic reset_all_r;
 logic reset_h_r  ;
 logic rstn_all   ;
@@ -163,7 +162,6 @@ HerzelRegs #(
   .data_arr_i    (data_hrz    ),
   .num_samp_o    (num_samp    ),
   .samp_freq_o   (samp_freq   ),
-  .mode_o        (mode        ),
   .reset_all_o   (reset_all_r ),
   .reset_h_o     (reset_h_r   ),
   .axio_i        (axio        ),
@@ -217,7 +215,6 @@ DataScale u_DataScale (
   .clk   (clkd      ),
   .enable(en_scl    ),
   .valid (valid_scl ),
-  .mode  (mode      ),
   .data_i(sample_syn),
   .data_o(data_scl  ) 
 );

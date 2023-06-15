@@ -15,7 +15,6 @@ module HerzelRegs #(
   input                [NF-1:0][31:0] data_arr_i    ,
   output logic                 [31:0] num_samp_o    ,
   output logic                 [31:0] samp_freq_o   ,
-  output logic                        mode_o        ,
   output logic                        reset_all_o   ,
   output logic                        reset_h_o     ,
   // AXI
@@ -29,7 +28,6 @@ localparam DATA_BA = 32'h2000_0000;
 // addres map of regs and default value
 logic [31:0] version   ; // RW 0x0000_0000
 logic [31:0] debug     ; // RW 0x0000_0004
-logic [31:0] mode      ; // RW 0x0000_0008
 logic [31:0] num_samp  ; // RW 0x0000_000C
 logic [31:0] samp_freq ; // RW 0x0000_0010
 logic [31:0] en_cordic ; // RW 0x0000_0014
@@ -41,7 +39,6 @@ logic [NF-1:0][31:0] freq ; // RW 0x1000_0000
 logic [NF-1:0][31:0] data ; // R  0x2000_0000
 
 always_comb begin
-  mode_o         = mode[0]           ;
   num_samp_o     = num_samp          ;
   samp_freq_o    = samp_freq         ;
   en_cordic_o    = en_cordic[0]      ;
@@ -82,7 +79,6 @@ always_ff @(posedge clk, negedge rstn) begin
   if (!rstn) begin
   version    <= 32'h2904_2023;
   debug      <= 32'hF0F0_F0F0;
-  mode       <= 32'h0000_0000;
   num_samp   <= 32'h0001_86A0;
   samp_freq  <= 32'h0003_0D40;
   en_cordic  <= 32'h0000_0000;
@@ -124,7 +120,6 @@ always_ff @(posedge clk, negedge rstn) begin
           case (axio_i.araddr)
             32'h0000_0000: axii_o.rdata  <= version  ;
             32'h0000_0004: axii_o.rdata  <= debug    ;
-            32'h0000_0008: axii_o.rdata  <= mode     ;
             32'h0000_000C: axii_o.rdata  <= num_samp ;
             32'h0000_0010: axii_o.rdata  <= samp_freq;
             32'h0000_0014: axii_o.rdata  <= en_cordic;
@@ -164,7 +159,6 @@ always_ff @(posedge clk, negedge rstn) begin
             case (axio_i.awaddr)
               32'h0000_0000: version   <= axio_i.wdata;
               32'h0000_0004: debug     <= axio_i.wdata;
-              32'h0000_0008: mode      <= axio_i.wdata;
               32'h0000_000C: num_samp  <= axio_i.wdata;
               32'h0000_0010: samp_freq <= axio_i.wdata;
               32'h0000_0014: en_cordic <= axio_i.wdata;

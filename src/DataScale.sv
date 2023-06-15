@@ -5,7 +5,6 @@ module DataScale (
   // CTRL
   input                      enable,
   output logic               valid ,
-  input                      mode  ,
   // DATA
   input               [7 :0] data_i, // (8.0)
   output logic signed [63:0] data_o  // (32.32)
@@ -41,7 +40,7 @@ always_ff @(negedge clk, negedge rstn) begin
     enable_old <= enable_syn;
     enable_re  <= ((enable_old == 1'b0) && (enable_syn == 1'b1));
 
-    if (enable_re || mode) begin
+    if (enable_re) begin
       valid  <= enable           ;
       data_m <= SCALE_COEF * data_i;
     end
