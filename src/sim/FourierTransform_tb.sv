@@ -9,7 +9,7 @@ localparam CLK_PER     = 5   ;
 localparam ADC_CLK_PER = 500 ;
 localparam SPI_CLK_PER = 1000;
 localparam NF          = 12  ;
-localparam DW          = 16  ;
+localparam DW          = 64  ;
 
 logic ok   ;
 

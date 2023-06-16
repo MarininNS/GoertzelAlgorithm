@@ -3,7 +3,7 @@ import axi_pkg::*;
 // `define TEST
 
 module FourierTransform #(
-  parameter NF = 6 , // NUM_FREQ
+  parameter NF = 2 , // NUM_FREQ
   parameter DW = 32  // 
 ) (
   // CLK&RST
@@ -15,13 +15,14 @@ module FourierTransform #(
   input        spi_sck ,
   input        spi_ss_n,
   input        spi_mosi,
-  output       spi_miso
+  output       spi_miso,
   // CTRL               
-  // input        enable_p,
+  input        enable_p,
   // input        enable_n,
   // // // DATA
-  // input  [7:0] sample_p,
-  // input  [7:0] sample_n 
+  input  [7:0] sample_p,
+  // input  [7:0] sample_n,
+  output       ready    
 );
 
 
@@ -33,10 +34,10 @@ module FourierTransform #(
 //    .O (clk  ) 
 // );
 
-logic       enable_p;
-logic       enable_n;
-logic [7:0] sample_p;
-logic [7:0] sample_n;
+// logic       enable_p;
+// logic       enable_n;
+// logic [7:0] sample_p;
+// logic [7:0] sample_n;
 
 
 logic       clkd;
@@ -78,6 +79,8 @@ axi_lite_miso axii;
 
 assign rstn_all = rstn_syn && (~reset_all_r);
 assign rstn_h   = rstn_syn && (~reset_all_r) && (~reset_h_r);
+
+assign ready = valid_cordic;
 
 // clk_div u_clk_div (
 //   .clk_i(clk ),

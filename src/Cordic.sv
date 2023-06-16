@@ -50,16 +50,23 @@ logic signed [63:0] mul_c; // (20.44)
 
 assign mul_a = COEF_DEF;
 
-mult_sign #(
+logic mul_start;
+logic mul_busy ;
+logic mul_valid;
+
+mult_sign_clk  #(
   .DW    (64),
   .INT1_I(20),
   .INT2_I(20),
   .INT3_O(32) 
-) u_mult_sign (
-  .a_in (mul_a),
-  .b_in (mul_b),
-  .c_out(mul_c),
-  .c_ful(     ) 
+) u_mult_sign_clk (
+  .rstn (rstn     ),
+  .clk  (clk      ),
+  .en   (mul_start),
+  .a_in (mul_a    ),
+  .b_in (mul_b    ),
+  .valid(mul_valid),
+  .c_out(mul_c    ) 
 );
 
 always_ff @(negedge clk, negedge rstn) begin
@@ -84,6 +91,8 @@ always_ff @(posedge clk, negedge rstn) begin
     indx1 <= 0;
     quad  <= 0;
     mul_b <= 0;
+    mul_start <= 0;
+    mul_busy <= 0;
     next_state <= IDLE;
   end
   else begin
@@ -141,7 +150,16 @@ always_ff @(posedge clk, negedge rstn) begin
         else begin
           mul_b <= cos;
         end
-        next_state <= PRIVC;
+        if (!mul_busy)
+          mul_start <= 1;
+        if (mul_start) begin
+          mul_busy <= 1;
+          mul_start <= 0;
+        end
+        if (mul_valid) begin
+          mul_busy <= 0;
+          next_state <= PRIVC;
+        end
       end
       PRIVC : begin
         if (quad == 2'b10) begin
@@ -169,7 +187,16 @@ always_ff @(posedge clk, negedge rstn) begin
         else begin
           mul_b <= sin;
         end
-        next_state <= PRIVS;
+        if (!mul_busy)
+          mul_start <= 1;
+        if (mul_start) begin
+          mul_busy <= 1;
+          mul_start <= 0;
+        end
+        if (mul_valid) begin
+          mul_busy <= 0;
+          next_state <= PRIVS;
+        end
       end
       PRIVS : begin
         if (quad == 2'b10) begin
