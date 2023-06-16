@@ -1,20 +1,62 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
 import ft4222
 from ft4222.SPI import Cpha, Cpol
 from ft4222.SPIMaster import Mode, Clock, SlaveSelect
-from ft4222.GPIO import Port, Dir
 from time import sleep
+
+VERSION    = 0x0000_0000  # RW
+DEBUG      = 0x0000_0004  # RW
+MODE       = 0x0000_0008  # RW
+NUM_SAMP   = 0x0000_000C  # RW
+SAMP_FREQ  = 0x0000_0010  # RW
+EN_CORDIC  = 0x0000_0014  # RW
+STATUS     = 0x0000_0018  # R
+RESET_ALL  = 0x0000_001C  # RW
+RESET_H    = 0x0000_0020  # RW
+
+FREQ_1     = 0x1000_0000  # RW
+FREQ_2     = 0x1000_0004  # RW
+
+DATA_1     = 0x2000_0000  # R
+DATA_2     = 0x2000_0004  # R
 
 read_byte = 0x01
 write_byte = 0x00
 dummy_byte = 0x00
 
 
+def write(device, addr, data):
+    print(f'Write addr - {addr:04x}, data - {data:04x}')
+    device.spiMaster_SingleWrite(write_byte, False)
+    byte = addr.to_bytes(4, byteorder="big")
+    device.spiMaster_SingleWrite(byte[0:1], False)
+    device.spiMaster_SingleWrite(byte[1:2], False)
+    device.spiMaster_SingleWrite(byte[2:3], False)
+    device.spiMaster_SingleWrite(byte[3:4], False)
+    byte = data.to_bytes(4, byteorder="big")
+    device.spiMaster_SingleWrite(byte[0:1], False)
+    device.spiMaster_SingleWrite(byte[1:2], False)
+    device.spiMaster_SingleWrite(byte[2:3], False)
+    device.spiMaster_SingleWrite(byte[3:4], False)
+    device.spiMaster_SingleWrite(dummy_byte, False)
+    print(f'Status - {device.spiMaster_SingleRead(0x01, True).hex()}\n')
 
+
+def read(device, addr):
+    print(f'Read addr - {addr:04x}')
+    device.spiMaster_SingleWrite(read_byte, False)
+    byte = addr.to_bytes(4, byteorder="big")
+    device.spiMaster_SingleWrite(byte[0:1], False)
+    device.spiMaster_SingleWrite(byte[1:2], False)
+    device.spiMaster_SingleWrite(byte[2:3], False)
+    device.spiMaster_SingleWrite(byte[3:4], False)
+    device.spiMaster_SingleWrite(dummy_byte, False)
+    data = bytearray()
+    data.append(device.spiMaster_SingleRead(0x01, False)[0])
+    data.append(device.spiMaster_SingleRead(0x01, False)[0])
+    data.append(device.spiMaster_SingleRead(0x01, False)[0])
+    data.append(device.spiMaster_SingleRead(0x01, False)[0])
+    print(f'Status - {device.spiMaster_SingleRead(0x01, True).hex()}\n')
+    return data.hex()
 
 
 def test():
@@ -24,50 +66,23 @@ def test():
     # init spi master
     device.spiMaster_Init(Mode.SINGLE, Clock.DIV_128, Cpol.IDLE_LOW, Cpha.CLK_LEADING, SlaveSelect.SS0)
 
-    # generate data to send
-    # data = bytes([x for x in range(256)] * 4)
+    write(device, NUM_SAMP , 5000 )
+    write(device, SAMP_FREQ, 10000)
 
-    # for _ in range(3):
-    #     # write data in a single write
-    #     device.spiMaster_SingleWrite(data, True)
-    #     # wait a short while
-    #     sleep(0.5)
+    write(device, FREQ_1, 2000)
+    write(device, FREQ_2, 4000)
 
-    device.spiMaster_SingleWrite(write_byte, False)
-    device.spiMaster_SingleWrite(0x00, False)
-    device.spiMaster_SingleWrite(0x00, False)
-    device.spiMaster_SingleWrite(0x00, False)
-    device.spiMaster_SingleWrite(0x00, False)
-    device.spiMaster_SingleWrite(0xFF, False)
-    device.spiMaster_SingleWrite(0xFF, False)
-    device.spiMaster_SingleWrite(0xFF, False)
-    device.spiMaster_SingleWrite(0xFF, False)
-    device.spiMaster_SingleWrite(dummy_byte, False)
-    status = device.spiMaster_SingleRead(0x01, True)
+    write(device, EN_CORDIC, 1)
 
-    print(f'{status.hex()}')
+    sleep(1)
 
-    device.spiMaster_SingleWrite(read_byte, False)
-    device.spiMaster_SingleWrite(0x00, False)
-    device.spiMaster_SingleWrite(0x00, False)
-    device.spiMaster_SingleWrite(0x00, False)
-    device.spiMaster_SingleWrite(0x00, False)
-    device.spiMaster_SingleWrite(dummy_byte, False)
-    byte1 = device.spiMaster_SingleRead(0x01, False)
-    byte2 = device.spiMaster_SingleRead(0x01, False)
-    byte3 = device.spiMaster_SingleRead(0x01, False)
-    byte4 = device.spiMaster_SingleRead(0x01, False)
-    status = device.spiMaster_SingleRead(0x01, True)
+    data1 = read(device, DATA_1)
+    data2 = read(device, DATA_2)
 
-    print(f'{byte1.hex()}')
-    print(f'{byte2.hex()}')
-    print(f'{byte3.hex()}')
-    print(f'{byte4.hex()}')
-    print(f'{status.hex()}')
+    print('Result of test:')
+    print(f'Freq 1 : {data1}')
+    print(f'Freq 2 : {data2}')
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     test()
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
