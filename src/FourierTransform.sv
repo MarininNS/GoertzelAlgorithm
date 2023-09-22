@@ -25,6 +25,7 @@ module FourierTransform #(
   output       ready    
 );
 
+  uvm_driver test_driver;
 
 // logic clk;
 // IBUFDS IBUFDS_clk

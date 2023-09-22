@@ -1,0 +1,308 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"u",
+				"u_resync_nrst"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "src/DataScale.sv",
+			"settings":
+			{
+				"buffer_size": 1080,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			},
+			"undo_stack":
+			[
+				[
+					40,
+					1,
+					"git_gutter_replace_text",
+					{
+						"end": 621,
+						"start": 619,
+						"text": ""
+					},
+					"AQAAAGsCAAAAAAAAawIAAAAAAAACAAAACgo",
+					"AQAAAAAAAAABAAAAagIAAAAAAABqAgAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					52,
+					1,
+					"git_gutter_replace_text",
+					{
+						"end": 614,
+						"start": 601,
+						"text": "  .data_o(enable_syn) "
+					},
+					"AQAAAFkCAAAAAAAAbwIAAAAAAAANAAAAICAuZGF0YV9vKGYpIA",
+					"AQAAAAAAAAABAAAAaQIAAAAAAABpAgAAAAAAAAAAAAAAAPC/"
+				]
+			]
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"gitgutt",
+				"GitGutter: Compare Against HEAD"
+			],
+			[
+				"git diff",
+				"Git: Diff Current File"
+			],
+			[
+				"git: annota",
+				"Git: Toggle Annotations"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"git",
+				"Git: Diff Current File"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Help: Changelog"
+			],
+			[
+				"ver",
+				"Verilog: Toggle .*"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/nmari/Documents/GitHub/GoertzelAlgorithm",
+		"/C/Users/nmari/Documents/GitHub/GoertzelAlgorithm/src",
+		"/C/Users/nmari/Documents/GitHub/GoertzelAlgorithm/src/uvm"
+	],
+	"file_history":
+	[
+		"/C/Users/nmari/Documents/GitHub/GoertzelAlgorithm/src/adc.sv",
+		"/C/Users/nmari/Documents/GitHub/GoertzelAlgorithm/src/DataScale.sv",
+		"/D/Sublime Text Build 3211 x64/Data/Packages/User/Git.sublime-settings",
+		"/C/Users/nmari/Documents/GitHub/GoertzelAlgorithm/src/sim/DataScale_tb.sv",
+		"/C/Users/nmari/Desktop/GoertzelAlgorithm-main/src/FourierTransform.sv",
+		"/C/Users/nmari/Desktop/GoertzelAlgorithm-main/src/test.sv",
+		"/C/Users/nmari/Desktop/GoertzelAlgorithm-main/src/uvm/comps/uvm_driver.svh",
+		"/C/Users/nmari/Desktop/GoertzelAlgorithm-main/src/uvm_src.lnk",
+		"/C/Users/nmari/Desktop/GoertzelAlgorithm-main/src/resync_nrst.sv",
+		"/C/Users/nmari/Desktop/GoertzelAlgorithm-main/src/mult_sign_clk.sv",
+		"/C/Users/nmari/Desktop/GoertzelAlgorithm-main/sublime.sublime-project"
+	],
+	"find":
+	{
+		"height": 41.0
+	},
+	"find_in_files":
+	{
+		"height": 107.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"resync_data",
+			"adc",
+			"resync_data"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/DataScale.sv",
+					"selected": true,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1080,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								480,
+								480
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/SystemVerilog/SystemVerilog.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 29.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 126.0
+	},
+	"output.git":
+	{
+		"height": 387.0
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "sublime.sublime-project",
+	"replace":
+	{
+		"height": 54.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"uvm_dr",
+				"src\\uvm\\comps\\uvm_driver.svh"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"C:\\Users\\nmari\\Desktop\\GoertzelAlgorithm-main\\sublime.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 207.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

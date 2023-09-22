@@ -1,0 +1,106 @@
+{
+ "builder": {
+  "_logger": "hdl_checker.builders.fallback",
+  "_builtin_libraries": [],
+  "_added_libraries": [
+   {
+    "name": "not_in_project",
+    "case_sensitive": true,
+    "__class__": "Identifier"
+   },
+   {
+    "name": "work",
+    "case_sensitive": false,
+    "__class__": "Identifier"
+   }
+  ],
+  "_version": "<undefined>",
+  "_work_folder": "c:\\Users\\nmari\\Documents\\GitHub\\GoertzelAlgorithm\\_hdl_checker",
+  "__class__": "Fallback"
+ },
+ "config_file": null,
+ "database": {
+  "sources": [],
+  "inferred_libraries": [],
+  "design_units": [
+   {
+    "owner": {
+     "name": "c:\\Users\\nmari\\Documents\\GitHub\\GoertzelAlgorithm\\src\\divu.sv",
+     "__class__": "Path"
+    },
+    "type_": "entity",
+    "name": {
+     "name": "divu",
+     "case_sensitive": true,
+     "__class__": "VerilogIdentifier"
+    },
+    "locations": [
+     [
+      4,
+      7
+     ]
+    ],
+    "__class__": "VerilogDesignUnit"
+   },
+   {
+    "owner": {
+     "name": "c:\\Users\\nmari\\Documents\\GitHub\\GoertzelAlgorithm\\src\\DataScale.sv",
+     "__class__": "Path"
+    },
+    "type_": "entity",
+    "name": {
+     "name": "DataScale",
+     "case_sensitive": true,
+     "__class__": "VerilogIdentifier"
+    },
+    "locations": [
+     [
+      0,
+      6
+     ]
+    ],
+    "__class__": "VerilogDesignUnit"
+   },
+   {
+    "owner": {
+     "name": "c:\\Users\\nmari\\Documents\\GitHub\\GoertzelAlgorithm\\src\\FourierTransform.sv",
+     "__class__": "Path"
+    },
+    "type_": "entity",
+    "name": {
+     "name": "FourierTransform",
+     "case_sensitive": true,
+     "__class__": "VerilogIdentifier"
+    },
+    "locations": [
+     [
+      4,
+      7
+     ]
+    ],
+    "__class__": "VerilogDesignUnit"
+   },
+   {
+    "owner": {
+     "name": "c:\\Users\\nmari\\Documents\\GitHub\\GoertzelAlgorithm\\src\\HerzelRegs.sv",
+     "__class__": "Path"
+    },
+    "type_": "entity",
+    "name": {
+     "name": "HerzelRegs",
+     "case_sensitive": true,
+     "__class__": "VerilogIdentifier"
+    },
+    "locations": [
+     [
+      2,
+      7
+     ]
+    ],
+    "__class__": "VerilogDesignUnit"
+   }
+  ],
+  "__class__": "Database"
+ },
+ "__version__": "0.7.4"
+}

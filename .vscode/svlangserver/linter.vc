@@ -1,0 +1,27 @@
+-v c:\Users\nmari\Documents\GitHub\GoertzelAlgorithm\src\axi_pkg.sv
++incdir+c:\Users\nmari\Documents\GitHub\GoertzelAlgorithm\src
++incdir+c:\Users\nmari\Documents\GitHub\GoertzelAlgorithm\src\uvm\base
++incdir+c:\Users\nmari\Documents\GitHub\GoertzelAlgorithm\src\uvm\comps
++incdir+c:\Users\nmari\Documents\GitHub\GoertzelAlgorithm\src\uvm\dap
++incdir+c:\Users\nmari\Documents\GitHub\GoertzelAlgorithm\src\uvm\deprecated\macros
++incdir+c:\Users\nmari\Documents\GitHub\GoertzelAlgorithm\src\uvm\dpi
++incdir+c:\Users\nmari\Documents\GitHub\GoertzelAlgorithm\src\uvm\macros
++incdir+c:\Users\nmari\Documents\GitHub\GoertzelAlgorithm\src\uvm\reg\sequences
++incdir+c:\Users\nmari\Documents\GitHub\GoertzelAlgorithm\src\uvm\reg
++incdir+c:\Users\nmari\Documents\GitHub\GoertzelAlgorithm\src\uvm\seq
++incdir+c:\Users\nmari\Documents\GitHub\GoertzelAlgorithm\src\uvm\tlm1
++incdir+c:\Users\nmari\Documents\GitHub\GoertzelAlgorithm\src\uvm\tlm2
++incdir+c:\Users\nmari\Documents\GitHub\GoertzelAlgorithm\src\uvm
++incdir+c:\Users\nmari\Documents\GitHub\GoertzelAlgorithm\src
++incdir+c:\Users\nmari\Documents\GitHub\GoertzelAlgorithm\src\uvm\base
++incdir+c:\Users\nmari\Documents\GitHub\GoertzelAlgorithm\src\uvm\comps
++incdir+c:\Users\nmari\Documents\GitHub\GoertzelAlgorithm\src\uvm\dap
++incdir+c:\Users\nmari\Documents\GitHub\GoertzelAlgorithm\src\uvm\deprecated\macros
++incdir+c:\Users\nmari\Documents\GitHub\GoertzelAlgorithm\src\uvm\dpi
++incdir+c:\Users\nmari\Documents\GitHub\GoertzelAlgorithm\src\uvm\macros
++incdir+c:\Users\nmari\Documents\GitHub\GoertzelAlgorithm\src\uvm\reg\sequences
++incdir+c:\Users\nmari\Documents\GitHub\GoertzelAlgorithm\src\uvm\reg
++incdir+c:\Users\nmari\Documents\GitHub\GoertzelAlgorithm\src\uvm\seq
++incdir+c:\Users\nmari\Documents\GitHub\GoertzelAlgorithm\src\uvm\tlm1
++incdir+c:\Users\nmari\Documents\GitHub\GoertzelAlgorithm\src\uvm\tlm2
++incdir+c:\Users\nmari\Documents\GitHub\GoertzelAlgorithm\src\uvm
